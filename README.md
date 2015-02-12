@@ -3,7 +3,7 @@ LWJGL OpenGL 2d game project
 
 Setup instructions :
 
-1_clone repo
+1_clone repo<br>
 2_unzip ressources/lwjgl-2.9.1.zip to directoryof your choice
 3_in IDE jfgformicarius >> properties >> run : add path to natives. 
 Add this line to VM Options :

@@ -42,7 +42,6 @@ import fr.com.jellyfish.jfformicarius.formicarius.entities.events.EvilFog;
 import fr.com.jellyfish.jfformicarius.formicarius.entities.events.IceDagger;
 import fr.com.jellyfish.jfformicarius.formicarius.entities.events.PlasmaBall;
 import fr.com.jellyfish.jfformicarius.formicarius.entities.events.SpellRing;
-import fr.com.jellyfish.jfformicarius.formicarius.entities.events.TransportFog;
 import fr.com.jellyfish.jfformicarius.formicarius.entities.tiles.LibBackground;
 import fr.com.jellyfish.jfformicarius.formicarius.entities.tiles.LibItemContainer;
 import fr.com.jellyfish.jfformicarius.formicarius.game.Game;
@@ -123,9 +122,9 @@ public class Library {
             PlasmaBall.class.getSimpleName()), false, true);
         
         // Add evil fog 1 to library :
-        appendLibItem(EvilFog.class.getSimpleName(), new TransportFog(this.game, 
+        appendLibItem(EvilFog.class.getSimpleName(), new EvilFog(this.game, 
             0, 0, StaticSpriteVars.evil_fog1_lib_icon,
-            EvilFog.class.getSimpleName(), StaticSoundVars.spell5, mh), 
+            EvilFog.class.getSimpleName(), StaticSoundVars.spell5), 
             false, true);
         
         // Add evil dark fog to library :

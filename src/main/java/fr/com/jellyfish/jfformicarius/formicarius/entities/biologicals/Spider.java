@@ -60,7 +60,8 @@ public class Spider extends AbstractEntity implements Interactable, CollidableOb
         SpellBoundable {
     
     //<editor-fold defaultstate="collapsed" desc="variables">
-    public static final float SPEED = 190.0f;
+    public final static float SPEED = 190.0f;
+    protected float speed = 190.0f;
     public static final float HEALTH_VALUE = 6.0f;
     public static final int SPRT_WH = 40;
     public static final int STILLNESS_FACTOR = 1;
@@ -184,7 +185,7 @@ public class Spider extends AbstractEntity implements Interactable, CollidableOb
         if (gLoopCntr2 >= AnimationConst.FPS / 2) {
             try {                
                 final boolean movable = aiMvtHelper.simulateRandonNonDiagonalMvt(this,
-                    Spider.SPEED, Spider.STILLNESS_FACTOR);
+                    this.speed, Spider.STILLNESS_FACTOR);
                 setAnimeUpdateRequired(movable);
                 gLoopCntr2 = 0;
             } catch (final RandonMvtSimulationException ex) { }
@@ -246,6 +247,7 @@ public class Spider extends AbstractEntity implements Interactable, CollidableOb
         this.setInCollision(false);
         this.frameVal = 0;
         this.health = Spider.HEALTH_VALUE;
+        this.speed = Spider.SPEED;
     }
 
     @Override
@@ -258,8 +260,7 @@ public class Spider extends AbstractEntity implements Interactable, CollidableOb
     public Rectangle getRectangle(final AbstractEntity entity) {
         return null;
     }
-    //</editor-fold>
-
+    
     @Override
     public SpellBoundable spellbound() {
         this.spellbound = true;
@@ -273,5 +274,12 @@ public class Spider extends AbstractEntity implements Interactable, CollidableOb
     public void removeSpellbound() {
         this.spellbound = false;
     }
+
+    @Override
+    public SpellBoundable spellboundFreeze() {
+        this.speed = 0.0f;
+        return this;
+    }
+    //</editor-fold>
     
 }

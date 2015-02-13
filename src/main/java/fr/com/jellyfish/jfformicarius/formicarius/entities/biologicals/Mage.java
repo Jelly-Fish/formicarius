@@ -54,11 +54,24 @@ import java.awt.Rectangle;
  */
 public class Mage extends Knight {
 
+    //<editor-fold defaultstate="collapsed" desc="variables">
     /**
-     *
+     * AI helper.
      */
     private final AIMvtHelper aiHelper = new AIMvtHelper();
+    //</editor-fold>
 
+    //<editor-fold defaultstate="collapsed" desc="constructor">
+    /**
+     * Constructor.
+     * @param game
+     * @param sprts
+     * @param frameCount
+     * @param x
+     * @param y
+     * @param startMvt
+     * @param ref 
+     */
     public Mage(final Game game, final String sprts, final int frameCount,
             final int x, final int y, final int startMvt, final String ref) {
         super(game, sprts, frameCount, x, y, startMvt, ref + Mage.occurs);
@@ -67,7 +80,9 @@ public class Mage extends Knight {
 
         init();
     }
+    //</editor-fold>
 
+    //<editor-fold defaultstate="collapsed" desc="methods">
     /**
      *
      */
@@ -200,5 +215,6 @@ public class Mage extends Knight {
         setInCollision(false);
         setAnimeUpdateRequired(false);
     }
+    //</editor-fold>
 
 }

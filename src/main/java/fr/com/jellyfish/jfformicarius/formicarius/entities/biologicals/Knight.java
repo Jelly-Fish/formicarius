@@ -40,7 +40,6 @@ import fr.com.jellyfish.jfformicarius.formicarius.entities.events.PlasmaBall;
 import fr.com.jellyfish.jfformicarius.formicarius.entities.tiles.effects.blood.impacts.MetalImpact;
 import fr.com.jellyfish.jfformicarius.formicarius.game.Game;
 import fr.com.jellyfish.jfformicarius.formicarius.helpers.DrawingHelper;
-import fr.com.jellyfish.jfformicarius.formicarius.helpers.time.StopWatch;
 import fr.com.jellyfish.jfformicarius.formicarius.interfaces.CollidableObject;
 import fr.com.jellyfish.jfformicarius.formicarius.interfaces.Ignitable;
 import fr.com.jellyfish.jfformicarius.formicarius.interfaces.Interactable;
@@ -238,6 +237,12 @@ public class Knight extends AbstractEntity implements Interactable, CollidableOb
         // Set texture/sprite effects. getMvt() will return left or right.
         // 1 for left and/or 3 for right.
         sprite = this.frames[this.frames.length - 5 + this.getMvt()];
+        return this;
+    }
+    
+    @Override
+    public SpellBoundable spellboundFreeze() {
+        // no impact on this class here.
         return this;
     }
 

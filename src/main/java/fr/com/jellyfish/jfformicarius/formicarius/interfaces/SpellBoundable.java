@@ -38,10 +38,16 @@ package fr.com.jellyfish.jfformicarius.formicarius.interfaces;
 public interface SpellBoundable {
 
     /**
-     * Apply speel and retreive class that is speelbound.
+     * Apply spell effect and retreive class that is speelbound.
      * @return Spellboundable instance of class that implements interface.
      */
     public SpellBoundable spellbound();
+    
+    /**
+     * Apply spell effect and retreive class that is speelbound.
+     * @return Spellboundable instance of class that implements interface.
+     */
+    public SpellBoundable spellboundFreeze();
     
     /**
      * Fade or remove spell effects.

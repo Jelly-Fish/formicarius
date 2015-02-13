@@ -36,19 +36,24 @@ import fr.com.jellyfish.jfformicarius.formicarius.entities.abstractentities.Abst
 import fr.com.jellyfish.jfformicarius.formicarius.entities.biologicals.MainCharacter;
 import fr.com.jellyfish.jfformicarius.formicarius.game.Game;
 import fr.com.jellyfish.jfformicarius.formicarius.helpers.DrawingHelper;
+import fr.com.jellyfish.jfformicarius.formicarius.interfaces.CollidableObject;
 import fr.com.jellyfish.jfformicarius.formicarius.interfaces.Observer;
 import fr.com.jellyfish.jfformicarius.formicarius.interfaces.Spawnable;
+import fr.com.jellyfish.jfformicarius.formicarius.interfaces.SpellBoundable;
 import fr.com.jellyfish.jfformicarius.formicarius.interfaces.XYObservable;
 import fr.com.jellyfish.jfformicarius.formicarius.staticvars.StaticSpriteVars;
 import fr.com.jellyfish.jfformicarius.formicarius.texture.Sprite;
+import fr.com.jellyfish.jfformicarius.formicarius.utils.CollisionUtils;
 import fr.com.jellyfish.jfformicarius.formicarius.utils.SpriteUtils;
+import java.awt.Rectangle;
 
 /**
  *
  * @author thw
  */
-public class EvilFog extends AbstractEntity implements Spawnable, Observer {
+public class EvilFog extends AbstractEntity implements Spawnable, Observer, CollidableObject {
 
+    //<editor-fold defaultstate="collapsed" desc="variables">
     public static final float STAMINA_VALUE = 5.0f;
     public static final int SPRT_WH = 128;
     public static final int FRAME_COUNT = 46;
@@ -72,7 +77,18 @@ public class EvilFog extends AbstractEntity implements Spawnable, Observer {
      * frame array.
      */
     private final Sprite[] frames;
+    //</editor-fold>
     
+    //<editor-fold defaultstate="collapsed" desc="constructor">
+    /**
+     * Constructor.
+     * @param game
+     * @param x
+     * @param y
+     * @param iconPath
+     * @param abstractRef
+     * @param soundEffectRef 
+     */
     public EvilFog(final Game game, final int x, final int y, final String iconPath, 
         final String abstractRef, final int soundEffectRef) {
         super(game, SpriteUtils.getSprite(game.getTextureLoader(), iconPath),
@@ -91,9 +107,20 @@ public class EvilFog extends AbstractEntity implements Spawnable, Observer {
         sprite = frames[frameVal];
         setAnimeUpdateRequired(true);
     }
+    //</editor-fold>
 
+    //<editor-fold defaultstate="collapsed" desc="methods">
     @Override
-    public void collideWith(final AbstractEntity other) { }
+    public void collideWith(final AbstractEntity other) { 
+        
+        if (this.spawned && other instanceof SpellBoundable) {
+            if (CollisionUtils.inFullCollision(this.getRectangle(), new Rectangle(
+                    other.getX(), other.getY(), other.sprite.getWidth(),
+                    other.sprite.getHeight()))) {
+                ((SpellBoundable) other).spellboundFreeze();
+            }
+        }
+    }
 
     @Override
     public void doLogic() { }
@@ -197,5 +224,18 @@ public class EvilFog extends AbstractEntity implements Spawnable, Observer {
 
     @Override
     public void basicSpawn(final int x, final int y) { }
+    
+    @Override
+    public Rectangle getRectangle() {
+        return new Rectangle(this.getX() + (EvilFog.SPRT_WH / 6), 
+            this.getY() + (EvilFog.SPRT_WH / 6), EvilFog.SPRT_WH / 3,
+            EvilFog.SPRT_WH / 3);
+    }
+
+    @Override
+    public Rectangle getRectangle(final AbstractEntity entity) {
+        return null;
+    }
+    //</editor-fold>
     
 }

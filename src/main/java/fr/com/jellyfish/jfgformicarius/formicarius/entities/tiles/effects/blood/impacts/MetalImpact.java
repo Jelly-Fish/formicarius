@@ -1,0 +1,147 @@
+/**
+ * *****************************************************************************
+ * Copyright (c) 2014, Thomas.H Warner. All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ *
+ * 1. Redistributions of source code must retain the above copyright notice,
+ * this list of conditions and the following disclaimer.
+ *
+ * 2. Redistributions in binary form must reproduce the above copyright notice,
+ * this list of conditions and the following disclaimer in the documentation
+ * and/or other materials provided with the distribution.
+ *
+ * 3. Neither the name of the copyright holder nor the names of its contributors
+ * may be used to endorse or promote products derived from this software without
+ * specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE. 
+ ******************************************************************************
+ */
+package fr.com.jellyfish.jfgformicarius.formicarius.entities.tiles.effects.blood.impacts;
+
+import fr.com.jellyfish.jfgformicarius.formicarius.constants.AnimationConst;
+import fr.com.jellyfish.jfgformicarius.formicarius.constants.MvtConst;
+import fr.com.jellyfish.jfgformicarius.formicarius.entities.abstractentities.AbstractEntity;
+import fr.com.jellyfish.jfgformicarius.formicarius.game.Game;
+import fr.com.jellyfish.jfgformicarius.formicarius.helpers.DrawingHelper;
+import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.Spawnable;
+import fr.com.jellyfish.jfgformicarius.formicarius.staticvars.StaticSoundVars;
+import fr.com.jellyfish.jfgformicarius.formicarius.staticvars.StaticSpriteVars;
+import fr.com.jellyfish.jfgformicarius.formicarius.texture.Sprite;
+import fr.com.jellyfish.jfgformicarius.formicarius.utils.SpriteUtils;
+
+/**
+ *
+ * @author thw
+ */
+public class MetalImpact extends AbstractEntity implements Spawnable {
+
+    public static final String REF = "metal_impact";
+    public static final int SPRT_WH = 26;
+    public static final int FRAME_COUNT = 5;
+    private final int drawRate = 12;
+    private int frameVal = 0;
+    public static int occurs = 0;
+    
+    /**
+     * quakeRing frame array.
+     */
+    private final Sprite[] frames;
+    
+    public MetalImpact(final Sprite defaultSprt) {
+        super(Game.getInstance(), SpriteUtils.getSprite(
+            Game.getInstance().getTextureLoader(), String.format(StaticSpriteVars.metal_impact, 0)),
+            0, 0, 0, MetalImpact.REF + MetalImpact.occurs);
+        
+        // TODO : Sprite transparency.
+        
+        frames = new Sprite[MetalImpact.FRAME_COUNT];
+        for (int i = 0; i < frames.length; ++i) {
+            frames[i] = SpriteUtils.getSprite(Game.getInstance().getTextureLoader(),
+                String.format(StaticSpriteVars.metal_impact, i));
+        }
+        
+        sprite = frames[frameVal];
+        setAnimeUpdateRequired(false);
+        
+        ++MetalImpact.occurs;
+    }
+    
+    /**
+     * 
+     */
+    @Override
+    public void basicSpawn(final int x, final int y) {
+        
+        this.setX(x); 
+        this.setY(y);
+        this.setCurrentMvt(MvtConst.STILL);
+        Game.getInstance().getEntityHelper().getGlobalEntities().put(this.ABSTRACT_REF, this);
+        Game.getInstance().getSoundManager().playEffect(StaticSoundVars.metal_impact1);
+        setAnimeUpdateRequired(true);
+        frameVal = 0;
+    }
+
+    @Override
+    public void collideWith(final AbstractEntity other) { }
+
+    @Override
+    public void doLogic() { }
+
+    @Override
+    public void beforeRender(final boolean force) { 
+
+        if (((gLoopCntr1 >= AnimationConst.FPS / this.drawRate) && isAnimeUpdateRequired()) || force) {
+            gLoopCntr1 = 0;
+            if (frameVal >= MetalImpact.FRAME_COUNT) { 
+                // Remove occurence of this from Game.
+                Game.getInstance().getEntityHelper().getGlobalEntities().remove(this.ABSTRACT_REF);
+                setAnimeUpdateRequired(false);
+            } else {
+                sprite = frames[frameVal];
+                ++frameVal;
+            }
+        } else {
+            gLoopCntr1++;
+        }
+    }
+
+    @Override
+    public void afterRender(final boolean force) { 
+        DrawingHelper.getInstance().getDrawableQueue().add(0, this);
+    }
+    
+    @Override
+    public boolean isSpawned() { 
+        return isAnimeUpdateRequired();
+    }
+
+    @Override
+    public String getAbstractRef() {
+        return this.ABSTRACT_REF;
+    }
+
+    @Override
+    public void clear() { }
+
+    @Override
+    public void notifySpawnEvent() { }
+
+    @Override
+    public float spawn(final int x, final int y) { 
+        return 0.0f;
+    }
+    
+}

@@ -10,6 +10,6 @@ Add this line to VM Options :<br>
 -Djava.library.path=C:\path\towards\unzipped\lwjgl-2.9.1\native\[windows][linux]<br>
 [windows][linux] depending on operating system. See unzipped lwjgl-2.9.1 content<br>
 4_in IDE jfgformicarius >> properties >> run : select Main class :<br>
-fr.com.jellyfish.jfformicarius.formicarius.game.GameStarter<br>
+fr.com.jellyfish.jfgformicarius.formicarius.game.GameStarter<br>
 
 that's it. Clean/build with dependencies and run.

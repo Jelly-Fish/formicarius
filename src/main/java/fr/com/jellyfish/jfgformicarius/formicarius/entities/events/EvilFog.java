@@ -54,13 +54,13 @@ import java.awt.Rectangle;
 public class EvilFog extends AbstractEntity implements Spawnable, Observer, CollidableObject {
 
     //<editor-fold defaultstate="collapsed" desc="variables">
-    public static final float STAMINA_VALUE = 5.0f;
+    public float staminaValue = 5.0f;
     public static final int SPRT_WH = 128;
     public static final int FRAME_COUNT = 46;
     private Integer drawRate = 60;
     private int frameVal = 0;
     private boolean spawned = false;
-    private final int soundEffectRef;
+    protected final int soundEffectRef;
     private boolean observed = false;
     
     /**
@@ -76,7 +76,7 @@ public class EvilFog extends AbstractEntity implements Spawnable, Observer, Coll
     /**
      * frame array.
      */
-    private final Sprite[] frames;
+    protected Sprite[] frames;
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="constructor">
@@ -142,7 +142,7 @@ public class EvilFog extends AbstractEntity implements Spawnable, Observer, Coll
                 sprite = frames[frameVal];
                 ++frameVal;
                 if (frameVal >= EvilFog.FRAME_COUNT / 4 && !observed) { 
-                    //this.observed();
+                    this.observed();
                     observed = true;
                 }
             }
@@ -152,14 +152,7 @@ public class EvilFog extends AbstractEntity implements Spawnable, Observer, Coll
     }
     
     @Override
-    public void observed() {
-        // TODO : transporting around in this way can occur in main 
-        // AbstractEntity getting stuck, in a tree for example.
-        // Do something else with this event.
-        /*final MagicalHumanoid mh = (MagicalHumanoid)this.observable;
-        mh.setX(this.x + ((EvilFog.SPRT_WH - mh.sprite.getWidth()) / 2));
-        mh.setX(this.y + ((EvilFog.SPRT_WH - mh.sprite.getHeight()) / 2));*/
-    }
+    public void observed() { }
 
     @Override
     public void afterRender(final boolean force) { 
@@ -189,7 +182,7 @@ public class EvilFog extends AbstractEntity implements Spawnable, Observer, Coll
             this.game.accessGlobalEntities().put(EvilFog.class.getSimpleName(), this);
             ++EvilFog.occurs;
             notifySpawnEvent();
-            return EvilFog.STAMINA_VALUE;
+            return this.staminaValue;
         }
         
         return 0.0f;

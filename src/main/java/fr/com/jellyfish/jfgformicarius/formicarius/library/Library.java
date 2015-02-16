@@ -50,8 +50,6 @@ import fr.com.jellyfish.jfgformicarius.formicarius.helpers.entities.LibraryEntit
 import fr.com.jellyfish.jfgformicarius.formicarius.staticvars.StaticSoundVars;
 import fr.com.jellyfish.jfgformicarius.formicarius.staticvars.StaticSpriteVars;
 import fr.com.jellyfish.jfgformicarius.formicarius.utils.CursorUtils;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 

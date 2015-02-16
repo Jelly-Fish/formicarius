@@ -57,7 +57,6 @@ public class StaticSpriteVars {
     
     public static final String red_wizzard = "img/WIZZARD/RED/redwizzard%s.png";
     public static final String red_wizzard_hits = "img/WIZZARD/RED/redwizzard_hit_%s.png";
-    
     public static final String green_wizzard = "img/WIZZARD/GREEN/green_wizzard%s.png";
     public static final String evil_wizzard = "img/WIZZARD/EVIL1/evilwizzard%s.png";
     public static final String evil2_wizzard = "img/WIZZARD/EVIL2/evil2wizzard%s.png";

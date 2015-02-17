@@ -33,7 +33,6 @@ package fr.com.jellyfish.jfgformicarius.formicarius.entities.pools;
 
 import fr.com.jellyfish.jfgformicarius.formicarius.constants.MvtConst;
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.abstractentities.AbstractEntity;
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.biologicals.Knight;
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.biologicals.Mage;
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.biologicals.Spider;
 import fr.com.jellyfish.jfgformicarius.formicarius.game.Game;
@@ -140,13 +139,13 @@ public class InteractableEntityPool extends RandomAccessible {
         // First clear hash map :
         this.complexeInteractablePool.clear();
         
-        /*final Mage mage = new Mage (Game.getInstance(), StaticSpriteVars.mage,
+        final Mage mage = new Mage (Game.getInstance(), StaticSpriteVars.mage,
             16, 400, 220, MvtConst.LEFT, Mage.class.getSimpleName());
-        complexeInteractablePool.put(mage.ABSTRACT_REF, mage);*/
+        complexeInteractablePool.put(mage.ABSTRACT_REF, mage);
         
-        final Knight knight = new Knight(Game.getInstance(), StaticSpriteVars.golbez,
+        /*final Knight knight = new Knight(Game.getInstance(), StaticSpriteVars.golbez,
             20, 400, 220, MvtConst.LEFT, Knight.class.getSimpleName());
-        complexeInteractablePool.put(knight.ABSTRACT_REF, knight);
+        complexeInteractablePool.put(knight.ABSTRACT_REF, knight);*/
         
     }
     

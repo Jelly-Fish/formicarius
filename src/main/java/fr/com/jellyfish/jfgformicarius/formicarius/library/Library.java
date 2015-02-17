@@ -42,6 +42,7 @@ import fr.com.jellyfish.jfgformicarius.formicarius.entities.events.EvilFog;
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.events.IceDagger;
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.events.PlasmaBall;
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.events.SpellRing;
+import fr.com.jellyfish.jfgformicarius.formicarius.entities.events.TransportationFog;
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.tiles.LibBackground;
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.tiles.LibItemContainer;
 import fr.com.jellyfish.jfgformicarius.formicarius.game.Game;
@@ -128,7 +129,13 @@ public class Library {
         // Add evil dark fog to library :
         appendLibItem(EvilDarkFog.class.getSimpleName(), new EvilDarkFog(this.game, 0, 0, 
             StaticSpriteVars.evil_fog2_lib_icon, 
-            EvilDarkFog.class.getSimpleName() + EvilDarkFog.occurs, StaticSoundVars.spell6), 
+            EvilDarkFog.class.getSimpleName(), StaticSoundVars.spell6), 
+            false, true);
+        
+        // Add transportation fog to library :
+        appendLibItem(TransportationFog.class.getSimpleName(), new TransportationFog(this.game, 0, 0, 
+            StaticSpriteVars.transportation_fog_lib_icon, 
+            TransportationFog.class.getSimpleName(), StaticSoundVars.spell6), 
             false, true);
         
         // Add Axe to library :

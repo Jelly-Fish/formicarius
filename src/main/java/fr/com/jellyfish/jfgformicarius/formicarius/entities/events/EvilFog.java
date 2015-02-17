@@ -33,7 +33,6 @@ package fr.com.jellyfish.jfgformicarius.formicarius.entities.events;
 
 import fr.com.jellyfish.jfgformicarius.formicarius.constants.AnimationConst;
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.abstractentities.AbstractEntity;
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.biologicals.MainCharacter;
 import fr.com.jellyfish.jfgformicarius.formicarius.game.Game;
 import fr.com.jellyfish.jfgformicarius.formicarius.helpers.DrawingHelper;
 import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.CollidableObject;
@@ -64,9 +63,9 @@ public class EvilFog extends AbstractEntity implements Spawnable, Observer, Coll
     private boolean observed = false;
     
     /**
-     * 
+     * Coordinate observable instance.
      */
-    private XYObservable observable = null;
+    protected XYObservable observable = null;
     
     /**
      * Static instances counter for reference marking.
@@ -94,7 +93,7 @@ public class EvilFog extends AbstractEntity implements Spawnable, Observer, Coll
         super(game, SpriteUtils.getSprite(game.getTextureLoader(), iconPath),
             x, y, 0, abstractRef);
         
-        this.observable = (XYObservable)game.accessGlobalEntities().get(MainCharacter.class.getSimpleName());
+        this.observable = (XYObservable)game.getEntityHelper().getMainCharacter();
         
         this.spawned = false;
         this.soundEffectRef = soundEffectRef;
@@ -128,16 +127,10 @@ public class EvilFog extends AbstractEntity implements Spawnable, Observer, Coll
     @Override
     public void beforeRender(final boolean force) {
         
-        if (((gLoopCntr1 >= AnimationConst.FPS / this.drawRate) && isAnimeUpdateRequired()) || force) {
+        if ((isAnimeUpdateRequired() && (gLoopCntr1 >= AnimationConst.FPS / this.drawRate)) || force) {
             gLoopCntr1 = 0;
             if (frameVal >= EvilFog.FRAME_COUNT - 1) {
-                this.spawned = false;
-                frameVal = 0;
-                this.game.accessGlobalEntities().remove(EvilFog.class.getSimpleName());
-                sprite = frames[frameVal];
-                sprite.draw((int)x, (int)y);
-                observed = false;
-                setAnimeUpdateRequired(false);
+                this.clear();
             } else {
                 sprite = frames[frameVal];
                 ++frameVal;
@@ -175,6 +168,7 @@ public class EvilFog extends AbstractEntity implements Spawnable, Observer, Coll
             // Update location. Add to game's entity map. Set visible and 
             // candidate for remove from game's Entity main hashmap.
             setAnimeUpdateRequired(true);
+            frameVal = 0;
             this.spawned = true;
             game.getSoundManager().playEffect(this.soundEffectRef);
             this.x = x - (EvilFog.SPRT_WH / 2);
@@ -193,9 +187,9 @@ public class EvilFog extends AbstractEntity implements Spawnable, Observer, Coll
 
     @Override
     public void clear() {
-        this.frameVal = EvilFog.FRAME_COUNT - 1;
-        this.beforeRender(true);
+        this.frameVal = 0;
         this.spawned = false;
+        this.observed = false;
         this.game.accessGlobalEntities().remove(EvilFog.class.getSimpleName());
         setAnimeUpdateRequired(false);
     }

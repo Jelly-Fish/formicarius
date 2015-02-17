@@ -70,6 +70,8 @@ public class StaticSpriteVars {
     public static final String evil_fog1_lib_icon = "img/EFFECTS/evil1/evil1_icon.png";
     public static final String evil_fog2 = "img/EFFECTS/evil2/evil%s.png";
     public static final String evil_fog2_lib_icon = "img/EFFECTS/evil2/evil2_icon.png";
+    public static final String transportation_fog = "img/EFFECTS/transportfog/transport%s.png";
+    public static final String transportation_fog_lib_icon = "img/EFFECTS/transportfog/transport_icon.png";
     public static final String quake_ring = "img/EFFECTS/quakering/quakering%s.png";
     public static final String quake_ring_lib_icon = "img/EFFECTS/quakering/quakering_icon.png";
     public static final String abstract_dark2_400 = "img/BACKGROUND/abstract_dark2_400.png";

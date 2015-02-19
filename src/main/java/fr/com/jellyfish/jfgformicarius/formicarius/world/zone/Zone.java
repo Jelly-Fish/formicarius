@@ -70,7 +70,7 @@ public class Zone {
      * with value int[1] expected integer. Hash map key may be Class name for
      * reflection use.
      * @param entity
-     * @throws formicarius.exceptions.ZoneBuildException
+     * @throws fr.com.jellyfish.jfgformicarius.formicarius.exceptions.ZoneBuildException
      */
     public Zone(final HashMap<String, int[]> randomDefinitions, final AbstractEntity ... entity) 
         throws ZoneBuildException {
@@ -101,8 +101,8 @@ public class Zone {
         // Build trees :
         for (AbstractEntity ent : ZoneGenerationUtils.buildRandomTerrainBareTrees(
                 FrameConst.FRM_WIDTH_800, FrameConst.FRM_HEIGHT_600,
-                randomDefinitions.get(Tree.class.getSimpleName().toString())[0],
-                randomDefinitions.get(Tree.class.getSimpleName().toString())[1])) {
+                randomDefinitions.get(Tree.class.getSimpleName())[0],
+                randomDefinitions.get(Tree.class.getSimpleName())[1])) {
             this.globals.put(String.valueOf(++index), ent);
         }
         index = -1;
@@ -112,8 +112,8 @@ public class Zone {
                 FrameConst.FRM_WIDTH_800, FrameConst.FRM_HEIGHT_600,
                 SpriteUtils.getSprite(Game.getInstance().getTextureLoader(), 
                     StaticSpriteVars.mushrooms_brown_25x25),
-                randomDefinitions.get(Tree.class.getSimpleName().toString())[0] * 32,
-                randomDefinitions.get(Tree.class.getSimpleName().toString())[1] + 10)) {
+                randomDefinitions.get(Tree.class.getSimpleName())[0] * 32,
+                randomDefinitions.get(Tree.class.getSimpleName())[1] + 10)) {
             if (!CollisionUtils.inCollision(this.statics, ent)) {
                 this.statics.put(String.valueOf(++index), ent);
             }
@@ -122,8 +122,8 @@ public class Zone {
                 FrameConst.FRM_WIDTH_800, FrameConst.FRM_HEIGHT_600,
                 SpriteUtils.getSprite(Game.getInstance().getTextureLoader(), 
                     StaticSpriteVars.mushrooms_red_25x25),
-                randomDefinitions.get(Tree.class.getSimpleName().toString())[0] * 42,
-                randomDefinitions.get(Tree.class.getSimpleName().toString())[1] + 10)) {
+                randomDefinitions.get(Tree.class.getSimpleName())[0] * 42,
+                randomDefinitions.get(Tree.class.getSimpleName())[1] + 10)) {
             if (!CollisionUtils.inCollision(this.statics, ent)) {
                 this.statics.put(String.valueOf(++index), ent);
             }
@@ -148,7 +148,7 @@ public class Zone {
      * Access populated AbstractEntity hasp map.
      *
      * @return Map<String, AbstractEntity>
-     * @throws formicarius.exceptions.ZoneBuildException
+     * @throws fr.com.jellyfish.jfgformicarius.formicarius.exceptions.ZoneBuildException
      */
     public Map<String, AbstractEntity> getGlobals() throws ZoneBuildException {
         if (this.globals == null) {
@@ -160,7 +160,7 @@ public class Zone {
     /**
      * 
      * @return 
-     * @throws formicarius.exceptions.ZoneBuildException 
+     * @throws fr.com.jellyfish.jfgformicarius.formicarius.exceptions.ZoneBuildException 
      */
     public Map<String, AbstractEntity> getStatics() throws ZoneBuildException {
         if (this.statics == null) {

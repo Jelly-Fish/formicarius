@@ -36,9 +36,12 @@ import fr.com.jellyfish.jfgformicarius.formicarius.entities.abstractentities.Abs
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.biologicals.MainCharacter;
 import fr.com.jellyfish.jfgformicarius.formicarius.game.Game;
 import fr.com.jellyfish.jfgformicarius.formicarius.helpers.DrawingHelper;
+import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.SpawnCollidable;
 import fr.com.jellyfish.jfgformicarius.formicarius.staticvars.StaticSpriteVars;
 import fr.com.jellyfish.jfgformicarius.formicarius.texture.Sprite;
+import fr.com.jellyfish.jfgformicarius.formicarius.utils.CollisionUtils;
 import fr.com.jellyfish.jfgformicarius.formicarius.utils.SpriteUtils;
+import java.awt.Rectangle;
 
 /**
  *
@@ -51,6 +54,15 @@ public class TransportationFog extends EvilFog {
      */
     final AbstractEntity observed;
     
+    /**
+     * Constructor.
+     * @param game
+     * @param x
+     * @param y
+     * @param iconPath
+     * @param abstractRef
+     * @param soundEffectRef 
+     */
     public TransportationFog(final Game game, final int x, final int y, 
         final String iconPath, final String abstractRef, final int soundEffectRef) {
         super(game, x, y, iconPath, abstractRef, soundEffectRef);
@@ -65,6 +77,24 @@ public class TransportationFog extends EvilFog {
         }
         
         this.staminaValue = 13.0f;
+    }
+    
+    @Override
+    public float spawn(final int x, final int y) {
+        
+        // if MainCharacter will be in a collision state do not perform basicSpawn.
+        Rectangle rect = new Rectangle(x - (MainCharacter.SPRT_W / 2),
+            y - (MainCharacter.SPRT_H / 2), MainCharacter.SPRT_W, MainCharacter.SPRT_H);
+
+        for (AbstractEntity obj : game.getEntityHelper().getObjectEntities().values()) {
+            if (obj instanceof SpawnCollidable && CollisionUtils.inFullCollision(rect, 
+                ((SpawnCollidable)obj).getSpawnCollidableRectangle())) {
+                return 0.0f;
+            }
+        }
+        
+        this.basicSpawn(x, y);
+        return this.staminaValue;
     }
 
     @Override

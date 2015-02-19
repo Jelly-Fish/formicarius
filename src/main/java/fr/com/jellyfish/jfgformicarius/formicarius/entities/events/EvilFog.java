@@ -68,11 +68,6 @@ public class EvilFog extends AbstractEntity implements Spawnable, Observer, Coll
     protected XYObservable observable = null;
     
     /**
-     * Static instances counter for reference marking.
-     */
-    public static int occurs = 0;
-    
-    /**
      * frame array.
      */
     protected Sprite[] frames;
@@ -101,8 +96,7 @@ public class EvilFog extends AbstractEntity implements Spawnable, Observer, Coll
         for (int i = 0; i < frames.length; ++i) {
             frames[i] = SpriteUtils.getSprite(game.getTextureLoader(), String.format(StaticSpriteVars.evil_fog1, i));
         }
-
-        ++EvilFog.occurs;
+        
         sprite = frames[frameVal];
         setAnimeUpdateRequired(true);
     }
@@ -148,8 +142,7 @@ public class EvilFog extends AbstractEntity implements Spawnable, Observer, Coll
     public void observed() { }
 
     @Override
-    public void afterRender(final boolean force) { 
-        
+    public void afterRender(final boolean force) {        
         DrawingHelper.getInstance().getDrawableQueue().add(0, this);
     }
     
@@ -163,23 +156,7 @@ public class EvilFog extends AbstractEntity implements Spawnable, Observer, Coll
 
     @Override
     public float spawn(final int x, final int y) {
-        
-        if (!this.spawned) {
-            // Update location. Add to game's entity map. Set visible and 
-            // candidate for remove from game's Entity main hashmap.
-            setAnimeUpdateRequired(true);
-            frameVal = 0;
-            this.spawned = true;
-            game.getSoundManager().playEffect(this.soundEffectRef);
-            this.x = x - (EvilFog.SPRT_WH / 2);
-            this.y = y - (EvilFog.SPRT_WH / 2);
-            this.game.accessGlobalEntities().put(EvilFog.class.getSimpleName(), this);
-            ++EvilFog.occurs;
-            notifySpawnEvent();
-            return this.staminaValue;
-        }
-        
-        return 0.0f;
+        return this.basicSpawn(x, y) ? this.staminaValue : 0.0f;
     }
         
     @Override
@@ -210,7 +187,24 @@ public class EvilFog extends AbstractEntity implements Spawnable, Observer, Coll
     }
 
     @Override
-    public void basicSpawn(final int x, final int y) { }
+    public boolean basicSpawn(final int x, final int y) { 
+        
+        if (!this.spawned) {
+            // Update location. Add to game's entity map. Set visible and 
+            // candidate for remove from game's Entity main hashmap.
+            setAnimeUpdateRequired(true);
+            frameVal = 0;
+            this.spawned = true;
+            game.getSoundManager().playEffect(this.soundEffectRef);
+            this.x = x - (EvilFog.SPRT_WH / 2);
+            this.y = y - (EvilFog.SPRT_WH / 2);
+            this.game.accessGlobalEntities().put(EvilFog.class.getSimpleName(), this);
+            notifySpawnEvent();
+            return true;
+        }
+        
+        return false;
+    }
     
     @Override
     public Rectangle getRectangle() {

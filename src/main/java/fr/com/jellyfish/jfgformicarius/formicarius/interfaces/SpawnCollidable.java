@@ -1,6 +1,6 @@
 /**
  * *****************************************************************************
- * Copyright (c) 2014, Thomas.H Warner. All rights reserved.
+ * Copyright (c) 2014 - 2015, Thomas.H Warner. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
@@ -26,55 +26,22 @@
  * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
  * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE. 
- ******************************************************************************
+ * POSSIBILITY OF SUCH DAMAGE.
+ * *****************************************************************************
  */
 package fr.com.jellyfish.jfgformicarius.formicarius.interfaces;
+
+import java.awt.Rectangle;
 
 /**
  *
  * @author thw
  */
-public interface Spawnable {
+public interface SpawnCollidable {
     
-    /**
-     * Spawn an entity loaded but not yet spawed/drawed.appeared.
-     * @param x Spawn at x.
-     * @param y Spawn at y.
-     * @return float value of spawnable for stamina update. Will return 0.0f
-     * if spawn action is aborted.
-     * @see Classes that implement this interface & main character class.
+    /** 
+     * @return collidable rectangle that may obstruct a spawn event.
      */
-    public float spawn(final int x, final int y);
-    
-    /**
-     * Spawn an entity loaded but not yet spawed/drawed.appeared.
-     * @param x Spawn at x.
-     * @param y Spawn at y.
-     * @return true for a effective spawn event. If event was aborted return false.
-     */
-    public boolean basicSpawn(final int x, final int y);
-    
-    /**
-     * Is entity spawned or not ?
-     * @return 
-     */
-    public boolean isSpawned();
-    
-    /**
-     * Get entity's abstract string reference.
-     * @return String
-     */
-    public String getAbstractRef();
-    
-    /**
-     * Prevent drawing/updating.
-     */
-    public void clear();
-    
-    /**
-     * Notify that event is complete or simply trigered.
-     */
-    public void notifySpawnEvent();
+    public Rectangle getSpawnCollidableRectangle();
     
 }

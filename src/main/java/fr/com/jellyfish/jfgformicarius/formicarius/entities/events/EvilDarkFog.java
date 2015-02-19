@@ -187,7 +187,9 @@ public class EvilDarkFog extends AbstractEntity implements Spawnable, Observer {
     }
     
     @Override
-    public void basicSpawn(final int x, final int y) { }
+    public boolean basicSpawn(final int x, final int y) { 
+        return false;
+    }
 
     @Override
     public void notifySpawnEvent() {

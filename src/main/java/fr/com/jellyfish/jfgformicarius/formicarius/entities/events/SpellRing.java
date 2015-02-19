@@ -110,7 +110,9 @@ public class SpellRing extends AbstractEntity implements Spawnable, CollidableOb
     }
     
     @Override
-    public void basicSpawn(final int x, final int y) { }
+    public boolean basicSpawn(final int x, final int y) { 
+        return false;
+    }
 
     @Override
     public void collideWith(final AbstractEntity other) {

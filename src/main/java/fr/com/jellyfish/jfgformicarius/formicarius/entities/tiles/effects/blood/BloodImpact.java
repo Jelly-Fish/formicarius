@@ -82,7 +82,7 @@ public class BloodImpact extends AbstractEntity implements Spawnable {
      * 
      */
     @Override
-    public void basicSpawn(final int x, final int y) {
+    public boolean basicSpawn(final int x, final int y) {
         this.setX(x); 
         this.setY(y);
         this.setCurrentMvt(MvtConst.STILL);
@@ -94,6 +94,8 @@ public class BloodImpact extends AbstractEntity implements Spawnable {
         }
         setAnimeUpdateRequired(true);
         frameVal = 0;
+        
+        return true;
     }
 
     @Override

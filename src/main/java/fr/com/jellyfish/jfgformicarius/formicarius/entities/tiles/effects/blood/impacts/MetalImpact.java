@@ -83,7 +83,7 @@ public class MetalImpact extends AbstractEntity implements Spawnable {
      * 
      */
     @Override
-    public void basicSpawn(final int x, final int y) {
+    public boolean basicSpawn(final int x, final int y) {
         
         this.setX(x); 
         this.setY(y);
@@ -92,6 +92,8 @@ public class MetalImpact extends AbstractEntity implements Spawnable {
         Game.getInstance().getSoundManager().playEffect(StaticSoundVars.metal_impact1);
         setAnimeUpdateRequired(true);
         frameVal = 0;
+        
+        return true;
     }
 
     @Override

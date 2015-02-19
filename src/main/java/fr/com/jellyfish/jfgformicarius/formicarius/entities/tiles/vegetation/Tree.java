@@ -38,6 +38,7 @@ import fr.com.jellyfish.jfgformicarius.formicarius.game.Game;
 import fr.com.jellyfish.jfgformicarius.formicarius.helpers.DrawingHelper;
 import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.Callable;
 import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.CollidableObject;
+import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.SpawnCollidable;
 import fr.com.jellyfish.jfgformicarius.formicarius.texture.Sprite;
 import fr.com.jellyfish.jfgformicarius.formicarius.utils.CollisionUtils;
 import java.awt.Rectangle;
@@ -46,7 +47,8 @@ import java.awt.Rectangle;
  *
  * @author thw
  */
-public class Tree extends AbstractEntity implements CollidableObject, Callable {
+public class Tree extends AbstractEntity implements CollidableObject, Callable,
+    SpawnCollidable {
 
     //<editor-fold defaultstate="collapsed" desc="variables">
     public static int occurs = 0;
@@ -127,6 +129,11 @@ public class Tree extends AbstractEntity implements CollidableObject, Callable {
         
         return new Rectangle((int)x + 2, (int)y + 85, 
             sprite.getWidth() - 4, 15);
+    }
+    
+    @Override
+    public Rectangle getSpawnCollidableRectangle() {
+        return this.getRectangle();
     }
     
     @Override

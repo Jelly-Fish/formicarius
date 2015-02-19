@@ -37,6 +37,7 @@ import fr.com.jellyfish.jfgformicarius.formicarius.entities.biologicals.MainChar
 import fr.com.jellyfish.jfgformicarius.formicarius.game.Game;
 import fr.com.jellyfish.jfgformicarius.formicarius.helpers.DrawingHelper;
 import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.SpawnCollidable;
+import fr.com.jellyfish.jfgformicarius.formicarius.staticvars.StaticSoundVars;
 import fr.com.jellyfish.jfgformicarius.formicarius.staticvars.StaticSpriteVars;
 import fr.com.jellyfish.jfgformicarius.formicarius.texture.Sprite;
 import fr.com.jellyfish.jfgformicarius.formicarius.utils.CollisionUtils;
@@ -89,6 +90,7 @@ public class TransportationFog extends EvilFog {
         for (AbstractEntity obj : game.getEntityHelper().getObjectEntities().values()) {
             if (obj instanceof SpawnCollidable && CollisionUtils.inFullCollision(rect, 
                 ((SpawnCollidable)obj).getSpawnCollidableRectangle())) {
+                game.getSoundManager().playEffect(StaticSoundVars.error1);
                 return 0.0f;
             }
         }

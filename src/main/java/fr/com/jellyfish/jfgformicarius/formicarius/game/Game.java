@@ -419,6 +419,8 @@ public class Game {
         
         // Mouvements.
         StaticSoundVars.step_grass1 = soundManager.addSound(StaticSoundVars.STEP_GRASS1);
+        // Errors.
+        StaticSoundVars.error1 = soundManager.addSound(StaticSoundVars.ERROR1);
         // Spells.
         StaticSoundVars.spell1 = soundManager.addSound(StaticSoundVars.SPELL1);
         StaticSoundVars.spell2 = soundManager.addSound(StaticSoundVars.SPELL2);

@@ -37,7 +37,13 @@ package fr.com.jellyfish.jfgformicarius.formicarius.staticvars;
 public class StaticSoundVars {
     
     public static int step_grass1;
-    public static final String STEP_GRASS1 = "sounds/WALKING/footstep_grass1.wav";
+    public static final String STEP_GRASS1 = "sounds/AUDIO/WALKING/footstep_grass1.wav";
+    
+    /**
+     * Errors
+     */
+    public static int error1;
+    public static final String ERROR1 = "sounds/AUDIO/ERROR/spell_error1.wav";
     
     /**
      * Cat sounds.

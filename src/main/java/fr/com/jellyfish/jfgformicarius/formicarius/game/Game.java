@@ -48,6 +48,7 @@ import org.newdawn.slick.opengl.ImageIOImageData;
 import fr.com.jellyfish.jfgformicarius.formicarius.constants.FrameConst;
 import fr.com.jellyfish.jfgformicarius.formicarius.constants.IconConst;
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.biologicals.MainCharacter;
+import fr.com.jellyfish.jfgformicarius.formicarius.entities.tiles.CaveEntrance;
 import fr.com.jellyfish.jfgformicarius.formicarius.exceptions.InitializationException;
 import fr.com.jellyfish.jfgformicarius.formicarius.helpers.DrawingHelper;
 import fr.com.jellyfish.jfgformicarius.formicarius.helpers.GLLightHelper;
@@ -147,7 +148,7 @@ public class Game {
     }
     //</editor-fold>
 
-    //<editor-fold defaultstate="collapsed" desc="Main loop">
+    //<editor-fold defaultstate="collapsed" desc="Main loop methods">
     /**
      * Run the main game loop, method keeps rendering scene and requesting
      * callback update on screen.
@@ -216,6 +217,9 @@ public class Game {
             tempEnts.addAll(this.entityHelper.getGlobalEntities().values());
             tempEnts.addAll(this.entityHelper.getInteractableEntities().values());
             tempEnts.addAll(this.entityHelper.getMainEntities().values());
+            if (this.entityHelper.getStaticEntities().containsKey(CaveEntrance.REF)) {
+                tempEnts.add(this.entityHelper.getStaticEntities().get(CaveEntrance.REF));
+            }
             
             // cycle round asking each entity to move/draw/update/dologic itself
             for (AbstractEntity entity : tempEnts) {
@@ -233,7 +237,6 @@ public class Game {
                     for (AbstractEntity iteractable : this.entityHelper.getInteractableEntities().values()) {
                         entity.collideWith(iteractable);
                     }
-                    
                 }
                 
                 entity.afterRender(false);
@@ -470,7 +473,7 @@ public class Game {
             instance = new Game();
             // Below, call to triggerTransition() method in MagicalHumanoid Class
             // will build a new Zone instance in the same way a as when transiting :
-            instance.getEntityHelper().getMainCharacter().triggerTransition();
+            instance.getEntityHelper().getMainCharacter().getTransitionAction().triggerTransition();
             return instance;
         }
     }

@@ -57,7 +57,7 @@ public class Axe extends AbstractEntity implements Ignitable, CollidableObject {
 
     //<editor-fold defaultstate="collapsed" desc="variables">
     public static final int SPRT_WH = 26;
-    public static final float AXE_SPEED = 300;
+    public static final float AXE_SPEED = 200;
     public static final float DAMAGE_VALUE = 3.4f;
     public static final int FRAME_COUNT = 4;
     public static Integer occurs = 0;

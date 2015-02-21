@@ -54,7 +54,6 @@ public class StaticSpriteVars {
      * Entities img ref/path.
      */
     public static final String witch = "img/WITCH/witch%s.png"; 
-    
     public static final String red_wizzard = "img/WIZZARD/RED/redwizzard%s.png";
     public static final String red_wizzard_hits = "img/WIZZARD/RED/redwizzard_hit_%s.png";
     public static final String green_wizzard = "img/WIZZARD/GREEN/green_wizzard%s.png";
@@ -85,12 +84,11 @@ public class StaticSpriteVars {
     public static final String menu_item_container_hover = "img/ICONS/MENU/container_hover.png";
     public static final String menu_item_container_active_spanwable = "img/ICONS/MENU/container_active_spawnable.png";
     public static final String menu_item_container_active_ignitable = "img/ICONS/MENU/container_active_ignitable.png";
-    public static final String axe1 = "img/EFFECTS/axe1/axe%s.png";
-    
+    public static final String axe1 = "img/EFFECTS/axe1/axe%s.png";    
     public static final String red_frog_left = "img/FROGRED/LEFT/frogred%s.png";
-    public static final String red_frog_right = "img/FROGRED/RIGHT/frogred%s.png";
-    
+    public static final String red_frog_right = "img/FROGRED/RIGHT/frogred%s.png";    
     public static final String spider = "img/SPIDER/spider%s.png";
+    public static final String cave_hole1 = "img/TILES/ENTRANCES/cave_hole1.png";
     
     /**
      * Effects.

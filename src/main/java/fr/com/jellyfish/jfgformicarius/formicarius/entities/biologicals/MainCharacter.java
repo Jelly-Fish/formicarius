@@ -32,36 +32,28 @@
 package fr.com.jellyfish.jfgformicarius.formicarius.entities.biologicals;
 
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.abstractentities.AbstractEntity;
-import java.util.List;
 import fr.com.jellyfish.jfgformicarius.formicarius.constants.AnimationConst;
 import fr.com.jellyfish.jfgformicarius.formicarius.constants.FrameConst;
 import fr.com.jellyfish.jfgformicarius.formicarius.game.Game;
 import fr.com.jellyfish.jfgformicarius.formicarius.constants.MvtConst;
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.events.BloodyDagger;
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.events.SpellRing;
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.pools.InteractableEntityPool;
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.tiles.effects.blood.BloodImpact;
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.tiles.status.StatusFrame;
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.tiles.vegetation.Tree;
-import fr.com.jellyfish.jfgformicarius.formicarius.exceptions.ZoneBuildException;
 import fr.com.jellyfish.jfgformicarius.formicarius.helpers.DrawingHelper;
+import fr.com.jellyfish.jfgformicarius.formicarius.helpers.entities.MainCharacterZoneHelper;
 import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.Ignitable;
 import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.Observer;
 import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.Spawnable;
+import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.TransitionAction;
 import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.XYObservable;
-import fr.com.jellyfish.jfgformicarius.formicarius.staticvars.StaticRandomValues;
 import fr.com.jellyfish.jfgformicarius.formicarius.texture.Sprite;
 import fr.com.jellyfish.jfgformicarius.formicarius.utils.SpriteUtils;
 import fr.com.jellyfish.jfgformicarius.formicarius.staticvars.StaticSoundVars;
 import fr.com.jellyfish.jfgformicarius.formicarius.staticvars.StaticSpriteVars;
 import fr.com.jellyfish.jfgformicarius.formicarius.utils.CollisionUtils;
-import fr.com.jellyfish.jfgformicarius.formicarius.world.zone.Zone;
 import fr.com.jellyfish.jfgformicarius.formicarius.world.zone.ZonePosition;
 import java.awt.Rectangle;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -105,9 +97,16 @@ public class MainCharacter extends AbstractEntity implements XYObservable {
     public final Cat cat;
 
     /**
-     *
+     * Status frame instance for health and stamina.
+     * @see StatusFrame
      */
     private final StatusFrame statusFrame;
+    
+    /**
+     * Class Helper.
+     * @see MainCharacterZoneHelper
+     */
+    private TransitionAction transitionAction;
     //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="constructor">
@@ -171,56 +170,12 @@ public class MainCharacter extends AbstractEntity implements XYObservable {
                 BloodyDagger.class.getSimpleName());
         ignitable = dag;
         ////////////////////////////////////////////////////////////////////////
+        
+        this.transitionAction = new MainCharacterZoneHelper(this, game);
     }
     //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="methods">
-    /**
-     * Clear maps for new Zone or new Zone transition.
-     */
-    public void triggerTransition() {
-
-        // Clear Spawnable :
-        if (this.spawnable != null && this.spawnable.isSpawned()) {
-            this.spawnable.clear();
-        }
-        // Clear Ingnitable :
-        if (this.ignitable != null && this.ignitable.isIgnited()) {
-            this.ignitable.clear();
-        }
-
-        // Clear entity helperscollections : objects, iteractable + all entities
-        // other than main character and cat :
-        game.clearEntityCollectionsForTransition();
-
-        // Build new zone :
-        final HashMap<String, int[]> randomDefinitions = new HashMap<>();
-        randomDefinitions.put(Tree.class.getSimpleName().toString(),
-                new int[]{StaticRandomValues.bare_tree_50x100_rand_max_many,
-                    StaticRandomValues.bare_tree_50x100_rand_expected});
-        final List<AbstractEntity> zoneActiveEntities = new ArrayList<>();
-        zoneActiveEntities.addAll(this.game.getEntityHelper().getMainEntities().values());
-        zoneActiveEntities.addAll(this.game.getEntityHelper().getInteractableEntities().values());
-        AbstractEntity[] array = new AbstractEntity[zoneActiveEntities.size()];
-        for (int i = 0; i < array.length; ++i) {
-            array[i] = zoneActiveEntities.get(i);
-        }
-        
-        try {
-            final Zone zone = new Zone(randomDefinitions, array);
-            game.getEntityHelper().getObjectEntities().putAll(zone.getGlobals());
-            game.getEntityHelper().getStaticEntities().putAll(zone.getStatics());
-        } catch (final ZoneBuildException zbex) {
-            Logger.getLogger(MainCharacter.class.getName()).log(Level.SEVERE, null, zbex);
-        }
-
-        // Fill the following HashMap with randomly accessed pool of Interactable
-        // class instances.
-        game.getEntityHelper().getInteractableEntities().putAll(
-                InteractableEntityPool.getInstance().getRandomSubPool(
-                        FrameConst.FRM_WIDTH_800 - 80));
-    }
-
     /**
      * Swap Spawnable ref for another via AbstractEntity instance ref.
      *
@@ -382,7 +337,7 @@ public class MainCharacter extends AbstractEntity implements XYObservable {
             if (this.cat != null) {
                 this.cat.followTrasition(MvtConst.LEFT, x, y, MainCharacter.SPRT_W, MainCharacter.SPRT_H);
             }
-            triggerTransition();
+            this.transitionAction.triggerTransition();
             return;
         }
 
@@ -393,7 +348,7 @@ public class MainCharacter extends AbstractEntity implements XYObservable {
             if (this.cat != null) {
                 this.cat.followTrasition(MvtConst.RIGHT, x, y, MainCharacter.SPRT_W, MainCharacter.SPRT_H);
             }
-            triggerTransition();
+            this.transitionAction.triggerTransition();
             return;
         }
 
@@ -404,7 +359,7 @@ public class MainCharacter extends AbstractEntity implements XYObservable {
             if (this.cat != null) {
                 this.cat.followTrasition(MvtConst.UP, x, y, MainCharacter.SPRT_W, MainCharacter.SPRT_H);
             }
-            triggerTransition();
+            this.transitionAction.triggerTransition();
             return;
         }
 
@@ -415,7 +370,7 @@ public class MainCharacter extends AbstractEntity implements XYObservable {
             if (this.cat != null) {
                 this.cat.followTrasition(MvtConst.DOWN, x, y, MainCharacter.SPRT_W, MainCharacter.SPRT_H);
             }
-            triggerTransition();
+            this.transitionAction.triggerTransition();
             return;
         }
         
@@ -493,6 +448,10 @@ public class MainCharacter extends AbstractEntity implements XYObservable {
     //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="getters & setters"> 
+    public TransitionAction getTransitionAction() {
+        return this.transitionAction;
+    }
+    
     public StatusFrame getStatusFrame() {
         return statusFrame;
     }

@@ -34,13 +34,18 @@ package fr.com.jellyfish.jfgformicarius.formicarius.world.zone;
 import fr.com.jellyfish.jfgformicarius.formicarius.constants.FrameConst;
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.abstractentities.AbstractEntity;
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.tiles.Background;
+import fr.com.jellyfish.jfgformicarius.formicarius.entities.tiles.CaveEntrance;
+import fr.com.jellyfish.jfgformicarius.formicarius.entities.tiles.StaticObject;
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.tiles.vegetation.Tree;
 import fr.com.jellyfish.jfgformicarius.formicarius.exceptions.ZoneBuildException;
 import fr.com.jellyfish.jfgformicarius.formicarius.game.Game;
+import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.ZoneBuilder;
 import fr.com.jellyfish.jfgformicarius.formicarius.staticvars.StaticSpriteVars;
 import fr.com.jellyfish.jfgformicarius.formicarius.utils.CollisionUtils;
+import fr.com.jellyfish.jfgformicarius.formicarius.utils.RandomUtils;
 import fr.com.jellyfish.jfgformicarius.formicarius.utils.SpriteUtils;
 import fr.com.jellyfish.jfgformicarius.formicarius.utils.ZoneGenerationUtils;
+import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -52,7 +57,7 @@ import java.util.concurrent.ConcurrentHashMap;
  *
  * @author thw
  */
-public class Zone {
+public class Zone implements ZoneBuilder {
 
     public final Map<String, AbstractEntity> interactables;
     public final Map<String, AbstractEntity> globals;
@@ -69,18 +74,17 @@ public class Zone {
      * process to trigger depending on random number returned and it's equality
      * with value int[1] expected integer. Hash map key may be Class name for
      * reflection use.
-     * @param entity
-     * @throws fr.com.jellyfish.jfgformicarius.formicarius.exceptions.ZoneBuildException
+     * @throws
+     * fr.com.jellyfish.jfgformicarius.formicarius.exceptions.ZoneBuildException
      */
-    public Zone(final HashMap<String, int[]> randomDefinitions, final AbstractEntity ... entity) 
-        throws ZoneBuildException {
+    public Zone(final HashMap<String, int[]> randomDefinitions)
+            throws ZoneBuildException {
 
         interactables = new HashMap<>();
         globals = new ConcurrentHashMap<>();
         statics = new ConcurrentHashMap<>();
         this.randomDefinitions = new HashMap<>();
         this.randomDefinitions.putAll(randomDefinitions);
-        buildZone(entity);
     }
 
     /**
@@ -88,14 +92,10 @@ public class Zone {
      * globals HashMap.
      *
      * @throws ZoneBuildException
-     * @param entity AbstractEntity array for triming of any colliding static 
-     * CollidableObject that obstruct the main, global or any other AbstractEntity
-     * sent in param. See end of this method for triming.
-     * @throws ZoneBuildException
      */
-    private void buildZone(final AbstractEntity[] entities) throws ZoneBuildException {
-        
-        Iterator iterator = null;
+    @Override
+    public void buildZone(final AbstractEntity[] entities) throws ZoneBuildException {
+
         int index = -1;
         ////////////////////////////////////////////////////////////////////////
         // Build trees :
@@ -106,12 +106,13 @@ public class Zone {
             this.globals.put(String.valueOf(++index), ent);
         }
         index = -1;
+
         ////////////////////////////////////////////////////////////////////////
         // Build static vegetation :
         for (AbstractEntity ent : ZoneGenerationUtils.appendRandomTerrainNonCollibableElements(
                 FrameConst.FRM_WIDTH_800, FrameConst.FRM_HEIGHT_600,
-                SpriteUtils.getSprite(Game.getInstance().getTextureLoader(), 
-                    StaticSpriteVars.mushrooms_brown_25x25),
+                SpriteUtils.getSprite(Game.getInstance().getTextureLoader(),
+                        StaticSpriteVars.mushrooms_brown_25x25),
                 randomDefinitions.get(Tree.class.getSimpleName())[0] * 32,
                 randomDefinitions.get(Tree.class.getSimpleName())[1] + 10)) {
             if (!CollisionUtils.inCollision(this.statics, ent)) {
@@ -120,48 +121,78 @@ public class Zone {
         }
         for (AbstractEntity ent : ZoneGenerationUtils.appendRandomTerrainNonCollibableElements(
                 FrameConst.FRM_WIDTH_800, FrameConst.FRM_HEIGHT_600,
-                SpriteUtils.getSprite(Game.getInstance().getTextureLoader(), 
-                    StaticSpriteVars.mushrooms_red_25x25),
+                SpriteUtils.getSprite(Game.getInstance().getTextureLoader(),
+                        StaticSpriteVars.mushrooms_red_25x25),
                 randomDefinitions.get(Tree.class.getSimpleName())[0] * 42,
                 randomDefinitions.get(Tree.class.getSimpleName())[1] + 10)) {
             if (!CollisionUtils.inCollision(this.statics, ent)) {
                 this.statics.put(String.valueOf(++index), ent);
             }
         }
-        
+
+        ////////////////////////////////////////////////////////////////////////
+        // Build cave hole if random evaluation requires it :
+        // this.statics.put
+        final CaveEntrance caveEntrance = new CaveEntrance(Game.getInstance(),
+                SpriteUtils.getSprite(Game.getInstance().getTextureLoader(),
+                        StaticSpriteVars.cave_hole1),
+                RandomUtils.randInt(0, 
+                    FrameConst.FRM_WIDTH_800 - CaveEntrance.SPRT_WH),
+                RandomUtils.randInt(0, 
+                    FrameConst.FRM_HEIGHT_600 - CaveEntrance.SPRT_WH)
+                );
+        boolean caveEntraceAdded = true;
+        for (AbstractEntity ent : this.globals.values()) {
+            if (ent.collidesWith(caveEntrance)) {
+                caveEntraceAdded = false;
+                break;
+            }
+        }
+        if (caveEntraceAdded) {
+            for (Map.Entry pair : this.statics.entrySet()) {
+                if (caveEntrance.collidesWith((AbstractEntity) pair.getValue())) {
+                    this.statics.remove((String) pair.getKey());
+                }
+            }
+            this.statics.put(CaveEntrance.REF, caveEntrance);
+        }
+
         ////////////////////////////////////////////////////////////////////////
         // Trim collisions between param AbstractEntity collection and globals :  
-        iterator = this.globals.entrySet().iterator();
+        final Iterator iterator = this.globals.entrySet().iterator();
         while (iterator.hasNext()) {
             Map.Entry pair = (Map.Entry) iterator.next();
             for (int i = 0; i < entities.length; ++i) {
-                if (entities[i].collidesWith((AbstractEntity)pair.getValue())) {
-                    this.globals.remove((String)pair.getKey());
+                if (entities[i].collidesWith((AbstractEntity) pair.getValue())) {
+                    this.globals.remove((String) pair.getKey());
                     break;
                 }
             }
         }
-        
+
     }
 
     /**
      * Access populated AbstractEntity hasp map.
      *
      * @return Map<String, AbstractEntity>
-     * @throws fr.com.jellyfish.jfgformicarius.formicarius.exceptions.ZoneBuildException
+     * @throws
+     * fr.com.jellyfish.jfgformicarius.formicarius.exceptions.ZoneBuildException
      */
+    @Override
     public Map<String, AbstractEntity> getGlobals() throws ZoneBuildException {
         if (this.globals == null) {
             throw new ZoneBuildException();
         }
         return globals;
     }
-    
+
     /**
-     * 
-     * @return 
-     * @throws fr.com.jellyfish.jfgformicarius.formicarius.exceptions.ZoneBuildException 
+     *
+     * @return @throws
+     * fr.com.jellyfish.jfgformicarius.formicarius.exceptions.ZoneBuildException
      */
+    @Override
     public Map<String, AbstractEntity> getStatics() throws ZoneBuildException {
         if (this.statics == null) {
             throw new ZoneBuildException();

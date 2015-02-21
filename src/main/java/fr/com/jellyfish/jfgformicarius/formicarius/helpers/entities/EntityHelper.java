@@ -42,7 +42,6 @@ import fr.com.jellyfish.jfgformicarius.formicarius.game.Game;
 import fr.com.jellyfish.jfgformicarius.formicarius.staticvars.StaticSpriteVars;
 import fr.com.jellyfish.jfgformicarius.formicarius.world.zone.ZonePosition;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -80,7 +79,7 @@ public class EntityHelper {
     private final Map<String, AbstractEntity> interactableEntities;
     
     /**
-     * 
+     * Main etity collection.
      */
     private final Map<String, AbstractEntity> mainEntities;
     
@@ -100,7 +99,7 @@ public class EntityHelper {
     private InFader inFader;
     
     /**
-     * 
+     * Fader instance for transitions.
      */
     private AbstractFader fader;
     //</editor-fold>
@@ -136,9 +135,6 @@ public class EntityHelper {
         initEntities();
         initTilingEntities();
         initFaders();
-        // Use ywo following calls to reload :
-        initInteractables((AbstractEntity) null);
-        initObjectEntities((AbstractEntity) null);
     }
     
     /**
@@ -179,16 +175,6 @@ public class EntityHelper {
         // Finally append in order for drawing.
         mainEntities.put(MainCharacter.class.getSimpleName(), wiz);
     }
-    
-    /**
-     * Initialize interactable AbstractEntitys such as ColidableObjects.
-     */
-    private void initInteractables(final AbstractEntity ... entities) { }
-    
-    /**
-     * Initialize all object entities.
-     */
-    private void initObjectEntities(final AbstractEntity ... entities) { }
     
     /**
      * Init faders.

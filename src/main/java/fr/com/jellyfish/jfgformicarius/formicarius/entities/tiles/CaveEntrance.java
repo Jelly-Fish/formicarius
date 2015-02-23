@@ -77,7 +77,6 @@ public class CaveEntrance extends AbstractEntity implements CollidableObject {
              * @see TransitionAction
              * @see MainCharacterZoneHelper
              */
-            
         }
     }
 

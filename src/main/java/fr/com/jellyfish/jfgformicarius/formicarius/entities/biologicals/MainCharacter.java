@@ -41,7 +41,8 @@ import fr.com.jellyfish.jfgformicarius.formicarius.entities.events.SpellRing;
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.tiles.effects.blood.BloodImpact;
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.tiles.status.StatusFrame;
 import fr.com.jellyfish.jfgformicarius.formicarius.helpers.DrawingHelper;
-import fr.com.jellyfish.jfgformicarius.formicarius.helpers.entities.MainCharacterZoneHelper;
+import fr.com.jellyfish.jfgformicarius.formicarius.helpers.entities.maincharacter.MainCharacterStatusHelper;
+import fr.com.jellyfish.jfgformicarius.formicarius.helpers.entities.maincharacter.MainCharacterZoneHelper;
 import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.Ignitable;
 import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.Observer;
 import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.Spawnable;
@@ -72,29 +73,9 @@ public class MainCharacter extends AbstractEntity implements XYObservable {
     private float collisionEffectValue = 0.0f;
 
     /**
-     * Current zone position.
-     */
-    public ZonePosition currentZonePosition;
-
-    /**
      * The animation frames of this entity.
      */
     private final Sprite[] frames;
-
-    /**
-     * Plasma ball frames collection.
-     */
-    private Ignitable ignitable;
-
-    /**
-     * Spawnable entity.
-     */
-    private Spawnable spawnable;
-
-    /**
-     * This Cat instance reference.
-     */
-    public final Cat cat;
 
     /**
      * Status frame instance for health and stamina.
@@ -107,6 +88,16 @@ public class MainCharacter extends AbstractEntity implements XYObservable {
      * @see MainCharacterZoneHelper
      */
     private TransitionAction transitionAction;
+    
+    /**
+     * Current zone position.
+     */
+    public ZonePosition currentZonePosition;
+    
+    /**
+     * Status helper.
+     */
+    private final MainCharacterStatusHelper statusHelper;
     //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="constructor">
@@ -128,8 +119,7 @@ public class MainCharacter extends AbstractEntity implements XYObservable {
         super(game, null, x, y, MvtConst.DOWN, ref);
         
         this.currentZonePosition = zonePosition;
-        this.cat = cat;
-
+        
         // Build frame array :
         this.frames = new Sprite[frameCount];
         for (int i = 0; i < this.frames.length - 4; ++i) {
@@ -147,6 +137,10 @@ public class MainCharacter extends AbstractEntity implements XYObservable {
         sprite = this.frames[0];
         
         this.statusFrame = new StatusFrame(game);
+        this.statusHelper = new MainCharacterStatusHelper(game, 
+            this.statusFrame.getStaminaFrame().getDeffinedWidth(),
+            this.statusFrame.getHealthFrame().getDeffinedWidth());
+        this.statusHelper.setCat(cat);
         init();
         setAnimeUpdateRequired(false);
     }
@@ -159,16 +153,16 @@ public class MainCharacter extends AbstractEntity implements XYObservable {
     private void init() {
 
         // Add Cat observes MagicalHumanoid :
-        if (cat != null) {
-            cat.setObservableMaster(MainCharacter.class.getSimpleName(), this);
+        if (this.statusHelper.getCat() != null) {
+            this.statusHelper.getCat().setObservableMaster(MainCharacter.class.getSimpleName(), this);
         }
         
         this.spawnMvt = MvtConst.DOWN;
         /////// INIT Ignitable ENT /////////////////////////////////////////////
-        this.spawnable = new SpellRing(game, null, 0, 0);
+        this.statusHelper.setSpawnable(new SpellRing(game, null, 0, 0));
         final BloodyDagger dag = new BloodyDagger(game, 0, 0, MvtConst.LEFT,
                 BloodyDagger.class.getSimpleName());
-        ignitable = dag;
+        this.statusHelper.setIgnitable(dag);
         ////////////////////////////////////////////////////////////////////////
         
         this.transitionAction = new MainCharacterZoneHelper(this, game);
@@ -185,19 +179,19 @@ public class MainCharacter extends AbstractEntity implements XYObservable {
         
         if (spawnable instanceof Spawnable) {
             // Cast this Swapable instance to set in game active = false :
-            final AbstractEntity abstractEntity = (AbstractEntity) this.spawnable;
+            final AbstractEntity abstractEntity = (AbstractEntity) this.statusHelper.getSpawnable();
             abstractEntity.setInGameActive(false);
             // Clear this Spawnable instance :
-            if (this.spawnable != null) {
-                this.spawnable.clear();
+            if (this.statusHelper.getSpawnable() != null) {
+                this.statusHelper.getSpawnable().clear();
             }
             // Also remove this Spawnable instance :
-            this.game.accessGlobalEntities().remove(this.spawnable.getAbstractRef());
+            this.game.accessGlobalEntities().remove(this.statusHelper.getSpawnable().getAbstractRef());
             // Finally swap instances. Spawnable is nowready for spawn(...) method call.
             spawnable.setInGameActive(true);
-            this.spawnable = (Spawnable) spawnable;
+            this.statusHelper.setSpawnable((Spawnable) spawnable);
             if (spawnable instanceof Observer) {
-                final Observer obs = (Observer) this.spawnable;
+                final Observer obs = (Observer) this.statusHelper.getSpawnable();
                 obs.setObserver(this);
             }
         }
@@ -212,17 +206,18 @@ public class MainCharacter extends AbstractEntity implements XYObservable {
         
         if (ignitable instanceof Ignitable) {
             // Cast this Swapable instance to set in game active = false :
-            final AbstractEntity abstractEntity = (AbstractEntity) this.ignitable;
+            final AbstractEntity abstractEntity = (AbstractEntity) this.statusHelper.getIgnitable();
             abstractEntity.setInGameActive(false);
             // Clear this Spawnable instance :
-            if (this.ignitable != null) {
-                this.ignitable.clear();
+            if (this.statusHelper.getIgnitable() != null) {
+                this.statusHelper.getIgnitable().clear();
             }
             // Also remove this Spawnable instance :
-            this.game.getEntityHelper().getInteractableEntities().remove(this.ignitable.getAbstractRef());
+            this.game.getEntityHelper().getInteractableEntities().remove(
+                this.statusHelper.getIgnitable().getAbstractRef());
             // Finally swap instances. Spawnable is nowready for spawn(...) method call.
             ignitable.setInGameActive(true);
-            this.ignitable = (Ignitable) ignitable;
+            this.statusHelper.setIgnitable((Ignitable) ignitable);
         }
     }
 
@@ -247,7 +242,7 @@ public class MainCharacter extends AbstractEntity implements XYObservable {
             sprite = this.frames[this.frames.length - 5 + this.getMvt()];
 
             // Finally notify of damage :
-            this.statusFrame.notifyDamage(val);
+            this.statusHelper.setHealth(this.statusFrame.notifyDamage(val));
         }
     }
     //</editor-fold>
@@ -255,8 +250,8 @@ public class MainCharacter extends AbstractEntity implements XYObservable {
     //<editor-fold defaultstate="collapsed" desc="overriden methods">
     @Override
     public void callEntity() {
-        if (cat != null) {
-            this.cat.reachMasterEntityCoordinates();
+        if (this.statusHelper.getCat() != null) {
+            this.statusHelper.getCat().reachMasterEntityCoordinates();
         }
     }
     
@@ -283,21 +278,22 @@ public class MainCharacter extends AbstractEntity implements XYObservable {
      */
     @Override
     public void fire() {
-        if (!this.ignitable.isIgnited() && this.collisionEffectValue <= 0.0f) {
+        if (!this.statusHelper.getIgnitable().isIgnited() && this.collisionEffectValue <= 0.0f) {
             if (moved) {
-                this.ignitable.ignite(this.getX(), this.getY(), this.getMvt());
+                this.statusHelper.getIgnitable().ignite(this.getX(), this.getY(), this.getMvt());
             } else {
-                this.ignitable.ignite(this.getX(), this.getY(), this.spawnMvt);
+                this.statusHelper.getIgnitable().ignite(this.getX(), this.getY(), this.spawnMvt);
             }
         }
     }
     
     @Override
     public void mouseClicked(final int x, final int y) {
-        if (!this.spawnable.isSpawned() && 
+        if (!this.statusHelper.getSpawnable().isSpawned() && 
             this.statusFrame.getStaminaFrame().getDeffinedWidth() > 0.0f && 
             this.collisionEffectValue <= 0.0f) {
-            this.statusFrame.notifyStaminaLoss(this.spawnable.spawn(x, y));
+            this.statusHelper.setStamina(
+                this.statusFrame.notifyStaminaLoss(this.statusHelper.getSpawnable().spawn(x, y)));
         }
     }
     
@@ -334,8 +330,8 @@ public class MainCharacter extends AbstractEntity implements XYObservable {
             // remove, append to EntityHelper's tile entities.
             game.getEntityHelper().getFader().fade();
             x = FrameConst.FRM_WIDTH_800 - MainCharacter.SPRT_W;
-            if (this.cat != null) {
-                this.cat.followTrasition(MvtConst.LEFT, x, y, MainCharacter.SPRT_W, MainCharacter.SPRT_H);
+            if (this.statusHelper.getCat() != null) {
+                this.statusHelper.getCat().followTrasition(MvtConst.LEFT, x, y, MainCharacter.SPRT_W, MainCharacter.SPRT_H);
             }
             this.transitionAction.triggerTransition();
             return;
@@ -345,8 +341,8 @@ public class MainCharacter extends AbstractEntity implements XYObservable {
         if (dx > 0 && x > FrameConst.FRM_WIDTH_800 - MainCharacter.SPRT_W) {
             game.getEntityHelper().getFader().fade();
             x = 0;
-            if (this.cat != null) {
-                this.cat.followTrasition(MvtConst.RIGHT, x, y, MainCharacter.SPRT_W, MainCharacter.SPRT_H);
+            if (this.statusHelper.getCat() != null) {
+                this.statusHelper.getCat().followTrasition(MvtConst.RIGHT, x, y, MainCharacter.SPRT_W, MainCharacter.SPRT_H);
             }
             this.transitionAction.triggerTransition();
             return;
@@ -356,8 +352,8 @@ public class MainCharacter extends AbstractEntity implements XYObservable {
         if (dy < 0 && y < 0) {
             game.getEntityHelper().getFader().fade();
             y = FrameConst.FRM_HEIGHT_600 - MainCharacter.SPRT_H;
-            if (this.cat != null) {
-                this.cat.followTrasition(MvtConst.UP, x, y, MainCharacter.SPRT_W, MainCharacter.SPRT_H);
+            if (this.statusHelper.getCat() != null) {
+                this.statusHelper.getCat().followTrasition(MvtConst.UP, x, y, MainCharacter.SPRT_W, MainCharacter.SPRT_H);
             }
             this.transitionAction.triggerTransition();
             return;
@@ -367,8 +363,8 @@ public class MainCharacter extends AbstractEntity implements XYObservable {
         if (dy > 0 && y > FrameConst.FRM_HEIGHT_600 - SPRT_H) {
             game.getEntityHelper().getFader().fade();
             y = 0;
-            if (this.cat != null) {
-                this.cat.followTrasition(MvtConst.DOWN, x, y, MainCharacter.SPRT_W, MainCharacter.SPRT_H);
+            if (this.statusHelper.getCat() != null) {
+                this.statusHelper.getCat().followTrasition(MvtConst.DOWN, x, y, MainCharacter.SPRT_W, MainCharacter.SPRT_H);
             }
             this.transitionAction.triggerTransition();
             return;
@@ -457,11 +453,11 @@ public class MainCharacter extends AbstractEntity implements XYObservable {
     }
     
     public Ignitable getIgnitable() {
-        return ignitable;
+        return this.statusHelper.getIgnitable();
     }
     
     public Spawnable getSpawnable() {
-        return spawnable;
+        return this.statusHelper.getSpawnable();
     }
     //</editor-fold>
 

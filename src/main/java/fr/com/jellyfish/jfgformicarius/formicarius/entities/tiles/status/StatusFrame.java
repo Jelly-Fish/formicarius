@@ -126,23 +126,29 @@ public class StatusFrame extends AbstractEntity {
     /**
      *
      * @param damageValue
+     * @return actual damage status after damage has been impacted.
      */
-    public void notifyDamage(final float damageValue) {
+    public float notifyDamage(final float damageValue) {
         final float val = this.healthFrame.getDeffinedWidth();
         if (val > 0) {
             this.healthFrame.setDeffinedWidth(val - (damageValue * this.RATIO));
         }
+        
+        return this.healthFrame.getDeffinedWidth();
     }
     
     /**
      * 
      * @param lossValue 
+     * @return  
      */
-    public void notifyStaminaLoss(final float lossValue) {
+    public float notifyStaminaLoss(final float lossValue) {
         final float val = this.staminaFrame.getDeffinedWidth();
         if (val > 0) {
             this.staminaFrame.setDeffinedWidth(val - (lossValue * this.RATIO));
         }
+        
+        return this.staminaFrame.getDeffinedWidth();
     }
 
     /**
@@ -174,7 +180,10 @@ public class StatusFrame extends AbstractEntity {
     public ResizableSprite getStaminaFrame() {
         return staminaFrame;
     }
-
+    
+    public ResizableSprite getHealthFrame() {
+        return healthFrame;
+    }
     //</editor-fold>
 
 }

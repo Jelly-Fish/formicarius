@@ -29,13 +29,24 @@
  * POSSIBILITY OF SUCH DAMAGE. 
  ******************************************************************************
  */
-package fr.com.jellyfish.jfgformicarius.formicarius.helpers;
+package fr.com.jellyfish.jfgformicarius.formicarius.helpers.entities.maincharacter;
+
+import fr.com.jellyfish.jfgformicarius.formicarius.entities.biologicals.Cat;
+import fr.com.jellyfish.jfgformicarius.formicarius.game.Game;
+import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.Ignitable;
+import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.Spawnable;
+import java.io.Serializable;
 
 /**
  *
  * @author thw
  */
-public class MainCharacterStatusHelper {
+public class MainCharacterStatusHelper implements Serializable {
+    
+    /**
+     * Game instance.
+     */
+    private final Game game;
     
     /**
      * 
@@ -46,5 +57,73 @@ public class MainCharacterStatusHelper {
      * 
      */
     private float health;
+    
+    /**
+     * Plasma ball frames collection.
+     */
+    private Ignitable ignitable;
+    
+    /**
+     * Spawnable entity.
+     */
+    private Spawnable spawnable;
+
+    /**
+     * This Cat instance reference.
+     */
+    public Cat cat;
+
+    /**
+     * 
+     * @param game
+     * @param stamina
+     * @param health 
+     */
+    public MainCharacterStatusHelper(final Game game, final float stamina, final float health) {
+        this.game = game;
+        this.stamina = stamina;
+        this.health = health;
+    }
+    
+    public float getStamina() {
+        return stamina;
+    }
+
+    public void setStamina(final float stamina) {
+        this.stamina = stamina;
+    }
+
+    public float getHealth() {
+        return health;
+    }
+
+    public void setHealth(final float health) {
+        this.health = health;
+    }
+    
+    public Ignitable getIgnitable() {
+        return ignitable;
+    }
+
+    public void setIgnitable(Ignitable ignitable) {
+        this.ignitable = ignitable;
+    }
+
+    public Spawnable getSpawnable() {
+        return spawnable;
+    }
+
+    public void setSpawnable(Spawnable spawnable) {
+        this.spawnable = spawnable;
+    }
+
+    public Cat getCat() {
+        return cat;
+    }
+
+    public void setCat(Cat cat) {
+        this.cat = cat;
+    }
+
     
 }

@@ -31,7 +31,6 @@
  */
 package fr.com.jellyfish.jfgformicarius.formicarius.helpers.entities.maincharacter;
 
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.biologicals.Cat;
 import fr.com.jellyfish.jfgformicarius.formicarius.game.Game;
 import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.Ignitable;
 import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.Spawnable;
@@ -49,12 +48,12 @@ public class MainCharacterStatusHelper implements Serializable {
     private final Game game;
     
     /**
-     * 
+     * Stamina current value.
      */
     private float stamina;
     
     /**
-     * 
+     * Healthcurrent value.
      */
     private float health;
     
@@ -67,11 +66,6 @@ public class MainCharacterStatusHelper implements Serializable {
      * Spawnable entity.
      */
     private Spawnable spawnable;
-
-    /**
-     * This Cat instance reference.
-     */
-    public Cat cat;
 
     /**
      * 
@@ -116,14 +110,5 @@ public class MainCharacterStatusHelper implements Serializable {
     public void setSpawnable(Spawnable spawnable) {
         this.spawnable = spawnable;
     }
-
-    public Cat getCat() {
-        return cat;
-    }
-
-    public void setCat(Cat cat) {
-        this.cat = cat;
-    }
-
     
 }

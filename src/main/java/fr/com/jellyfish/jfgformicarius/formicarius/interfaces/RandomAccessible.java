@@ -40,11 +40,9 @@ import java.util.Map;
  */
 public abstract class RandomAccessible {
     
-    /**
-     * 
-     * @param maxRandValue 
+    /** 
      * @return Sub Map<String, AbstractEntity> randomly filtered.
      */
-     public abstract Map<String, AbstractEntity> getRandomSubPool(final int maxRandValue);
+     public abstract Map<String, AbstractEntity> getRandomSubPool();
     
 }

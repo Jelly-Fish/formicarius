@@ -35,7 +35,6 @@ import fr.com.jellyfish.jfgformicarius.formicarius.constants.FrameConst;
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.abstractentities.AbstractEntity;
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.tiles.Background;
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.tiles.CaveEntrance;
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.tiles.StaticObject;
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.tiles.vegetation.Tree;
 import fr.com.jellyfish.jfgformicarius.formicarius.exceptions.ZoneBuildException;
 import fr.com.jellyfish.jfgformicarius.formicarius.game.Game;
@@ -45,7 +44,6 @@ import fr.com.jellyfish.jfgformicarius.formicarius.utils.CollisionUtils;
 import fr.com.jellyfish.jfgformicarius.formicarius.utils.RandomUtils;
 import fr.com.jellyfish.jfgformicarius.formicarius.utils.SpriteUtils;
 import fr.com.jellyfish.jfgformicarius.formicarius.utils.ZoneGenerationUtils;
-import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -99,8 +97,7 @@ public class Zone implements ZoneBuilder {
         int index = -1;
         ////////////////////////////////////////////////////////////////////////
         // Build trees :
-        for (AbstractEntity ent : ZoneGenerationUtils.buildRandomTerrainBareTrees(
-                FrameConst.FRM_WIDTH_800, FrameConst.FRM_HEIGHT_600,
+        for (AbstractEntity ent : ZoneGenerationUtils.buildRandomTerrainBareTrees(FrameConst.FRM_WIDTH, FrameConst.FRM_HEIGHT,
                 randomDefinitions.get(Tree.class.getSimpleName())[0],
                 randomDefinitions.get(Tree.class.getSimpleName())[1])) {
             this.globals.put(String.valueOf(++index), ent);
@@ -109,8 +106,7 @@ public class Zone implements ZoneBuilder {
 
         ////////////////////////////////////////////////////////////////////////
         // Build static vegetation :
-        for (AbstractEntity ent : ZoneGenerationUtils.appendRandomTerrainNonCollibableElements(
-                FrameConst.FRM_WIDTH_800, FrameConst.FRM_HEIGHT_600,
+        for (AbstractEntity ent : ZoneGenerationUtils.appendRandomTerrainNonCollibableElements(FrameConst.FRM_WIDTH, FrameConst.FRM_HEIGHT,
                 SpriteUtils.getSprite(Game.getInstance().getTextureLoader(),
                         StaticSpriteVars.mushrooms_brown_25x25),
                 randomDefinitions.get(Tree.class.getSimpleName())[0] * 32,
@@ -119,8 +115,7 @@ public class Zone implements ZoneBuilder {
                 this.statics.put(String.valueOf(++index), ent);
             }
         }
-        for (AbstractEntity ent : ZoneGenerationUtils.appendRandomTerrainNonCollibableElements(
-                FrameConst.FRM_WIDTH_800, FrameConst.FRM_HEIGHT_600,
+        for (AbstractEntity ent : ZoneGenerationUtils.appendRandomTerrainNonCollibableElements(FrameConst.FRM_WIDTH, FrameConst.FRM_HEIGHT,
                 SpriteUtils.getSprite(Game.getInstance().getTextureLoader(),
                         StaticSpriteVars.mushrooms_red_25x25),
                 randomDefinitions.get(Tree.class.getSimpleName())[0] * 42,
@@ -137,9 +132,9 @@ public class Zone implements ZoneBuilder {
                 SpriteUtils.getSprite(Game.getInstance().getTextureLoader(),
                         StaticSpriteVars.cave_hole1),
                 RandomUtils.randInt(0, 
-                    FrameConst.FRM_WIDTH_800 - CaveEntrance.SPRT_WH),
+                    FrameConst.FRM_WIDTH - CaveEntrance.SPRT_WH),
                 RandomUtils.randInt(0, 
-                    FrameConst.FRM_HEIGHT_600 - CaveEntrance.SPRT_WH)
+                    FrameConst.FRM_HEIGHT - CaveEntrance.SPRT_WH)
                 );
         boolean caveEntraceAdded = true;
         for (AbstractEntity ent : this.globals.values()) {

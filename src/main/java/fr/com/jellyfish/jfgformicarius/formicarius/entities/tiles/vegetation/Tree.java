@@ -33,10 +33,9 @@ package fr.com.jellyfish.jfgformicarius.formicarius.entities.tiles.vegetation;
 
 import fr.com.jellyfish.jfgformicarius.formicarius.constants.MvtConst;
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.abstractentities.AbstractEntity;
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.biologicals.MainCharacter;
+import fr.com.jellyfish.jfgformicarius.formicarius.entities.characters.MainCharacter;
 import fr.com.jellyfish.jfgformicarius.formicarius.game.Game;
 import fr.com.jellyfish.jfgformicarius.formicarius.helpers.DrawingHelper;
-import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.Callable;
 import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.CollidableObject;
 import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.SpawnCollidable;
 import fr.com.jellyfish.jfgformicarius.formicarius.texture.Sprite;
@@ -47,7 +46,7 @@ import java.awt.Rectangle;
  *
  * @author thw
  */
-public class Tree extends AbstractEntity implements CollidableObject, Callable,
+public class Tree extends AbstractEntity implements CollidableObject,
     SpawnCollidable {
 
     //<editor-fold defaultstate="collapsed" desc="variables">
@@ -91,26 +90,6 @@ public class Tree extends AbstractEntity implements CollidableObject, Callable,
         } else {
             DrawingHelper.getInstance().getDrawableQueue().add(this);
         }
-    }
-        
-    @Override
-    public Callable newInstance() {
-        return this;
-    }
-
-    @Override
-    public String getABSTRACTREF() {
-        return this.ABSTRACT_REF;
-    }
-
-    @Override
-    public int getWidth() {
-        return sprite.getWidth();
-    }
-
-    @Override
-    public int getHeight() {
-        return sprite.getHeight();
     }
     
     @Override

@@ -35,7 +35,7 @@ import fr.com.jellyfish.jfgformicarius.formicarius.constants.AnimationConst;
 import fr.com.jellyfish.jfgformicarius.formicarius.constants.FrameConst;
 import fr.com.jellyfish.jfgformicarius.formicarius.constants.MvtConst;
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.abstractentities.AbstractEntity;
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.biologicals.MainCharacter;
+import fr.com.jellyfish.jfgformicarius.formicarius.entities.characters.MainCharacter;
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.tiles.effects.blood.BloodImpact;
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.tiles.effects.blood.impacts.SpellImpact;
 import fr.com.jellyfish.jfgformicarius.formicarius.game.Game;
@@ -224,8 +224,8 @@ public class PlasmaBall extends AbstractEntity implements Ignitable, CollidableO
         }
         // if we're moving right and have reached the right hand side
         // of the screen, don't move
-        if (((dx > 0 + SPRT_WH) && (x > FrameConst.FRM_WIDTH_800 + SPRT_WH))
-                || ((dy > 0 + SPRT_WH) && (y > FrameConst.FRM_HEIGHT_600 + SPRT_WH))) {
+        if (((dx > 0 + SPRT_WH) && (x > FrameConst.FRM_WIDTH + SPRT_WH))
+                || ((dy > 0 + SPRT_WH) && (y > FrameConst.FRM_HEIGHT + SPRT_WH))) {
             clear();
             return;
         }

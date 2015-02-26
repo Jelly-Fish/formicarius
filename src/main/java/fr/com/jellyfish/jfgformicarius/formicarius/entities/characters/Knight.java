@@ -29,7 +29,7 @@
  * POSSIBILITY OF SUCH DAMAGE.
  * *****************************************************************************
  */
-package fr.com.jellyfish.jfgformicarius.formicarius.entities.biologicals;
+package fr.com.jellyfish.jfgformicarius.formicarius.entities.characters;
 
 import fr.com.jellyfish.jfgformicarius.formicarius.constants.AnimationConst;
 import fr.com.jellyfish.jfgformicarius.formicarius.constants.FrameConst;
@@ -216,13 +216,13 @@ public class Knight extends AbstractEntity implements Interactable, CollidableOb
         if (x < 1 && this.getMvt() == MvtConst.LEFT) {
             updateMvtHorizontal(observable.observedXY()[0]);
             return true;
-        } else if (x > FrameConst.FRM_WIDTH_800 - (SPRT_W + 1) && this.getMvt() == MvtConst.RIGHT) {
+        } else if (x > FrameConst.FRM_WIDTH - (SPRT_W + 1) && this.getMvt() == MvtConst.RIGHT) {
             updateMvtHorizontal(observable.observedXY()[0]);
             return true;
         } else if (y < 1 && this.getMvt() == MvtConst.UP) {
             updateMvtVertical(observable.observedXY()[1]);
             return true;
-        } else if (y > FrameConst.FRM_HEIGHT_600 - (SPRT_H + 1) && this.getMvt() == MvtConst.DOWN) {
+        } else if (y > FrameConst.FRM_HEIGHT - (SPRT_H + 1) && this.getMvt() == MvtConst.DOWN) {
             updateMvtVertical(observable.observedXY()[1]);
             return true;
         } else {
@@ -264,9 +264,9 @@ public class Knight extends AbstractEntity implements Interactable, CollidableOb
 
         // TODO : below, fix. Use Rectangle for triggering fire(). 
         final Rectangle obsRectW = new Rectangle(0, eY + 4,
-                FrameConst.FRM_WIDTH_800, observable.observedWH()[1] - 8);
+                FrameConst.FRM_WIDTH, observable.observedWH()[1] - 8);
         final Rectangle obsRectH = new Rectangle(eX + 4, 0,
-                observable.observedWH()[0] - 8, FrameConst.FRM_HEIGHT_600);
+                observable.observedWH()[0] - 8, FrameConst.FRM_HEIGHT);
 
         if (obsRectH.intersects(this.getRectangle())) {
             updateMvtVertical(eY);

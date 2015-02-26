@@ -33,7 +33,7 @@ package fr.com.jellyfish.jfgformicarius.formicarius.helpers.entities;
 
 import fr.com.jellyfish.jfgformicarius.formicarius.constants.FrameConst;
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.abstractentities.AbstractEntity;
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.biologicals.MainCharacter;
+import fr.com.jellyfish.jfgformicarius.formicarius.entities.characters.MainCharacter;
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.tiles.Background;
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.tiles.faders.AbstractFader;
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.tiles.faders.InFader;
@@ -154,8 +154,8 @@ public class EntityHelper {
         
         // Main start off background.
         Background b = null;
-        for (int i = 0; i < FrameConst.FRM_WIDTH_800 / 400; ++i) {
-            for (int j = 0; j < FrameConst.FRM_HEIGHT_600 / 300; ++j) {
+        for (int i = 0; i < FrameConst.FRM_WIDTH / 400; ++i) {
+            for (int j = 0; j < FrameConst.FRM_HEIGHT / 300; ++j) {
                 b = new Background(this.game, StaticSpriteVars.abstract_dark2_400, i * 400, j * 400, null);
                 tileEntities.put(Background.REF + i + j, b);
             }
@@ -169,7 +169,7 @@ public class EntityHelper {
         
         final MainCharacter wiz = new MainCharacter(
             this.game, StaticSpriteVars.red_wizzard, StaticSpriteVars.red_wizzard_hits,
-            20, 280, 220, new ZonePosition(0,0), null, MainCharacter.class.getSimpleName());
+            20, 280, 220, new ZonePosition(0,0), MainCharacter.class.getSimpleName());
         // Clear refs before new usage.
 
         // Finally append in order for drawing.

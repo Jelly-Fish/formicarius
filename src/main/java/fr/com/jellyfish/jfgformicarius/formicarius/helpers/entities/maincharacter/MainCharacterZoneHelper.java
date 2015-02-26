@@ -31,9 +31,8 @@
  */
 package fr.com.jellyfish.jfgformicarius.formicarius.helpers.entities.maincharacter;
 
-import fr.com.jellyfish.jfgformicarius.formicarius.constants.FrameConst;
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.abstractentities.AbstractEntity;
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.biologicals.MainCharacter;
+import fr.com.jellyfish.jfgformicarius.formicarius.entities.characters.MainCharacter;
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.pools.InteractableEntityPool;
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.tiles.vegetation.Tree;
 import fr.com.jellyfish.jfgformicarius.formicarius.exceptions.ZoneBuildException;
@@ -121,9 +120,10 @@ public class MainCharacterZoneHelper implements TransitionAction {
         }
 
         // Fill the following HashMap with randomly accessed pool of Interactable
-        // class instances.
+        // class instances. /!\ before trim entities for collisions :
+        // remove entities in collision.
         game.getEntityHelper().getInteractableEntities().putAll(
-            InteractableEntityPool.getInstance().getRandomSubPool(FrameConst.FRM_WIDTH_800 - 80));
+            InteractableEntityPool.getInstance().getRandomSubPool());
     }
     
     public ZoneBuilder getZoneBuilder() {

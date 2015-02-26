@@ -34,7 +34,7 @@ package fr.com.jellyfish.jfgformicarius.formicarius.entities.tiles.status;
 import fr.com.jellyfish.jfgformicarius.formicarius.constants.FrameConst;
 import fr.com.jellyfish.jfgformicarius.formicarius.constants.MvtConst;
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.abstractentities.AbstractEntity;
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.biologicals.MainCharacter;
+import fr.com.jellyfish.jfgformicarius.formicarius.entities.characters.MainCharacter;
 import fr.com.jellyfish.jfgformicarius.formicarius.game.Game;
 import fr.com.jellyfish.jfgformicarius.formicarius.staticvars.StaticSpriteVars;
 import fr.com.jellyfish.jfgformicarius.formicarius.texture.ResizableSprite;
@@ -97,7 +97,7 @@ public class StatusFrame extends AbstractEntity {
      * @param game
      */
     public StatusFrame(final Game game) {
-        super(game, null, (FrameConst.FRM_WIDTH_800 - StatusFrame.SPRT_W) / 2,
+        super(game, null, (FrameConst.FRM_WIDTH - StatusFrame.SPRT_W) / 2,
                 12, MvtConst.STILL, StatusFrame.REF);
 
         // Build frame sprite :

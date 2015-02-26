@@ -31,12 +31,14 @@
  */
 package fr.com.jellyfish.jfgformicarius.formicarius.entities.pools;
 
+import fr.com.jellyfish.jfgformicarius.formicarius.constants.FrameConst;
 import fr.com.jellyfish.jfgformicarius.formicarius.constants.MvtConst;
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.abstractentities.AbstractEntity;
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.biologicals.Mage;
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.biologicals.Spider;
+import fr.com.jellyfish.jfgformicarius.formicarius.entities.characters.Frog;
+import fr.com.jellyfish.jfgformicarius.formicarius.entities.characters.Mage;
+import fr.com.jellyfish.jfgformicarius.formicarius.entities.characters.Spider;
 import fr.com.jellyfish.jfgformicarius.formicarius.game.Game;
-import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.Interactable;
+import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.CollidableObject;
 import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.RandomAccessible;
 import fr.com.jellyfish.jfgformicarius.formicarius.staticvars.StaticSpriteVars;
 import fr.com.jellyfish.jfgformicarius.formicarius.utils.RandomUtils;
@@ -57,66 +59,12 @@ public class InteractableEntityPool extends RandomAccessible {
     /**
      * Pool of complexe objects that are best to re-instantiate.
      */
-    private final Map<String, AbstractEntity> complexeInteractablePool = new HashMap<>();
+    private final Map<String, AbstractEntity> randomEntityPool = new HashMap<>();
     
     /**
      * private constructor.
      */
-    private InteractableEntityPool() {
-        initComplexeInteractablePool();
-    }
-
-    /**
-     * Static pool of AbstractEntity classes that implement Interactable interface.
-     * Is built staticly and is accessed from accessor like method 
-     * getRandomSubPool(...), this method can only be accessed via Sigleton accessor.
-     */
-    private static final Map<String, AbstractEntity> interactablePool = new HashMap<>();
-    static
-    {
-        /*int frogMvt = Frog.occurs % 2 == 0 ? MvtConst.LEFT : MvtConst.RIGHT;
-        interactablePool.put(
-            Frog.REF + Frog.RED + Frog.occurs,
-            new Frog(Game.getInstance(), String.format(StaticSpriteVars.red_frog_left, 0), 400, 300,
-                Frog.RED, frogMvt));
-        frogMvt = Frog.occurs % 2 == 0 ? MvtConst.LEFT : MvtConst.RIGHT;
-        interactablePool.put(
-            Frog.REF + Frog.RED + Frog.occurs,
-            new Frog(Game.getInstance(), String.format(StaticSpriteVars.red_frog_left, 0), 100, 100,
-                Frog.RED, frogMvt));
-        frogMvt = Frog.occurs % 2 == 0 ? MvtConst.LEFT : MvtConst.RIGHT;
-        interactablePool.put(
-            Frog.REF + Frog.RED + Frog.occurs,
-            new Frog(Game.getInstance(), String.format(StaticSpriteVars.red_frog_left, 0), 600, 500,
-                Frog.RED, frogMvt));
-        
-        Spider spider = new Spider(Game.getInstance(), 
-            String.format(StaticSpriteVars.spider, 0), 100, 210);
-        interactablePool.put(spider.ABSTRACT_REF, spider);*/
-        
-        Spider spider = new Spider(Game.getInstance(), 
-            String.format(StaticSpriteVars.spider, 0), 400, 420);
-        interactablePool.put(spider.ABSTRACT_REF, spider);
-    }
-
-    @Override
-    public Map<String, AbstractEntity> getRandomSubPool(final int maxRandValue) {
-        
-        // TODO : finish code. Randomly access a sub map of this main 
-        // Map<String, AbstractEntity>. Also scramble and reset x coordinates.
-        // Scramble x coordinates :
-        for (AbstractEntity entity : InteractableEntityPool.interactablePool.values()) {
-            entity.setX(RandomUtils.randInt(entity.sprite.getWidth(), maxRandValue));
-            ((Interactable)entity).clear();
-        }
-        
-        final Map<String, AbstractEntity> result = new HashMap<>();
-        result.putAll(InteractableEntityPool.interactablePool);
-        initComplexeInteractablePool();
-        result.putAll(complexeInteractablePool);
-        
-        return result;
-    }
+    private InteractableEntityPool() { }
     
     /**
      * Singleton accessor.
@@ -130,22 +78,69 @@ public class InteractableEntityPool extends RandomAccessible {
             return instance;
         }
     }
+        
+    @Override
+    public Map<String, AbstractEntity> getRandomSubPool() {
+        
+        // Clear pool for new random pool :
+        this.randomEntityPool.clear();
+        // Init pools :
+        initInteractableEntityPool();
+        initComplexeInteractablePool();
+        
+        return this.randomEntityPool;
+    }
 
     /**
      * Re-instantiate all complexe objects. 
      */
     private void initComplexeInteractablePool() {
         
-        // First clear hash map :
-        this.complexeInteractablePool.clear();
-        
         final Mage mage = new Mage (Game.getInstance(), StaticSpriteVars.mage,
-            16, 400, 220, MvtConst.LEFT, Mage.class.getSimpleName());
-        complexeInteractablePool.put(mage.ABSTRACT_REF, mage);
+            16, 
+            RandomUtils.randInt(0, FrameConst.FRM_WIDTH - Mage.SPRT_W),
+            220, MvtConst.LEFT, Mage.class.getSimpleName());
+        randomEntityPool.put(mage.ABSTRACT_REF, mage);
         
         /*final Knight knight = new Knight(Game.getInstance(), StaticSpriteVars.golbez,
             20, 400, 220, MvtConst.LEFT, Knight.class.getSimpleName());
-        complexeInteractablePool.put(knight.ABSTRACT_REF, knight);*/
+        randomEntityPool.put(knight.ABSTRACT_REF, knight);*/
+        
+    }
+    
+    /**
+     * Re-instantiate all complexe interactable "less complexe" objects. 
+     */
+    private void initInteractableEntityPool() {
+        
+        int frogMvt = Frog.occurs % 2 == 0 ? MvtConst.LEFT : MvtConst.RIGHT;
+        Frog frog = new Frog(Game.getInstance(), String.format(StaticSpriteVars.red_frog_left, 0),
+                RandomUtils.randInt(0, FrameConst.FRM_WIDTH - Frog.SPRT_WH), 
+                RandomUtils.randInt(0, ((FrameConst.FRM_HEIGHT - 100) / 100)) * 100,
+                Frog.RED, frogMvt);
+        randomEntityPool.put(frog.getABSTRACTRef(), frog);
+        frogMvt = Frog.occurs % 2 == 0 ? MvtConst.LEFT : MvtConst.RIGHT;
+        frog = new Frog(Game.getInstance(), String.format(StaticSpriteVars.red_frog_left, 0),
+                RandomUtils.randInt(0, FrameConst.FRM_WIDTH - Frog.SPRT_WH), 
+                RandomUtils.randInt(0, ((FrameConst.FRM_HEIGHT - 100) / 100)) * 100,
+                Frog.RED, frogMvt);
+        randomEntityPool.put(frog.getABSTRACTRef(), frog);
+        frogMvt = Frog.occurs % 2 == 0 ? MvtConst.LEFT : MvtConst.RIGHT;
+        frog = new Frog(Game.getInstance(), String.format(StaticSpriteVars.red_frog_left, 0),
+                RandomUtils.randInt(0, FrameConst.FRM_WIDTH - Frog.SPRT_WH), 
+                RandomUtils.randInt(0, ((FrameConst.FRM_HEIGHT - 100) / 100)) * 100,
+                Frog.RED, frogMvt);
+        randomEntityPool.put(frog.getABSTRACTRef(), frog);
+        
+        /*Spider spider = new Spider(Game.getInstance(), 
+            String.format(StaticSpriteVars.spider, 0), 100, 210);
+        randomEntityPool.put(spider.ABSTRACT_REF, spider);*/
+        
+        Spider spider = new Spider(Game.getInstance(), 
+            String.format(StaticSpriteVars.spider, 0), 
+                RandomUtils.randInt(0, FrameConst.FRM_WIDTH - Spider.SPRT_WH),
+                RandomUtils.randInt(0, FrameConst.FRM_HEIGHT - Spider.SPRT_WH));
+        randomEntityPool.put(spider.ABSTRACT_REF, spider);
         
     }
     

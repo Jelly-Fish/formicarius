@@ -34,7 +34,7 @@ package fr.com.jellyfish.jfgformicarius.formicarius.library;
 import fr.com.jellyfish.jfgformicarius.formicarius.constants.IconConst;
 import fr.com.jellyfish.jfgformicarius.formicarius.constants.MvtConst;
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.abstractentities.AbstractEntity;
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.biologicals.MainCharacter;
+import fr.com.jellyfish.jfgformicarius.formicarius.entities.characters.MainCharacter;
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.events.Axe;
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.events.BloodyDagger;
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.events.EvilDarkFog;

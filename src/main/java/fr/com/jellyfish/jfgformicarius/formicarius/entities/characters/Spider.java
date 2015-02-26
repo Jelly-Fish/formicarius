@@ -29,7 +29,7 @@
  * POSSIBILITY OF SUCH DAMAGE. 
  ******************************************************************************
  */
-package fr.com.jellyfish.jfgformicarius.formicarius.entities.biologicals;
+package fr.com.jellyfish.jfgformicarius.formicarius.entities.characters;
 
 import fr.com.jellyfish.jfgformicarius.formicarius.constants.AnimationConst;
 import fr.com.jellyfish.jfgformicarius.formicarius.constants.FrameConst;
@@ -133,8 +133,8 @@ public class Spider extends AbstractEntity implements Interactable, CollidableOb
             }
             // if we're moving right or up and down and have reached the 
             //side of the screen, don't move.
-            if (((dx > 0) && (x > FrameConst.FRM_WIDTH_800 - Spider.SPRT_WH))
-                    || ((dy > 0) && (y > FrameConst.FRM_HEIGHT_600 - Spider.SPRT_WH))) {
+            if (((dx > 0) && (x > FrameConst.FRM_WIDTH - Spider.SPRT_WH))
+                    || ((dy > 0) && (y > FrameConst.FRM_HEIGHT - Spider.SPRT_WH))) {
                 return;
             }
         

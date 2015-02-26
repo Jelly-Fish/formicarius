@@ -35,7 +35,7 @@ import fr.com.jellyfish.jfgformicarius.formicarius.constants.AnimationConst;
 import fr.com.jellyfish.jfgformicarius.formicarius.constants.FrameConst;
 import fr.com.jellyfish.jfgformicarius.formicarius.constants.MvtConst;
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.abstractentities.AbstractEntity;
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.biologicals.MainCharacter;
+import fr.com.jellyfish.jfgformicarius.formicarius.entities.characters.MainCharacter;
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.tiles.effects.blood.BloodImpact;
 import fr.com.jellyfish.jfgformicarius.formicarius.game.Game;
 import fr.com.jellyfish.jfgformicarius.formicarius.helpers.DrawingHelper;
@@ -120,8 +120,8 @@ public class Axe extends AbstractEntity implements Ignitable, CollidableObject {
             return;
         }
 
-        if (((dx > 0 + Axe.SPRT_WH) && (x > FrameConst.FRM_WIDTH_800 + Axe.SPRT_WH))
-                || ((dy > 0 + Axe.SPRT_WH) && (y > FrameConst.FRM_HEIGHT_600 + Axe.SPRT_WH))) {
+        if (((dx > 0 + Axe.SPRT_WH) && (x > FrameConst.FRM_WIDTH + Axe.SPRT_WH))
+                || ((dy > 0 + Axe.SPRT_WH) && (y > FrameConst.FRM_HEIGHT + Axe.SPRT_WH))) {
             clear();
             return;
         }

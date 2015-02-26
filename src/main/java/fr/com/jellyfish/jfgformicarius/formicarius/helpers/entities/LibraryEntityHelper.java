@@ -80,8 +80,8 @@ public class LibraryEntityHelper {
         
         // Menu background.
         LibBackground mb = null;
-        for (int i = 0; i < FrameConst.FRM_WIDTH_800 / 400; ++i) {
-            for (int j = 0; j < FrameConst.FRM_HEIGHT_600 / 300; ++j) {
+        for (int i = 0; i < FrameConst.FRM_WIDTH / 400; ++i) {
+            for (int j = 0; j < FrameConst.FRM_HEIGHT / 300; ++j) {
                 mb = new LibBackground(this.game, StaticSpriteVars.menu_bg, i * 400, j * 400, null);
                 libraryBackgroundTiles.add(mb);
             }
@@ -90,8 +90,8 @@ public class LibraryEntityHelper {
         // build all textures and associated events.
         // Build libitem container :
         LibItemContainer libItem = null;
-        for (int i = 1; i < (FrameConst.FRM_WIDTH_800 / LibItemContainer.SPRT_WH - 1); ++i) {
-            for (int j = 1; j < (FrameConst.FRM_HEIGHT_600 / LibItemContainer.SPRT_WH - 1); ++j) {
+        for (int i = 1; i < (FrameConst.FRM_WIDTH / LibItemContainer.SPRT_WH - 1); ++i) {
+            for (int j = 1; j < (FrameConst.FRM_HEIGHT / LibItemContainer.SPRT_WH - 1); ++j) {
                 libItem = new LibItemContainer(this.game, StaticSpriteVars.menu_item_container,
                     StaticSpriteVars.menu_item_container_hover, 
                     StaticSpriteVars.menu_item_container_active_spanwable,

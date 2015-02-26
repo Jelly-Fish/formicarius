@@ -373,11 +373,6 @@ public abstract class AbstractEntity {
      * @param y Mouse y click coordinates.
      */
     public void mouseClicked(final int x, final int y) { }
-    
-    /**
-     * Entity call entity type process.
-     */
-    public void callEntity() { }
     //</editor-fold>
     
 }

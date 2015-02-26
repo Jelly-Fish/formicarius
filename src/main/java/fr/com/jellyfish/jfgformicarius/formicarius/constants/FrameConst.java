@@ -38,29 +38,16 @@ public class FrameConst {
     
     /**
      * Frame static width.
+     * = 800
      */
-    public static final int FRM_WIDTH_450 = 450;
+    public static final int FRM_WIDTH = 800;
     
     /**
-     * Frame static width.
+     * Frame static height.
+     * = 600
      */
-    public static final int FRM_WIDTH_600 = 600;
-    
-    /**
-     * Frame static width.
-     */
-    public static final int FRM_WIDTH_800 = 800;
-    
-    /**
-     * Frame static width.
-     */
-    public static final int FRM_HEIGHT_600 = 600;
-    
-    /**
-     * Frame static heigth.
-     */
-    public static final int FRM_HEIGHT_450 = 450;
-    
+    public static final int FRM_HEIGHT = 600;
+
     /**
      * Width/height of custom library mouse cursor tile.
      */

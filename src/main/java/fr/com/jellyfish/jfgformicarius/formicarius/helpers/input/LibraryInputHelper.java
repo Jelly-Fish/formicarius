@@ -33,7 +33,7 @@ package fr.com.jellyfish.jfgformicarius.formicarius.helpers.input;
 
 import fr.com.jellyfish.jfgformicarius.formicarius.constants.FrameConst;
 import fr.com.jellyfish.jfgformicarius.formicarius.constants.IconConst;
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.biologicals.MainCharacter;
+import fr.com.jellyfish.jfgformicarius.formicarius.entities.characters.MainCharacter;
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.tiles.LibItemContainer;
 import fr.com.jellyfish.jfgformicarius.formicarius.game.Game;
 import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.Ignitable;
@@ -93,7 +93,7 @@ public class LibraryInputHelper extends AbstractInput {
         StaticFrameVars.mouseLibDX = Mouse.getDX();
         StaticFrameVars.mouseLibDY = Mouse.getDY();
         StaticFrameVars.mouseLibX = Mouse.getX();
-        StaticFrameVars.mouseLibY = FrameConst.FRM_HEIGHT_600 - Mouse.getY();
+        StaticFrameVars.mouseLibY = FrameConst.FRM_HEIGHT - Mouse.getY();
         final boolean mousePressed = Mouse.isButtonDown(0);
         
         // Observe input for library cursor collisions with library items.

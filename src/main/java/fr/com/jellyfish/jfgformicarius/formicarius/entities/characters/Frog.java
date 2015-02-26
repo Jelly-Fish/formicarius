@@ -29,7 +29,7 @@
  * POSSIBILITY OF SUCH DAMAGE. 
  ******************************************************************************
  */
-package fr.com.jellyfish.jfgformicarius.formicarius.entities.biologicals;
+package fr.com.jellyfish.jfgformicarius.formicarius.entities.characters;
 
 import fr.com.jellyfish.jfgformicarius.formicarius.constants.AnimationConst;
 import fr.com.jellyfish.jfgformicarius.formicarius.constants.FrameConst;
@@ -61,6 +61,7 @@ public class Frog extends AbstractEntity implements Observer, CollidableObject, 
 
     //<editor-fold defaultstate="collapsed" desc="variables">
     public static final float SPEED = 220;
+    public static final String REF = "frog";
     public static final String RED = "red";
     public static final float HEALTH_VALUE = 3.0f;
     public final String color;
@@ -134,23 +135,23 @@ public class Frog extends AbstractEntity implements Observer, CollidableObject, 
         if (isAnimeUpdateRequired()) {
             
             if (x < -Frog.SPRT_WH) {
-                dx = FrameConst.FRM_WIDTH_800;
-                x = FrameConst.FRM_WIDTH_800;
+                dx = FrameConst.FRM_WIDTH;
+                x = FrameConst.FRM_WIDTH;
                 return;
             }
             if (y < -Frog.SPRT_WH) {
-                dy = FrameConst.FRM_HEIGHT_600;
-                y = FrameConst.FRM_HEIGHT_600;
+                dy = FrameConst.FRM_HEIGHT;
+                y = FrameConst.FRM_HEIGHT;
                 return;
             }
             // if we're moving right or up and down and have reached the 
             //side of the screen, don't move.
-            if (x > FrameConst.FRM_WIDTH_800) {
+            if (x > FrameConst.FRM_WIDTH) {
                 dx = -Frog.SPRT_WH;
                 x = -Frog.SPRT_WH;
                 return;
             }
-            if (y > FrameConst.FRM_HEIGHT_600) {
+            if (y > FrameConst.FRM_HEIGHT) {
                 dy = -Frog.SPRT_WH;
                 y = -Frog.SPRT_WH;
                 return;
@@ -189,7 +190,9 @@ public class Frog extends AbstractEntity implements Observer, CollidableObject, 
             ignitable.clear();
             this.health -= ignitable.getDamageValue();
             this.setInCollision(false);
-            if (this.health <= 0) { this.clear(); }
+            if (this.health <= 0) { 
+                this.clear(); 
+            }
         }
     }
     
@@ -247,6 +250,10 @@ public class Frog extends AbstractEntity implements Observer, CollidableObject, 
     @Override
     public Rectangle getRectangle(final AbstractEntity entity) {
         return null;
+    }
+    
+    public String getABSTRACTRef() {
+        return this.ABSTRACT_REF;
     }
     //</editor-fold>
     

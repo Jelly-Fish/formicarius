@@ -29,7 +29,7 @@
  * POSSIBILITY OF SUCH DAMAGE.
  * *****************************************************************************
  */
-package fr.com.jellyfish.jfgformicarius.formicarius.entities.biologicals;
+package fr.com.jellyfish.jfgformicarius.formicarius.entities.characters;
 
 import fr.com.jellyfish.jfgformicarius.formicarius.constants.FrameConst;
 import fr.com.jellyfish.jfgformicarius.formicarius.constants.MvtConst;
@@ -165,9 +165,9 @@ public class Mage extends Knight {
 
         // TODO : below, fix. Use Rectangle for triggering fire(). 
         final Rectangle obsRectW = new Rectangle(0, eY + 4,
-                FrameConst.FRM_WIDTH_800, observable.observedWH()[1] - 8);
+                FrameConst.FRM_WIDTH, observable.observedWH()[1] - 8);
         final Rectangle obsRectH = new Rectangle(eX + 4, 0,
-                observable.observedWH()[0] - 8, FrameConst.FRM_HEIGHT_600);
+                observable.observedWH()[0] - 8, FrameConst.FRM_HEIGHT);
 
         if (obsRectH.intersects(this.getRectangle())) {
             updateMvtVertical(eY);

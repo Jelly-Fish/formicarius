@@ -29,7 +29,7 @@
  * POSSIBILITY OF SUCH DAMAGE.
  * *****************************************************************************
  */
-package fr.com.jellyfish.jfgformicarius.formicarius.entities.biologicals;
+package fr.com.jellyfish.jfgformicarius.formicarius.entities.characters;
 
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.abstractentities.AbstractEntity;
 import fr.com.jellyfish.jfgformicarius.formicarius.constants.AnimationConst;
@@ -114,8 +114,8 @@ public class MainCharacter extends AbstractEntity implements XYObservable {
      * @param ref
      */
     public MainCharacter(final Game game, final String sprts, final String effectSprts,
-            final int frameCount, final int x, final int y, final ZonePosition zonePosition,
-            final Cat cat, final String ref) {
+            final int frameCount, final int x, final int y, 
+            final ZonePosition zonePosition, final String ref) {
         super(game, null, x, y, MvtConst.DOWN, ref);
         
         this.currentZonePosition = zonePosition;
@@ -140,7 +140,6 @@ public class MainCharacter extends AbstractEntity implements XYObservable {
         this.statusHelper = new MainCharacterStatusHelper(game, 
             this.statusFrame.getStaminaFrame().getDeffinedWidth(),
             this.statusFrame.getHealthFrame().getDeffinedWidth());
-        this.statusHelper.setCat(cat);
         init();
         setAnimeUpdateRequired(false);
     }
@@ -151,11 +150,6 @@ public class MainCharacter extends AbstractEntity implements XYObservable {
      * Prior initialization.
      */
     private void init() {
-
-        // Add Cat observes MagicalHumanoid :
-        if (this.statusHelper.getCat() != null) {
-            this.statusHelper.getCat().setObservableMaster(MainCharacter.class.getSimpleName(), this);
-        }
         
         this.spawnMvt = MvtConst.DOWN;
         /////// INIT Ignitable ENT /////////////////////////////////////////////
@@ -249,13 +243,6 @@ public class MainCharacter extends AbstractEntity implements XYObservable {
 
     //<editor-fold defaultstate="collapsed" desc="overriden methods">
     @Override
-    public void callEntity() {
-        if (this.statusHelper.getCat() != null) {
-            this.statusHelper.getCat().reachMasterEntityCoordinates();
-        }
-    }
-    
-    @Override
     public int[] observedXY() {
         if (this != null) {
             return new int[]{(int) x, (int) y};
@@ -329,21 +316,15 @@ public class MainCharacter extends AbstractEntity implements XYObservable {
             // necessary, set new ZonePosition to this. Redo background tilling :
             // remove, append to EntityHelper's tile entities.
             game.getEntityHelper().getFader().fade();
-            x = FrameConst.FRM_WIDTH_800 - MainCharacter.SPRT_W;
-            if (this.statusHelper.getCat() != null) {
-                this.statusHelper.getCat().followTrasition(MvtConst.LEFT, x, y, MainCharacter.SPRT_W, MainCharacter.SPRT_H);
-            }
+            x = FrameConst.FRM_WIDTH - MainCharacter.SPRT_W;
             this.transitionAction.triggerTransition();
             return;
         }
 
         // if we're moving right and have reached the edge of the screen.
-        if (dx > 0 && x > FrameConst.FRM_WIDTH_800 - MainCharacter.SPRT_W) {
+        if (dx > 0 && x > FrameConst.FRM_WIDTH - MainCharacter.SPRT_W) {
             game.getEntityHelper().getFader().fade();
             x = 0;
-            if (this.statusHelper.getCat() != null) {
-                this.statusHelper.getCat().followTrasition(MvtConst.RIGHT, x, y, MainCharacter.SPRT_W, MainCharacter.SPRT_H);
-            }
             this.transitionAction.triggerTransition();
             return;
         }
@@ -351,21 +332,15 @@ public class MainCharacter extends AbstractEntity implements XYObservable {
         // if we're moving down and have reached the edge of the screen.
         if (dy < 0 && y < 0) {
             game.getEntityHelper().getFader().fade();
-            y = FrameConst.FRM_HEIGHT_600 - MainCharacter.SPRT_H;
-            if (this.statusHelper.getCat() != null) {
-                this.statusHelper.getCat().followTrasition(MvtConst.UP, x, y, MainCharacter.SPRT_W, MainCharacter.SPRT_H);
-            }
+            y = FrameConst.FRM_HEIGHT - MainCharacter.SPRT_H;
             this.transitionAction.triggerTransition();
             return;
         }
 
         // if we're moving up and have reached the edge of the screen.
-        if (dy > 0 && y > FrameConst.FRM_HEIGHT_600 - SPRT_H) {
+        if (dy > 0 && y > FrameConst.FRM_HEIGHT - SPRT_H) {
             game.getEntityHelper().getFader().fade();
             y = 0;
-            if (this.statusHelper.getCat() != null) {
-                this.statusHelper.getCat().followTrasition(MvtConst.DOWN, x, y, MainCharacter.SPRT_W, MainCharacter.SPRT_H);
-            }
             this.transitionAction.triggerTransition();
             return;
         }

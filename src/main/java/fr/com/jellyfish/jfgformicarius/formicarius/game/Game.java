@@ -47,7 +47,7 @@ import static org.lwjgl.opengl.GL11.*;
 import org.newdawn.slick.opengl.ImageIOImageData;
 import fr.com.jellyfish.jfgformicarius.formicarius.constants.FrameConst;
 import fr.com.jellyfish.jfgformicarius.formicarius.constants.IconConst;
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.biologicals.MainCharacter;
+import fr.com.jellyfish.jfgformicarius.formicarius.entities.characters.MainCharacter;
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.tiles.CaveEntrance;
 import fr.com.jellyfish.jfgformicarius.formicarius.exceptions.InitializationException;
 import fr.com.jellyfish.jfgformicarius.formicarius.helpers.DrawingHelper;
@@ -142,8 +142,8 @@ public class Game {
         this.timeHelper = new TimeVariablesHelper();
         this.inGameInputHelper = new InGameInputHelper(this);
         this.libraryInputHelper = new LibraryInputHelper(this);
-        this.lightingHelper = new GLLightHelper(this, FrameConst.FRM_WIDTH_800,
-            FrameConst.FRM_HEIGHT_600);
+        this.lightingHelper = new GLLightHelper(this, FrameConst.FRM_WIDTH,
+            FrameConst.FRM_HEIGHT);
         Game.running = init();
     }
     //</editor-fold>
@@ -323,13 +323,13 @@ public class Game {
             
             glLoadIdentity();
 
-            glOrtho(0, FrameConst.FRM_WIDTH_800, FrameConst.FRM_HEIGHT_600, 0, -1, 1);
+            glOrtho(0, FrameConst.FRM_WIDTH, FrameConst.FRM_HEIGHT, 0, -1, 1);
             glMatrixMode(GL_MODELVIEW);
             glLoadIdentity();
-            glViewport(0, 0, FrameConst.FRM_WIDTH_800, FrameConst.FRM_HEIGHT_600);
+            glViewport(0, 0, FrameConst.FRM_WIDTH, FrameConst.FRM_HEIGHT);
             
             glEnable(GL_STENCIL_TEST);
-            glOrtho(0, FrameConst.FRM_WIDTH_800, FrameConst.FRM_HEIGHT_600, 0, 1, -1);
+            glOrtho(0, FrameConst.FRM_WIDTH, FrameConst.FRM_HEIGHT, 0, 1, -1);
             glMatrixMode(GL_MODELVIEW);
             glEnable(GL_STENCIL_TEST);
             glClearColor(0, 0, 0, 0);
@@ -400,7 +400,7 @@ public class Game {
             });*/
             
             // Updated method :
-            Display.setDisplayMode(new DisplayMode(FrameConst.FRM_WIDTH_800, FrameConst.FRM_HEIGHT_600));
+            Display.setDisplayMode(new DisplayMode(FrameConst.FRM_WIDTH, FrameConst.FRM_HEIGHT));
             Display.setVSyncEnabled(true);
             return true;
 

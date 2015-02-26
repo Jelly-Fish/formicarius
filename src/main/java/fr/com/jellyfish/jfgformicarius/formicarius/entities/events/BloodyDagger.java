@@ -177,8 +177,8 @@ public class BloodyDagger extends AbstractEntity implements Ignitable {
             return;
         }
 
-        if (((dx > 0 + SPRT_W) && (x > FrameConst.FRM_WIDTH_800 + SPRT_W))
-                || ((dy > 0 + SPRT_H) && (y > FrameConst.FRM_HEIGHT_600 + SPRT_H))) {
+        if (((dx > 0 + SPRT_W) && (x > FrameConst.FRM_WIDTH + SPRT_W))
+                || ((dy > 0 + SPRT_H) && (y > FrameConst.FRM_HEIGHT + SPRT_H))) {
             clear();
             return;
         }

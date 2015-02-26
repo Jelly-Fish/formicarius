@@ -32,7 +32,7 @@ package fr.com.jellyfish.jfgformicarius.formicarius.helpers.input;
 
 import fr.com.jellyfish.jfgformicarius.formicarius.constants.FrameConst;
 import fr.com.jellyfish.jfgformicarius.formicarius.constants.MvtConst;
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.biologicals.MainCharacter;
+import fr.com.jellyfish.jfgformicarius.formicarius.entities.characters.MainCharacter;
 import fr.com.jellyfish.jfgformicarius.formicarius.game.Game;
 import fr.com.jellyfish.jfgformicarius.formicarius.staticvars.StaticFrameVars;
 import fr.com.jellyfish.jfgformicarius.formicarius.utils.InputUtils;
@@ -65,18 +65,18 @@ public class InGameInputHelper extends AbstractInput {
         StaticFrameVars.mouseDX = Mouse.getDX();
         StaticFrameVars.mouseDY = Mouse.getDY();
         StaticFrameVars.mouseX = Mouse.getX();
-        StaticFrameVars.mouseY = FrameConst.FRM_HEIGHT_600 - Mouse.getY();
+        StaticFrameVars.mouseY = FrameConst.FRM_HEIGHT - Mouse.getY();
         
         if (!InGameInputHelper.gamePaused) {
             if (Mouse.isButtonDown(0)) {
                 StaticFrameVars.mouseClickX = Mouse.getX();
-                StaticFrameVars.mouseClickY = FrameConst.FRM_HEIGHT_600 - Mouse.getY();
+                StaticFrameVars.mouseClickY = FrameConst.FRM_HEIGHT - Mouse.getY();
                 this.game.getEntityHelper().getMainEntities().get(MainCharacter.class.getSimpleName()).mouseClicked(
                     StaticFrameVars.mouseClickX, StaticFrameVars.mouseClickY);
 
             } else if (Mouse.isButtonDown(1)) {
                 StaticFrameVars.mouseClickX = Mouse.getX();
-                StaticFrameVars.mouseClickY = FrameConst.FRM_HEIGHT_600 - Mouse.getY();
+                StaticFrameVars.mouseClickY = FrameConst.FRM_HEIGHT - Mouse.getY();
                 this.game.getEntityHelper().getMainEntities().get(MainCharacter.class.getSimpleName()).fire();
             }
         }

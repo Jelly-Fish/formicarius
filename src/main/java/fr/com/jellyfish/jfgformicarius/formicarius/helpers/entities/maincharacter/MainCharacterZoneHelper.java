@@ -39,6 +39,7 @@ import fr.com.jellyfish.jfgformicarius.formicarius.exceptions.ZoneBuildException
 import fr.com.jellyfish.jfgformicarius.formicarius.game.Game;
 import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.TransitionAction;
 import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.ZoneBuilder;
+import fr.com.jellyfish.jfgformicarius.formicarius.misc.RandomDefinition;
 import fr.com.jellyfish.jfgformicarius.formicarius.staticvars.StaticRandomValues;
 import fr.com.jellyfish.jfgformicarius.formicarius.world.zone.Zone;
 import java.util.ArrayList;
@@ -98,21 +99,12 @@ public class MainCharacterZoneHelper implements TransitionAction {
         game.clearEntityCollectionsForTransition();
 
         // Build new zone :
-        final HashMap<String, int[]> randomDefinitions = new HashMap<>();
-        randomDefinitions.put(Tree.class.getSimpleName(),
-                new int[]{StaticRandomValues.bare_tree_50x100_rand_max_many,
-                    StaticRandomValues.bare_tree_50x100_rand_expected});
-        final List<AbstractEntity> zoneActiveEntities = new ArrayList<>();
-        zoneActiveEntities.addAll(this.game.getEntityHelper().getMainEntities().values());
-        zoneActiveEntities.addAll(this.game.getEntityHelper().getInteractableEntities().values());
-        AbstractEntity[] array = new AbstractEntity[zoneActiveEntities.size()];
-        for (int i = 0; i < array.length; ++i) {
-            array[i] = zoneActiveEntities.get(i);
-        }
-        
         try {
-            zoneBuilder = new Zone(randomDefinitions);
-            zoneBuilder.buildZone(array);
+            zoneBuilder = new Zone(new RandomDefinition(
+                StaticRandomValues.bare_tree_50x100_rand_max_many, 
+                StaticRandomValues.bare_tree_50x100_rand_expected, 
+                Tree.class));
+            zoneBuilder.buildZone(game.getEntityHelper().returnActiveEntititesForZoneBuild());
             game.getEntityHelper().getObjectEntities().putAll(zoneBuilder.getGlobals());
             game.getEntityHelper().getStaticEntities().putAll(zoneBuilder.getStatics());
         } catch (final ZoneBuildException zbex) {

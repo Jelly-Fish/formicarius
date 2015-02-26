@@ -205,6 +205,19 @@ public class EntityHelper {
     public MainCharacter getMainCharacter() {
         return (MainCharacter)mainEntities.get(MainCharacter.class.getSimpleName());
     }
+    
+    /**
+     * When building Zone randomly, some entites must be removed or trimed in order
+     * to avoid collision or overlapping.
+     * @return AbstractEntity[] All active and necessary to display AbstractEntity.
+     */
+    public AbstractEntity[] returnActiveEntititesForZoneBuild() {
+        
+        final List<AbstractEntity> zoneActiveEntities = new ArrayList<>(this.mainEntities.values());
+        zoneActiveEntities.addAll(this.interactableEntities.values());
+        
+        return zoneActiveEntities.toArray(new AbstractEntity[zoneActiveEntities.size()]);
+    }
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="getters & setters">

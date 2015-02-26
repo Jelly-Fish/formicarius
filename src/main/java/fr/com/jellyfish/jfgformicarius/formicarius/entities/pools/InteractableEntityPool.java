@@ -38,7 +38,6 @@ import fr.com.jellyfish.jfgformicarius.formicarius.entities.characters.Frog;
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.characters.Mage;
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.characters.Spider;
 import fr.com.jellyfish.jfgformicarius.formicarius.game.Game;
-import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.CollidableObject;
 import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.RandomAccessible;
 import fr.com.jellyfish.jfgformicarius.formicarius.staticvars.StaticSpriteVars;
 import fr.com.jellyfish.jfgformicarius.formicarius.utils.RandomUtils;

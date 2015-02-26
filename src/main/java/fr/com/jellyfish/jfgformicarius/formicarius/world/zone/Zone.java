@@ -39,6 +39,7 @@ import fr.com.jellyfish.jfgformicarius.formicarius.entities.tiles.vegetation.Tre
 import fr.com.jellyfish.jfgformicarius.formicarius.exceptions.ZoneBuildException;
 import fr.com.jellyfish.jfgformicarius.formicarius.game.Game;
 import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.ZoneBuilder;
+import fr.com.jellyfish.jfgformicarius.formicarius.misc.RandomDefinition;
 import fr.com.jellyfish.jfgformicarius.formicarius.staticvars.StaticSpriteVars;
 import fr.com.jellyfish.jfgformicarius.formicarius.utils.CollisionUtils;
 import fr.com.jellyfish.jfgformicarius.formicarius.utils.RandomUtils;
@@ -61,7 +62,7 @@ public class Zone implements ZoneBuilder {
     public final Map<String, AbstractEntity> globals;
     public final Map<String, AbstractEntity> statics;
     public final List<Background> backgroundTiles = new ArrayList<>();
-    private final Map<String, int[]> randomDefinitions;
+    private final RandomDefinition randomDefinitions;
 
     /**
      * Constructor.
@@ -75,14 +76,13 @@ public class Zone implements ZoneBuilder {
      * @throws
      * fr.com.jellyfish.jfgformicarius.formicarius.exceptions.ZoneBuildException
      */
-    public Zone(final HashMap<String, int[]> randomDefinitions)
+    public Zone(final RandomDefinition randomDefinitions)
             throws ZoneBuildException {
 
         interactables = new HashMap<>();
         globals = new ConcurrentHashMap<>();
         statics = new ConcurrentHashMap<>();
-        this.randomDefinitions = new HashMap<>();
-        this.randomDefinitions.putAll(randomDefinitions);
+        this.randomDefinitions = randomDefinitions;
     }
 
     /**
@@ -98,8 +98,7 @@ public class Zone implements ZoneBuilder {
         ////////////////////////////////////////////////////////////////////////
         // Build trees :
         for (AbstractEntity ent : ZoneGenerationUtils.buildRandomTerrainBareTrees(FrameConst.FRM_WIDTH, FrameConst.FRM_HEIGHT,
-                randomDefinitions.get(Tree.class.getSimpleName())[0],
-                randomDefinitions.get(Tree.class.getSimpleName())[1])) {
+                randomDefinitions.MAX, randomDefinitions.AVERAGE)) {
             this.globals.put(String.valueOf(++index), ent);
         }
         index = -1;
@@ -109,8 +108,7 @@ public class Zone implements ZoneBuilder {
         for (AbstractEntity ent : ZoneGenerationUtils.appendRandomTerrainNonCollibableElements(FrameConst.FRM_WIDTH, FrameConst.FRM_HEIGHT,
                 SpriteUtils.getSprite(Game.getInstance().getTextureLoader(),
                         StaticSpriteVars.mushrooms_brown_25x25),
-                randomDefinitions.get(Tree.class.getSimpleName())[0] * 32,
-                randomDefinitions.get(Tree.class.getSimpleName())[1] + 10)) {
+                randomDefinitions.MAX * 32, randomDefinitions.AVERAGE + 10)) {
             if (!CollisionUtils.inCollision(this.statics, ent)) {
                 this.statics.put(String.valueOf(++index), ent);
             }
@@ -118,8 +116,7 @@ public class Zone implements ZoneBuilder {
         for (AbstractEntity ent : ZoneGenerationUtils.appendRandomTerrainNonCollibableElements(FrameConst.FRM_WIDTH, FrameConst.FRM_HEIGHT,
                 SpriteUtils.getSprite(Game.getInstance().getTextureLoader(),
                         StaticSpriteVars.mushrooms_red_25x25),
-                randomDefinitions.get(Tree.class.getSimpleName())[0] * 42,
-                randomDefinitions.get(Tree.class.getSimpleName())[1] + 10)) {
+                randomDefinitions.MAX * 42, randomDefinitions.AVERAGE + 10)) {
             if (!CollisionUtils.inCollision(this.statics, ent)) {
                 this.statics.put(String.valueOf(++index), ent);
             }

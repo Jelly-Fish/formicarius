@@ -183,12 +183,17 @@ public class PlasmaBall extends AbstractEntity implements Ignitable, CollidableO
      */
     @Override
     public void ignite(final int x, final int y, final int srcMvt) {
+        
         // Update location. Add to game's entity map. Set visible and 
         // candidate for remove from game's Entity main hashmap.
-        if (!this.ignited && 
-            this.game.getEntityHelper().getMainCharacter().getStatusFrame(
-                ).getStaminaFrame().getDeffinedWidth() > 0.0f &&
-            this.stopwatch.hasReachedMaxElapsedMS()) {
+        
+        if (this.game.getEntityHelper().getMainCharacter().getStatusFrame(
+                ).getStaminaFrame().getDeffinedWidth() <= 0.0f &&
+                this.equals(this.game.getEntityHelper().getMainCharacter().getIgnitable())) {
+            return;
+        }
+        
+        if (!this.ignited && this.stopwatch.hasReachedMaxElapsedMS()) {
             initMvt(srcMvt);
             this.x = x;
             this.y = y + 8;

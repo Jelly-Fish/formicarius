@@ -53,7 +53,6 @@ public class IceDagger extends AbstractEntity implements Ignitable {
 
     //<editor-fold defaultstate="collapsed" desc="variables">
     public static final float DAMAGE_VALUE = 1.5f;
-    private String mapRef = null;
     public static final int SPRT_W = 34;
     public static final int SPRT_H = 13;
     public static final float DAGGER_SPEED = 420;
@@ -129,8 +128,8 @@ public class IceDagger extends AbstractEntity implements Ignitable {
     @Override
     public void clear() {
         // Remove from game AbstractEntity map.
-        if (game.accessGlobalEntities().containsKey(this.mapRef)) {
-            game.accessGlobalEntities().remove(this.mapRef);
+        if (game.accessGlobalEntities().containsKey(this.ABSTRACT_REF)) {
+            game.accessGlobalEntities().remove(this.ABSTRACT_REF);
         }
         this.ignited = false;
         sprite = frames[0];
@@ -155,12 +154,11 @@ public class IceDagger extends AbstractEntity implements Ignitable {
             this.y = y + 16;
             this.ignited = true;
             sprite = frames[srcMvt - 1];
-            this.mapRef = this.ABSTRACT_REF + occurs;
             ++occurs;
             game.getSoundManager().playEffect(StaticSoundVars.bloody_dagger);
             setAnimeUpdateRequired(true);
             setInCollision(false);
-            this.game.accessGlobalEntities().put(this.mapRef, this);
+            this.game.accessGlobalEntities().put(this.ABSTRACT_REF, this);
         }
     }
 

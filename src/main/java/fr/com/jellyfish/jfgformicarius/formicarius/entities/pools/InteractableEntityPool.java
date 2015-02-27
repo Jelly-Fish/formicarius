@@ -35,6 +35,7 @@ import fr.com.jellyfish.jfgformicarius.formicarius.constants.FrameConst;
 import fr.com.jellyfish.jfgformicarius.formicarius.constants.MvtConst;
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.abstractentities.AbstractEntity;
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.characters.Frog;
+import fr.com.jellyfish.jfgformicarius.formicarius.entities.characters.Knight;
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.characters.Mage;
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.characters.Spider;
 import fr.com.jellyfish.jfgformicarius.formicarius.game.Game;
@@ -95,15 +96,21 @@ public class InteractableEntityPool extends RandomAccessible {
      */
     private void initComplexeInteractablePool() {
         
-        final Mage mage = new Mage (Game.getInstance(), StaticSpriteVars.mage,
-            16, 
-            RandomUtils.randInt(0, FrameConst.FRM_WIDTH - Mage.SPRT_W),
-            220, MvtConst.LEFT, Mage.class.getSimpleName());
-        randomEntityPool.put(mage.ABSTRACT_REF, mage);
+        final int result = RandomUtils.randInt(1, 3);
         
-        /*final Knight knight = new Knight(Game.getInstance(), StaticSpriteVars.golbez,
-            20, 400, 220, MvtConst.LEFT, Knight.class.getSimpleName());
-        randomEntityPool.put(knight.ABSTRACT_REF, knight);*/
+        if (result == 2) {
+            
+            final Mage mage = new Mage (Game.getInstance(), StaticSpriteVars.mage,
+                16, 
+                RandomUtils.randInt(0, FrameConst.FRM_WIDTH - Mage.SPRT_W),
+                220, MvtConst.LEFT, Mage.class.getSimpleName());
+            randomEntityPool.put(mage.ABSTRACT_REF, mage);
+        } else if (result == 3) {
+        
+            final Knight knight = new Knight(Game.getInstance(), StaticSpriteVars.golbez,
+                20, 400, 220, MvtConst.LEFT, Knight.class.getSimpleName());
+            randomEntityPool.put(knight.ABSTRACT_REF, knight);
+        }
         
     }
     
@@ -112,24 +119,17 @@ public class InteractableEntityPool extends RandomAccessible {
      */
     private void initInteractableEntityPool() {
         
-        int frogMvt = Frog.occurs % 2 == 0 ? MvtConst.LEFT : MvtConst.RIGHT;
-        Frog frog = new Frog(Game.getInstance(), String.format(StaticSpriteVars.red_frog_left, 0),
+        int frogMvt = MvtConst.LEFT;
+        Frog frog = null;
+        
+        for (int i = 0; i < 3; i++) {
+            frogMvt = Frog.occurs % 2 == 0 ? MvtConst.LEFT : MvtConst.RIGHT;
+            frog = new Frog(Game.getInstance(), String.format(StaticSpriteVars.red_frog_left, 0),
                 RandomUtils.randInt(0, FrameConst.FRM_WIDTH - Frog.SPRT_WH), 
                 RandomUtils.randInt(0, ((FrameConst.FRM_HEIGHT - 100) / 100)) * 100,
                 Frog.RED, frogMvt);
-        randomEntityPool.put(frog.getABSTRACTRef(), frog);
-        frogMvt = Frog.occurs % 2 == 0 ? MvtConst.LEFT : MvtConst.RIGHT;
-        frog = new Frog(Game.getInstance(), String.format(StaticSpriteVars.red_frog_left, 0),
-                RandomUtils.randInt(0, FrameConst.FRM_WIDTH - Frog.SPRT_WH), 
-                RandomUtils.randInt(0, ((FrameConst.FRM_HEIGHT - 100) / 100)) * 100,
-                Frog.RED, frogMvt);
-        randomEntityPool.put(frog.getABSTRACTRef(), frog);
-        frogMvt = Frog.occurs % 2 == 0 ? MvtConst.LEFT : MvtConst.RIGHT;
-        frog = new Frog(Game.getInstance(), String.format(StaticSpriteVars.red_frog_left, 0),
-                RandomUtils.randInt(0, FrameConst.FRM_WIDTH - Frog.SPRT_WH), 
-                RandomUtils.randInt(0, ((FrameConst.FRM_HEIGHT - 100) / 100)) * 100,
-                Frog.RED, frogMvt);
-        randomEntityPool.put(frog.getABSTRACTRef(), frog);
+            randomEntityPool.put(frog.getABSTRACTRef(), frog);
+        }
         
         /*Spider spider = new Spider(Game.getInstance(), 
             String.format(StaticSpriteVars.spider, 0), 100, 210);

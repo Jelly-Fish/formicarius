@@ -110,7 +110,6 @@ public class MainCharacter extends AbstractEntity implements XYObservable {
      * @param frameCount
      * @param y
      * @param zonePosition
-     * @param cat
      * @param ref
      */
     public MainCharacter(final Game game, final String sprts, final String effectSprts,

@@ -311,11 +311,6 @@ public class PlasmaBall extends AbstractEntity implements Ignitable, CollidableO
     public void setIgnited(final boolean ignited) {
         this.ignited = ignited;
     }
-    
-    @Override
-    public String getAbstractRef() {
-        return this.ABSTRACT_REF;
-    }
     //</editor-fold>
 
 }

@@ -366,7 +366,7 @@ public class Knight extends AbstractEntity implements Interactable, CollidableOb
         if (game.getEntityHelper().getInteractableEntities().containsKey(this.ABSTRACT_REF)) {
             game.getEntityHelper().getInteractableEntities().remove(this.ABSTRACT_REF);
             this.ignitable.clear();
-            game.getEntityHelper().getInteractableEntities().remove(this.ignitable.getAbstractRef());
+            game.getEntityHelper().getInteractableEntities().remove(((AbstractEntity)this.ignitable).ABSTRACT_REF);
         }
 
         this.health = HEALTH_VALUE;

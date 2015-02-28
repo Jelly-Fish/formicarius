@@ -209,11 +209,6 @@ public class IceDagger extends AbstractEntity implements Ignitable {
     public float getDamageValue() {
         return IceDagger.DAMAGE_VALUE;
     }
-
-    @Override
-    public String getAbstractRef() {
-        return this.ABSTRACT_REF;
-    }
     //</editor-fold>
     
 }

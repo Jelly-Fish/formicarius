@@ -1,6 +1,6 @@
 /**
  * *****************************************************************************
- * Copyright (c) 2014, Thomas.H Warner. All rights reserved.
+ * Copyright (c) 2014 - 2015, Thomas.H Warner. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
@@ -26,46 +26,27 @@
  * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
  * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE. 
- ******************************************************************************
+ * POSSIBILITY OF SUCH DAMAGE.
+ * *****************************************************************************
  */
-package fr.com.jellyfish.jfgformicarius.formicarius.interfaces;
+package fr.com.jellyfish.jfgformicarius.formicarius.staticvars;
 
 /**
  *
  * @author thw
  */
-public interface Ignitable {
+public class StaticEntityReferences {
     
     /**
-     * Is entity ignited/fired ?
-     * @return boolean.
+     * Cave entities references.
      */
-    public boolean isIgnited();
-    
-    /**
-     * Ignite or spawn entity to x y position.
-     * @param x
-     * @param y 
-     * @param srcMvt AbstractEntity mvt direction when triggered.
-     */
-    void ignite(final int x, final int y, final int srcMvt);
-    
-    /**
-     * Prevent drawing/updating.
-     */
-    void clear();
-    
-    /**
-     * Init mvt direction.
-     * @param direction 
-     */
-    void initMvt(final int direction);
-    
-    /**
-     * 
-     * @return 
-     */
-    float getDamageValue();
+    public static final String TOP_LEFT_CORNER_REF = "top-left";
+    public static final String TOP_RIGHT_CORNER_REF = "top-right";
+    public static final String BOTTOM_LEFT_CORNER_REF = "bottom-left";
+    public static final String BOTTOM_RIGHT_CORNER_REF = "bottom-right";
+    public static final String TOP_REF = "top";
+    public static final String BOTTOM_REF = "bottom";
+    public static final String LEFT_REF = "left";
+    public static final String RIGHT_REF = "right";
     
 }

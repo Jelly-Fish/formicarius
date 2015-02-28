@@ -215,11 +215,6 @@ public class BloodyDagger extends AbstractEntity implements Ignitable {
     public float getDamageValue() {
         return BloodyDagger.DAMAGE_VALUE;
     }
-    
-    @Override
-    public String getAbstractRef() {
-        return this.ABSTRACT_REF;
-    }
     //</editor-fold>
     
 }

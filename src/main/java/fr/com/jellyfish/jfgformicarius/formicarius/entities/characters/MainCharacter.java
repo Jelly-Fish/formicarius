@@ -85,7 +85,7 @@ public class MainCharacter extends AbstractEntity implements XYObservable {
     
     /**
      * Class Helper.
-     * @see MainCharacterZoneHelper
+     * @see MainCharacterZoneHelper for example.
      */
     private TransitionAction transitionAction;
     
@@ -207,7 +207,7 @@ public class MainCharacter extends AbstractEntity implements XYObservable {
             }
             // Also remove this Spawnable instance :
             this.game.getEntityHelper().getInteractableEntities().remove(
-                this.statusHelper.getIgnitable().getAbstractRef());
+                    ((AbstractEntity)this.statusHelper.getIgnitable()).ABSTRACT_REF);
             // Finally swap instances. Spawnable is nowready for spawn(...) method call.
             ignitable.setInGameActive(true);
             this.statusHelper.setIgnitable((Ignitable) ignitable);
@@ -420,6 +420,10 @@ public class MainCharacter extends AbstractEntity implements XYObservable {
     //<editor-fold defaultstate="collapsed" desc="getters & setters"> 
     public TransitionAction getTransitionAction() {
         return this.transitionAction;
+    }
+    
+    public void setTransitionAction(final TransitionAction transitionAction) {
+        this.transitionAction = transitionAction;
     }
     
     public StatusFrame getStatusFrame() {

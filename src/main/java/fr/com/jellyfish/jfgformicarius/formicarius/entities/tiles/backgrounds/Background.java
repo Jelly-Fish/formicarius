@@ -28,7 +28,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
  *******************************************************************************/
 
-package fr.com.jellyfish.jfgformicarius.formicarius.entities.tiles;
+package fr.com.jellyfish.jfgformicarius.formicarius.entities.tiles.backgrounds;
 
 import fr.com.jellyfish.jfgformicarius.formicarius.utils.SpriteUtils;
 import java.util.List;

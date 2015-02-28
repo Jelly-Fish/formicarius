@@ -33,7 +33,7 @@ package fr.com.jellyfish.jfgformicarius.formicarius.world.zone;
 
 import fr.com.jellyfish.jfgformicarius.formicarius.constants.FrameConst;
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.abstractentities.AbstractEntity;
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.tiles.Background;
+import fr.com.jellyfish.jfgformicarius.formicarius.entities.tiles.backgrounds.Background;
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.tiles.CaveEntrance;
 import fr.com.jellyfish.jfgformicarius.formicarius.exceptions.ZoneBuildException;
 import fr.com.jellyfish.jfgformicarius.formicarius.game.Game;

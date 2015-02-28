@@ -34,7 +34,7 @@ package fr.com.jellyfish.jfgformicarius.formicarius.helpers.entities;
 import fr.com.jellyfish.jfgformicarius.formicarius.constants.FrameConst;
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.abstractentities.AbstractEntity;
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.characters.MainCharacter;
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.tiles.Background;
+import fr.com.jellyfish.jfgformicarius.formicarius.entities.tiles.backgrounds.Background;
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.tiles.faders.AbstractFader;
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.tiles.faders.InFader;
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.tiles.faders.OutFader;

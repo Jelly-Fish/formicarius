@@ -105,4 +105,20 @@ public class StaticSpriteVars {
     public static final String health_value = "img/TILES/STATUSBAR/health_value.png";
     public static final String stamina_value = "img/TILES/STATUSBAR/stamina_value.png";
     
+    /***************************************************************************
+     * Cave assets/sprites.
+     **************************************************************************/
+    
+    /**
+     * Borders.
+     */
+    public static final String cave_border_top_left = "img/TILES/CAVE/top_left.png";
+    public static final String cave_border_top_right = "img/TILES/CAVE/top_right.png";
+    public static final String cave_border_bottom_left = "img/TILES/CAVE/bottom_left.png";
+    public static final String cave_border_bottom_right = "img/TILES/CAVE/bottom_right.png";
+    public static final String cave_border_bottom = "img/TILES/CAVE/bottom.png";
+    public static final String cave_border_top = "img/TILES/CAVE/top.png";
+    public static final String cave_border_left = "img/TILES/CAVE/left.png";
+    public static final String cave_border_right = "img/TILES/CAVE/right.png";
+    
 }

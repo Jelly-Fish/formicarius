@@ -194,11 +194,6 @@ public class Axe extends AbstractEntity implements Ignitable, CollidableObject {
     }
 
     @Override
-    public String getAbstractRef() { 
-        return this.ABSTRACT_REF;
-    }
-
-    @Override
     public void clear() {
         
         // Remove from game AbstractEntity map.

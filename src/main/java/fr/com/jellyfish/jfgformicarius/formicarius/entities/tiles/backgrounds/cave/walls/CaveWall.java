@@ -1,6 +1,6 @@
 /**
  * *****************************************************************************
- * Copyright (c) 2014, Thomas.H Warner. All rights reserved.
+ * Copyright (c) 2014 - 2015, Thomas.H Warner. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
@@ -26,46 +26,54 @@
  * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
  * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE. 
- ******************************************************************************
+ * POSSIBILITY OF SUCH DAMAGE.
+ * *****************************************************************************
  */
-package fr.com.jellyfish.jfgformicarius.formicarius.interfaces;
+package fr.com.jellyfish.jfgformicarius.formicarius.entities.tiles.backgrounds.cave.walls;
+
+import fr.com.jellyfish.jfgformicarius.formicarius.constants.MvtConst;
+import fr.com.jellyfish.jfgformicarius.formicarius.entities.abstractentities.AbstractEntity;
+import fr.com.jellyfish.jfgformicarius.formicarius.game.Game;
+import fr.com.jellyfish.jfgformicarius.formicarius.helpers.DrawingHelper;
+import fr.com.jellyfish.jfgformicarius.formicarius.texture.Sprite;
 
 /**
  *
  * @author thw
  */
-public interface Ignitable {
-    
+public class CaveWall extends AbstractEntity {
+
     /**
-     * Is entity ignited/fired ?
-     * @return boolean.
+     * 
      */
-    public boolean isIgnited();
-    
-    /**
-     * Ignite or spawn entity to x y position.
-     * @param x
-     * @param y 
-     * @param srcMvt AbstractEntity mvt direction when triggered.
-     */
-    void ignite(final int x, final int y, final int srcMvt);
-    
-    /**
-     * Prevent drawing/updating.
-     */
-    void clear();
-    
-    /**
-     * Init mvt direction.
-     * @param direction 
-     */
-    void initMvt(final int direction);
+    public static final int SPRT_WH = 50;
     
     /**
      * 
-     * @return 
+     * @param sprt
+     * @param x
+     * @param ref 
+     * @param y 
      */
-    float getDamageValue();
+    public CaveWall(final Sprite sprt, final int x, final int y, final String ref) {
+        super(Game.getInstance(), sprt, x, y, MvtConst.STILL, ref);
+    }
+
+    @Override
+    public void collideWith(AbstractEntity other) {
+    }
+
+    @Override
+    public void doLogic() {
+    }
+
+    @Override
+    public void beforeRender(final boolean force) {
+    }
+
+    @Override
+    public void afterRender(final boolean force) {
+        DrawingHelper.getInstance().getDrawableQueue().add(this);
+    }
     
 }

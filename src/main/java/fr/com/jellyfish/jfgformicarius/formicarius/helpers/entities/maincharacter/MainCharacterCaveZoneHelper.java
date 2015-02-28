@@ -32,15 +32,11 @@
 package fr.com.jellyfish.jfgformicarius.formicarius.helpers.entities.maincharacter;
 
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.characters.MainCharacter;
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.pools.InteractableEntityPool;
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.tiles.vegetation.Tree;
 import fr.com.jellyfish.jfgformicarius.formicarius.exceptions.ZoneBuildException;
 import fr.com.jellyfish.jfgformicarius.formicarius.game.Game;
 import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.TransitionAction;
 import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.ZoneBuilder;
-import fr.com.jellyfish.jfgformicarius.formicarius.misc.RandomDefinition;
-import fr.com.jellyfish.jfgformicarius.formicarius.staticvars.StaticRandomValues;
-import fr.com.jellyfish.jfgformicarius.formicarius.world.zone.Zone;
+import fr.com.jellyfish.jfgformicarius.formicarius.world.zone.cave.CaveZone;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -48,8 +44,8 @@ import java.util.logging.Logger;
  *
  * @author thw
  */
-public class MainCharacterZoneHelper implements TransitionAction {
-    
+public class MainCharacterCaveZoneHelper implements TransitionAction {
+       
     /**
      * MainCharacter instance.
      */
@@ -64,24 +60,21 @@ public class MainCharacterZoneHelper implements TransitionAction {
      * ZoneBuilder instance.
      */
     private ZoneBuilder zoneBuilder;
-    
+
     /**
      * 
      * @param mainCharacter
      * @param game 
      */
-    public MainCharacterZoneHelper(final MainCharacter mainCharacter, final Game game) {
+    public MainCharacterCaveZoneHelper(final MainCharacter mainCharacter, final Game game) {
         this.mainCharacter = mainCharacter;
         this.game = game;
     }
     
-    /**
-     * Clear maps for new Zone or new Zone transition.
-     */
     @Override
     public void triggerTransition() {
-
-        // Clear Spawnable :
+        
+         // Clear Spawnable :
         if (mainCharacter.getSpawnable() != null && mainCharacter.getSpawnable().isSpawned()) {
             mainCharacter.getSpawnable().clear();
         }
@@ -93,33 +86,14 @@ public class MainCharacterZoneHelper implements TransitionAction {
         // Clear entity helperscollections : objects, iteractable + all entities
         // other than main character and cat :
         game.clearEntityCollectionsForTransition();
-
-        // Build new zone :
+        
         try {
-            zoneBuilder = new Zone(new RandomDefinition(
-                StaticRandomValues.bare_tree_50x100_rand_max_many, 
-                StaticRandomValues.bare_tree_50x100_rand_expected, 
-                Tree.class));
-            zoneBuilder.buildZone(game.getEntityHelper().returnActiveEntititesForZoneBuild());
+            zoneBuilder = new CaveZone();
+            zoneBuilder.buildZone(null);
             game.getEntityHelper().getObjectEntities().putAll(zoneBuilder.getGlobals());
-            game.getEntityHelper().getStaticEntities().putAll(zoneBuilder.getStatics());
-        } catch (final ZoneBuildException zbex) {
-            Logger.getLogger(MainCharacter.class.getName()).log(Level.SEVERE, null, zbex);
+        } catch (final ZoneBuildException ex) {
+            Logger.getLogger(MainCharacterCaveZoneHelper.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-        // Fill the following HashMap with randomly accessed pool of Interactable
-        // class instances. /!\ before trim entities for collisions :
-        // remove entities in collision.
-        game.getEntityHelper().getInteractableEntities().putAll(
-            InteractableEntityPool.getInstance().getRandomSubPool());
-    }
-    
-    public ZoneBuilder getZoneBuilder() {
-        return zoneBuilder;
-    }
-
-    public void setZoneBuilder(ZoneBuilder zoneBuilder) {
-        this.zoneBuilder = zoneBuilder;
     }
     
 }

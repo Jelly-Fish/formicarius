@@ -36,6 +36,7 @@ import fr.com.jellyfish.jfgformicarius.formicarius.entities.abstractentities.Abs
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.characters.MainCharacter;
 import fr.com.jellyfish.jfgformicarius.formicarius.game.Game;
 import fr.com.jellyfish.jfgformicarius.formicarius.helpers.DrawingHelper;
+import fr.com.jellyfish.jfgformicarius.formicarius.helpers.entities.maincharacter.MainCharacterCaveZoneHelper;
 import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.CollidableObject;
 import fr.com.jellyfish.jfgformicarius.formicarius.texture.Sprite;
 import java.awt.Rectangle;
@@ -45,19 +46,20 @@ import java.awt.Rectangle;
  * @author thw
  */
 public class CaveEntrance extends AbstractEntity implements CollidableObject {
-    
+
     /**
      * Sprite size.
      */
     public static final int SPRT_WH = 60;
-    
+
     /**
-     * 
+     *
      */
     public static final String REF = "cave_entrance";
-    
+
     /**
      * constructor.
+     *
      * @param game
      * @param sprite
      * @param x
@@ -68,35 +70,42 @@ public class CaveEntrance extends AbstractEntity implements CollidableObject {
     }
     
     @Override
-    public void collideWith(final AbstractEntity other) { 
+    public void collideWith(final AbstractEntity other) {        
         if (other instanceof MainCharacter && 
-            ((MainCharacter)other).getRectangle().intersects(this.getRectangle())) {
+                ((MainCharacter) other).getRectangle().intersects(this.getRectangle())) {
             /**
-             * Then change environment for cave scenarios. 
-             * Affect new TransitionAction class to MainCharacter.
+             * Then change environment for cave scenarios. Affect new
+             * TransitionAction class to MainCharacter.
+             *
              * @see TransitionAction
              * @see MainCharacterZoneHelper
              */
+            ((MainCharacter) other).setTransitionAction(
+                    new MainCharacterCaveZoneHelper((MainCharacter) other, game));
+            game.getEntityHelper().getFader().fade();
+            ((MainCharacter) other).getTransitionAction().triggerTransition();
         }
     }
-
+    
     @Override
-    public void doLogic() { }
-
+    public void doLogic() {
+    }
+    
     @Override
-    public void beforeRender(final boolean force) { }
-
+    public void beforeRender(final boolean force) {
+    }
+    
     @Override
-    public void afterRender(final boolean force) { 
+    public void afterRender(final boolean force) {        
         DrawingHelper.getInstance().getDrawableQueue().add(0, this);
     }
-
+    
     @Override
     public Rectangle getRectangle() {
         return new Rectangle(this.getX() + (CaveEntrance.SPRT_WH / 4),
-            this.getY() + (CaveEntrance.SPRT_WH / 4), SPRT_WH / 2, SPRT_WH / 2);
+                this.getY() + (CaveEntrance.SPRT_WH / 4), SPRT_WH / 2, SPRT_WH / 2);
     }
-
+    
     @Override
     public Rectangle getRectangle(final AbstractEntity entity) {
         return null;

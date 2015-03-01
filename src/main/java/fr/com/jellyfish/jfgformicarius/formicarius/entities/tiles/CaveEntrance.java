@@ -38,6 +38,7 @@ import fr.com.jellyfish.jfgformicarius.formicarius.game.Game;
 import fr.com.jellyfish.jfgformicarius.formicarius.helpers.DrawingHelper;
 import fr.com.jellyfish.jfgformicarius.formicarius.helpers.entities.maincharacter.MainCharacterCaveZoneHelper;
 import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.CollidableObject;
+import fr.com.jellyfish.jfgformicarius.formicarius.staticvars.StaticSpriteVars;
 import fr.com.jellyfish.jfgformicarius.formicarius.texture.Sprite;
 import java.awt.Rectangle;
 
@@ -82,6 +83,8 @@ public class CaveEntrance extends AbstractEntity implements CollidableObject {
              */
             ((MainCharacter) other).setTransitionAction(
                     new MainCharacterCaveZoneHelper((MainCharacter) other, game));
+            game.getEntityHelper().getTileEntities().clear();
+            game.getEntityHelper().initTilingEntities(StaticSpriteVars.cave_ground1_400);
             game.getEntityHelper().getFader().fade();
             ((MainCharacter) other).getTransitionAction().triggerTransition();
         }

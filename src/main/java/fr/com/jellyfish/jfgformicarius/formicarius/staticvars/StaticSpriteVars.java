@@ -74,6 +74,7 @@ public class StaticSpriteVars {
     public static final String quake_ring = "img/EFFECTS/quakering/quakering%s.png";
     public static final String quake_ring_lib_icon = "img/EFFECTS/quakering/quakering_icon.png";
     public static final String abstract_dark2_400 = "img/BACKGROUND/abstract_dark2_400.png";
+    public static final String cave_ground1_400 = "img/BACKGROUND/cave_ground1_400.png";
     public static final String wand2 = "img/ICONS/WANDS/wand2.png";
     public static final String bloody_dagger = "img/EFFECTS/bloody_dagger/bloody_dagger%s.png";
     public static final String bloody_dagger_icon = "img/EFFECTS/bloody_dagger/bloody_dagger_icon.png";

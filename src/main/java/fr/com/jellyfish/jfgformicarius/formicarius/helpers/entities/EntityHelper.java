@@ -133,7 +133,7 @@ public class EntityHelper {
         
         // Init AbstractEntity collection.
         initEntities();
-        initTilingEntities();
+        initTilingEntities(StaticSpriteVars.abstract_dark2_400);
         initFaders();
     }
     
@@ -149,14 +149,15 @@ public class EntityHelper {
     
     /**
      * Initialize background texturing.
+     * @param spriteRef400x400 
      */
-    private void initTilingEntities() {
+    public void initTilingEntities(final String spriteRef400x400) {
         
         // Main start off background.
         Background b = null;
         for (int i = 0; i < FrameConst.FRM_WIDTH / 400; ++i) {
             for (int j = 0; j < FrameConst.FRM_HEIGHT / 300; ++j) {
-                b = new Background(this.game, StaticSpriteVars.abstract_dark2_400, i * 400, j * 400, null);
+                b = new Background(this.game, spriteRef400x400, i * 400, j * 400, null);
                 tileEntities.put(Background.REF + i + j, b);
             }
         }

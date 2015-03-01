@@ -36,6 +36,7 @@ import fr.com.jellyfish.jfgformicarius.formicarius.exceptions.ZoneBuildException
 import fr.com.jellyfish.jfgformicarius.formicarius.game.Game;
 import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.TransitionAction;
 import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.ZoneBuilder;
+import fr.com.jellyfish.jfgformicarius.formicarius.staticvars.StaticSpriteVars;
 import fr.com.jellyfish.jfgformicarius.formicarius.world.zone.cave.CaveZone;
 import java.util.logging.Level;
 import java.util.logging.Logger;

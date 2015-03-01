@@ -41,6 +41,7 @@ import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.ZoneBuilder;
 import fr.com.jellyfish.jfgformicarius.formicarius.staticvars.StaticEntityReferences;
 import fr.com.jellyfish.jfgformicarius.formicarius.staticvars.StaticSpriteVars;
 import fr.com.jellyfish.jfgformicarius.formicarius.utils.SpriteUtils;
+import java.awt.Rectangle;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -68,24 +69,40 @@ public class CaveZone implements ZoneBuilder {
         CaveWall wall = new CaveWallCorner(
                 SpriteUtils.getSprite(Game.getInstance().getTextureLoader(),
                         StaticSpriteVars.cave_border_top_left), 0, 0,
-                StaticEntityReferences.TOP_LEFT_CORNER_REF);
+                StaticEntityReferences.TOP_LEFT_CORNER_REF,
+                new Rectangle[] { new Rectangle(0, 0, CaveWallCorner.SPRT_WH / 2, CaveWallCorner.SPRT_WH),
+                    new Rectangle(0, 0, CaveWallCorner.SPRT_WH, CaveWallCorner.SPRT_WH / 2) });
         walls.put(wall.ABSTRACT_REF, wall);
         wall = new CaveWallCorner(
                 SpriteUtils.getSprite(Game.getInstance().getTextureLoader(),
                         StaticSpriteVars.cave_border_bottom_left), 0,
-                FrameConst.FRM_HEIGHT - CaveWall.SPRT_WH,
-                StaticEntityReferences.BOTTOM_LEFT_CORNER_REF);
+                FrameConst.FRM_HEIGHT - CaveWallCorner.SPRT_WH,
+                StaticEntityReferences.BOTTOM_LEFT_CORNER_REF,
+                new Rectangle[] { new Rectangle(0, FrameConst.FRM_HEIGHT - CaveWallCorner.SPRT_WH, 
+                        CaveWallCorner.SPRT_WH / 2, CaveWallCorner.SPRT_WH),
+                    new Rectangle(0, FrameConst.FRM_HEIGHT - (CaveWallCorner.SPRT_WH / 2), 
+                        CaveWallCorner.SPRT_WH, CaveWallCorner.SPRT_WH / 2) });
         walls.put(wall.ABSTRACT_REF, wall);
         wall = new CaveWallCorner(
                 SpriteUtils.getSprite(Game.getInstance().getTextureLoader(),
-                        StaticSpriteVars.cave_border_top_right), FrameConst.FRM_WIDTH - CaveWall.SPRT_WH,
-                0, StaticEntityReferences.TOP_RIGHT_CORNER_REF);
+                        StaticSpriteVars.cave_border_top_right), FrameConst.FRM_WIDTH - CaveWallCorner.SPRT_WH,
+                0, StaticEntityReferences.TOP_RIGHT_CORNER_REF,
+                new Rectangle[] { new Rectangle(FrameConst.FRM_WIDTH - CaveWallCorner.SPRT_WH, 0, 
+                        CaveWallCorner.SPRT_WH, CaveWallCorner.SPRT_WH / 2),
+                    new Rectangle(FrameConst.FRM_WIDTH - (CaveWallCorner.SPRT_WH / 2), 0, 
+                        CaveWallCorner.SPRT_WH / 2, CaveWallCorner.SPRT_WH) });
         walls.put(wall.ABSTRACT_REF, wall);
         wall = new CaveWallCorner(
                 SpriteUtils.getSprite(Game.getInstance().getTextureLoader(),
-                        StaticSpriteVars.cave_border_bottom_right), FrameConst.FRM_WIDTH - CaveWall.SPRT_WH,
-                FrameConst.FRM_HEIGHT - CaveWall.SPRT_WH,
-                StaticEntityReferences.BOTTOM_RIGHT_CORNER_REF);
+                        StaticSpriteVars.cave_border_bottom_right), FrameConst.FRM_WIDTH - CaveWallCorner.SPRT_WH,
+                FrameConst.FRM_HEIGHT - CaveWallCorner.SPRT_WH,
+                StaticEntityReferences.BOTTOM_RIGHT_CORNER_REF,
+                new Rectangle[] { new Rectangle(FrameConst.FRM_WIDTH - (CaveWallCorner.SPRT_WH / 2),
+                        FrameConst.FRM_HEIGHT - CaveWallCorner.SPRT_WH, 
+                        CaveWallCorner.SPRT_WH / 2, CaveWallCorner.SPRT_WH),
+                    new Rectangle(FrameConst.FRM_WIDTH - CaveWallCorner.SPRT_WH, 
+                        FrameConst.FRM_HEIGHT - (CaveWallCorner.SPRT_WH / 2), 
+                        CaveWallCorner.SPRT_WH, CaveWallCorner.SPRT_WH / 2) });
         walls.put(wall.ABSTRACT_REF, wall);
 
         /**
@@ -94,7 +111,7 @@ public class CaveZone implements ZoneBuilder {
         for (int i = 1; i <= 14; i++) {
             wall = new CaveWall(
                     SpriteUtils.getSprite(Game.getInstance().getTextureLoader(),
-                            StaticSpriteVars.cave_border_top), i * CaveWall.SPRT_WH,
+                            StaticSpriteVars.cave_border_top), i * CaveWallCorner.SPRT_WH,
                     0, StaticEntityReferences.TOP_REF + i);
             walls.put(wall.ABSTRACT_REF, wall);
         }
@@ -105,8 +122,8 @@ public class CaveZone implements ZoneBuilder {
         for (int i = 1; i <= 14; i++) {
             wall = new CaveWall(
                     SpriteUtils.getSprite(Game.getInstance().getTextureLoader(),
-                            StaticSpriteVars.cave_border_bottom), i * CaveWall.SPRT_WH,
-                    FrameConst.FRM_HEIGHT - CaveWall.SPRT_WH,
+                            StaticSpriteVars.cave_border_bottom), i * CaveWallCorner.SPRT_WH,
+                    FrameConst.FRM_HEIGHT - (CaveWallCorner.SPRT_WH / 2),
                     StaticEntityReferences.BOTTOM_REF + i);
             walls.put(wall.ABSTRACT_REF, wall);
         }
@@ -118,7 +135,7 @@ public class CaveZone implements ZoneBuilder {
             wall = new CaveWall(
                     SpriteUtils.getSprite(Game.getInstance().getTextureLoader(),
                             StaticSpriteVars.cave_border_left), 0,
-                    i * CaveWall.SPRT_WH, StaticEntityReferences.LEFT_REF + i);
+                    i * CaveWallCorner.SPRT_WH, StaticEntityReferences.LEFT_REF + i);
             walls.put(wall.ABSTRACT_REF, wall);
         }
 
@@ -129,8 +146,8 @@ public class CaveZone implements ZoneBuilder {
             wall = new CaveWall(
                     SpriteUtils.getSprite(Game.getInstance().getTextureLoader(),
                             StaticSpriteVars.cave_border_right),
-                    FrameConst.FRM_WIDTH - CaveWall.SPRT_WH,
-                    i * CaveWall.SPRT_WH, StaticEntityReferences.RIGHT_REF + i);
+                    FrameConst.FRM_WIDTH - (CaveWallCorner.SPRT_WH / 2),
+                    i * CaveWallCorner.SPRT_WH, StaticEntityReferences.RIGHT_REF + i);
             walls.put(wall.ABSTRACT_REF, wall);
         }
     }

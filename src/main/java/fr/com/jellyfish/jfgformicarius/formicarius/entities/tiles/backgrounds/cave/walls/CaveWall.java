@@ -35,18 +35,16 @@ import fr.com.jellyfish.jfgformicarius.formicarius.constants.MvtConst;
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.abstractentities.AbstractEntity;
 import fr.com.jellyfish.jfgformicarius.formicarius.game.Game;
 import fr.com.jellyfish.jfgformicarius.formicarius.helpers.DrawingHelper;
+import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.CollidableObject;
 import fr.com.jellyfish.jfgformicarius.formicarius.texture.Sprite;
+import fr.com.jellyfish.jfgformicarius.formicarius.utils.CollisionUtils;
+import java.awt.Rectangle;
 
 /**
  *
  * @author thw
  */
-public class CaveWall extends AbstractEntity {
-
-    /**
-     * 
-     */
-    public static final int SPRT_WH = 50;
+public class CaveWall extends AbstractEntity implements CollidableObject {
     
     /**
      * 
@@ -60,7 +58,11 @@ public class CaveWall extends AbstractEntity {
     }
 
     @Override
-    public void collideWith(AbstractEntity other) {
+    public void collideWith(final AbstractEntity other) {
+        
+        if (!other.isInCollision()) {
+            other.setInCollision(CollisionUtils.inCollision(this.getRectangle(), other, 4));
+        }
     }
 
     @Override
@@ -75,5 +77,14 @@ public class CaveWall extends AbstractEntity {
     public void afterRender(final boolean force) {
         DrawingHelper.getInstance().getDrawableQueue().add(this);
     }
-    
+
+    @Override
+    public Rectangle getRectangle() {
+        return new Rectangle(this.getX(), this.getY(), sprite.getWidth(), sprite.getHeight());
+    }
+
+    @Override
+    public Rectangle getRectangle(final AbstractEntity entity) { 
+        return getRectangle();
+    }
 }

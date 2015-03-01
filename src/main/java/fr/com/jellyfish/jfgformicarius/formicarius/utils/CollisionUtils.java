@@ -82,6 +82,21 @@ public class CollisionUtils {
 
         return false;
     }
+    
+    /**
+     * Collision utility method that will define collision status.
+     *
+     * @param blocker
+     * @param collider
+     * @return true if in collision
+     */
+    public static boolean inCollision(final Rectangle blocker, final AbstractEntity collider) {
+
+        final Rectangle collidingEntity = new Rectangle(collider.getX(), collider.getY(), 
+            collider.sprite.getWidth(), collider.sprite.getHeight());
+        
+        return collidingEntity.intersects(blocker);
+    }
 
     /**
      * Defines is collision is fully verified. Checks rectangle collision,

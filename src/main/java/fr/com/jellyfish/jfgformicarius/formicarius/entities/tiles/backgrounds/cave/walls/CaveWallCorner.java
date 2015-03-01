@@ -33,6 +33,8 @@ package fr.com.jellyfish.jfgformicarius.formicarius.entities.tiles.backgrounds.c
 
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.abstractentities.AbstractEntity;
 import fr.com.jellyfish.jfgformicarius.formicarius.texture.Sprite;
+import fr.com.jellyfish.jfgformicarius.formicarius.utils.CollisionUtils;
+import java.awt.Rectangle;
 
 /**
  *
@@ -40,14 +42,37 @@ import fr.com.jellyfish.jfgformicarius.formicarius.texture.Sprite;
  */
 public class CaveWallCorner extends CaveWall {
 
-    public CaveWallCorner(final Sprite sprt, final int x, final int y, final String ref) {
+    /**
+     * Dimension of the full tile including alpha.
+     */
+    public static final int SPRT_WH = 50;
+        
+    /**
+     * Rectangles that deffine this complexe object.
+     */
+    private final Rectangle[] rectangles;
+    
+    public CaveWallCorner(final Sprite sprt, final int x, final int y, final String ref,
+        final Rectangle[] rectangles) {
         super(sprt, x, y, ref);
+        
+        this.rectangles = rectangles;
     }
     
     @Override
-    public void collideWith(AbstractEntity other) {
+    public void collideWith(final AbstractEntity other) {
+        
+        if (!other.isInCollision()) {
+            
+            for (int i = 0; i < this.rectangles.length; ++i) {
+                if (CollisionUtils.inCollision(this.rectangles[i], other, 4)) {
+                    other.setInCollision(true);
+                    return;
+                }
+            }
+            
+            other.setInCollision(false);
+        }
     }
-    
-    
     
 }

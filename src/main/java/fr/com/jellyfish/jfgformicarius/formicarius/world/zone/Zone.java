@@ -57,12 +57,15 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class Zone implements ZoneBuilder {
 
+    //<editor-fold defaultstate="collapsed" desc="variables">
     public final Map<String, AbstractEntity> interactables;
     public final Map<String, AbstractEntity> globals;
     public final Map<String, AbstractEntity> statics;
     public final List<Background> backgroundTiles = new ArrayList<>();
     private final RandomDefinition randomDefinitions;
+    //</editor-fold>
 
+    //<editor-fold defaultstate="collapsed" desc="constructor">
     /**
      * Constructor.
      *
@@ -83,7 +86,9 @@ public class Zone implements ZoneBuilder {
         statics = new ConcurrentHashMap<>();
         this.randomDefinitions = randomDefinitions;
     }
+    //</editor-fold>
 
+    //<editor-fold defaultstate="collapsed" desc="methods">
     /**
      * Initialize all gloabal AbstractEntity terrain elements and append to
      * globals HashMap.
@@ -190,5 +195,6 @@ public class Zone implements ZoneBuilder {
         }
         return statics;
     }
-
+    //</editor-fold>
+    
 }

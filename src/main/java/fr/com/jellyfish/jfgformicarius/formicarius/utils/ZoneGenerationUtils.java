@@ -35,16 +35,82 @@ import fr.com.jellyfish.jfgformicarius.formicarius.entities.abstractentities.Abs
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.tiles.StaticObject;
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.tiles.vegetation.Tree;
 import fr.com.jellyfish.jfgformicarius.formicarius.game.Game;
+import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.ZoneBuilder;
 import fr.com.jellyfish.jfgformicarius.formicarius.staticvars.StaticSpriteVars;
 import fr.com.jellyfish.jfgformicarius.formicarius.texture.Sprite;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
  * @author thw
  */
 public class ZoneGenerationUtils {
+    
+    /**
+     * Speudo CODE :
+     *
+     * create a CellStack (LIFO) to hold a list of cell locations
+     * set TotalCells = number of cells in grid 
+     * 
+     * choose a cell randomly and call it CurrentCell
+     * set VisitedCells = 1 
+     * 
+     * while VisitedCells smaller than TotalCells      
+     *      find all neighbors of CurrentCell with all walls intact
+     *        if one or more found 
+     *          choose one randomly
+     *          knock down the wall between it and CurrentCell
+     *          push CurrentCell location on the CellStack 
+     *          make the new cell CurrentCell
+     *          add 1 to VisitedCells 
+     *        else 
+     *          pop the most recent cell entry off the CellStack 
+     *          make it CurrentCell endIf
+     * endWhile
+     * return CellStack matrix
+     **************************************************************************
+     * 
+     * @param width : amount of cells on X
+     * @param height : amount of cells on Y
+     * @return ZoneBuilder[][] matrix of zone to naviate through.
+     */
+    public static LinkedHashMap<String, ZoneBuilder> buildZoneMaze(final int width, final int height) {
+        
+        // Return map (LIFO).
+        final LinkedHashMap<String, ZoneBuilder> stack = new LinkedHashMap<>();
+        
+        final int visited = 1;
+        final ZoneBuilder[][] matrix = new ZoneBuilder[width][height];
+        int x = RandomUtils.randInt(0, width);
+        int y = RandomUtils.randInt(0, height);
+        Map<Integer[], ZoneBuilder> neighboors = new HashMap<>();
+        ZoneBuilder currentZone = null;
+        
+        while (stack.size() < width * height) {
+            
+            neighboors.put(new Integer[] { x - 1, y - 1 }, matrix[x - 1][y - 1]);
+            neighboors.put(new Integer[] { x, y - 1 }, matrix[x][y - 1]);
+            neighboors.put(new Integer[] { x + 1, y - 1 }, matrix[x + 1][y - 1]);
+            neighboors.put(new Integer[] { x + 1, y }, matrix[x + 1][y]);
+            neighboors.put(new Integer[] { x + 1, y + 1 }, matrix[x + 1][y + 1]);
+            neighboors.put(new Integer[] { x, y + 1 }, matrix[x][y + 1]);
+            neighboors.put(new Integer[] { x - 1, y + 1 }, matrix[x - 1][y + 1]);
+            neighboors.put(new Integer[] { x - 1, y + 1 }, matrix[x - 1][y + 1]);
+            
+            for (ZoneBuilder z : neighboors.values()) {
+                if (z == null) {
+                    
+                }
+            }
+            
+        }
+        
+        return stack;
+    }
     
     /**
      * 

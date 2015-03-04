@@ -45,7 +45,8 @@ import java.awt.Rectangle;
  * @author thw
  */
 public class CaveWall extends AbstractEntity implements CollidableObject {
-    
+
+    //<editor-fold defaultstate="collapsed" desc="constructor">
     /**
      * 
      * @param sprt
@@ -56,7 +57,9 @@ public class CaveWall extends AbstractEntity implements CollidableObject {
     public CaveWall(final Sprite sprt, final int x, final int y, final String ref) {
         super(Game.getInstance(), sprt, x, y, MvtConst.STILL, ref);
     }
+    //</editor-fold>
 
+    //<editor-fold defaultstate="collapsed" desc="methods">    
     @Override
     public void collideWith(final AbstractEntity other) {
         
@@ -87,4 +90,6 @@ public class CaveWall extends AbstractEntity implements CollidableObject {
     public Rectangle getRectangle(final AbstractEntity entity) { 
         return getRectangle();
     }
+    //</editor-fold>
+    
 }

@@ -31,7 +31,8 @@
  */
 package fr.com.jellyfish.jfgformicarius.formicarius.world.zone;
 
-import java.util.HashMap;
+import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.ZoneBuilder;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
@@ -40,6 +41,6 @@ import java.util.Map;
  */
 public class ZoneMatrix {
     
-    public static final Map<ZonePosition, Zone> zoneMatrix = new HashMap<>();
+    public static final Map<ZonePosition, ZoneBuilder> zoneMatrix = new LinkedHashMap<>();
     
 }

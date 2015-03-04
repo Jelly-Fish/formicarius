@@ -38,6 +38,7 @@ import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.TransitionAction;
 import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.ZoneBuilder;
 import fr.com.jellyfish.jfgformicarius.formicarius.staticvars.StaticSpriteVars;
 import fr.com.jellyfish.jfgformicarius.formicarius.world.zone.cave.CaveZone;
+import fr.com.jellyfish.jfgformicarius.formicarius.world.zone.cave.CaveZoneWallCardinalityDefintions;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -89,7 +90,13 @@ public class MainCharacterCaveZoneHelper implements TransitionAction {
         game.clearEntityCollectionsForTransition();
         
         try {
-            zoneBuilder = new CaveZone();
+            /**
+             * TODO :
+             * Below, cave zone must be randomly pre-genrated and zone builder
+             * affectation must come from a zone matrix built from a maze 
+             * algorythm or other (langton's ant or other systme).
+             */
+            zoneBuilder = new CaveZone(new CaveZoneWallCardinalityDefintions(true, true, true, true));
             zoneBuilder.buildZone(null);
             game.getEntityHelper().getObjectEntities().putAll(zoneBuilder.getGlobals());
         } catch (final ZoneBuildException ex) {

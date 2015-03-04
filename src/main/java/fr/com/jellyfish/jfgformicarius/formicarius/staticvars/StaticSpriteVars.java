@@ -111,7 +111,7 @@ public class StaticSpriteVars {
      **************************************************************************/
     
     /**
-     * Borders.
+     * Walls.
      */
     public static final String cave_border_top_left = "img/TILES/CAVE/top_left.png";
     public static final String cave_border_top_right = "img/TILES/CAVE/top_right.png";
@@ -121,5 +121,17 @@ public class StaticSpriteVars {
     public static final String cave_border_top = "img/TILES/CAVE/top.png";
     public static final String cave_border_left = "img/TILES/CAVE/left.png";
     public static final String cave_border_right = "img/TILES/CAVE/right.png";
+    
+    /**
+     * Open walls assets.
+     */
+    public static final String cave_border_opening_left1 = "img/TILES/CAVE/cave_border_opening_left1.png";
+    public static final String cave_border_opening_left2 = "img/TILES/CAVE/cave_border_opening_left2.png";
+    public static final String cave_border_opening_top1 = "img/TILES/CAVE/cave_border_opening_top1.png";
+    public static final String cave_border_opening_top2 = "img/TILES/CAVE/cave_border_opening_top2.png";
+    public static final String cave_border_opening_right1 = "img/TILES/CAVE/cave_border_opening_right1.png";
+    public static final String cave_border_opening_right2 = "img/TILES/CAVE/cave_border_opening_right2.png";
+    public static final String cave_border_opening_bottom1 = "img/TILES/CAVE/cave_border_opening_bottom1.png";
+    public static final String cave_border_opening_bottom2 = "img/TILES/CAVE/cave_border_opening_bottom2.png";
     
 }

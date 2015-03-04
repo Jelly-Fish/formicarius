@@ -1,6 +1,6 @@
 /**
  * *****************************************************************************
- * Copyright (c) 2014, Thomas.H Warner. All rights reserved.
+ * Copyright (c) 2014 - 2015, Thomas.H Warner. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
@@ -26,22 +26,35 @@
  * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
  * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE. 
- ******************************************************************************
+ * POSSIBILITY OF SUCH DAMAGE.
+ * *****************************************************************************
  */
-package fr.com.jellyfish.jfgformicarius.formicarius.exceptions;
+package fr.com.jellyfish.jfgformicarius.formicarius.world.zone;
 
 /**
  *
  * @author thw
  */
-public class ZoneBuildException extends FormicariusException {
+public class ZoneWallCardinalityDefintions {
     
-    public ZoneBuildException() {
+    /**
+     * False wall is down, true wall is up.
+     * For example NORTH = true meaning that north wall has an auto generated 
+     * entrance door/opening to a zone at it's north.
+     */
+    public final boolean NORTH;
+    public final boolean EAST;
+    public final boolean SOUTH;
+    public final boolean WEST;
+
+    public ZoneWallCardinalityDefintions(final boolean NORTH, final boolean EAST, 
+            final boolean SOUTH, final boolean WEST) {
+        this.NORTH = NORTH;
+        this.EAST = EAST;
+        this.SOUTH = SOUTH;
+        this.WEST = WEST;
     }
+
     
-    public ZoneBuildException(final String message) {
-        super(message);
-    }
     
 }

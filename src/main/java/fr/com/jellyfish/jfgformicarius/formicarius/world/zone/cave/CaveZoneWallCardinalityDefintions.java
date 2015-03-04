@@ -1,6 +1,6 @@
 /**
  * *****************************************************************************
- * Copyright (c) 2014, Thomas.H Warner. All rights reserved.
+ * Copyright (c) 2014 - 2015, Thomas.H Warner. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
@@ -26,22 +26,30 @@
  * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
  * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE. 
- ******************************************************************************
+ * POSSIBILITY OF SUCH DAMAGE.
+ * *****************************************************************************
  */
-package fr.com.jellyfish.jfgformicarius.formicarius.exceptions;
+package fr.com.jellyfish.jfgformicarius.formicarius.world.zone.cave;
+
+import fr.com.jellyfish.jfgformicarius.formicarius.world.zone.ZoneWallCardinalityDefintions;
 
 /**
  *
  * @author thw
  */
-public class ZoneBuildException extends FormicariusException {
-    
-    public ZoneBuildException() {
+public class CaveZoneWallCardinalityDefintions extends ZoneWallCardinalityDefintions {
+
+    /**
+     * String value of cardinalities.
+     */
+    public static final String north = "north";
+    public static final String east = "east";
+    public static final String south = "south";
+    public static final String west = "west";
+
+    public CaveZoneWallCardinalityDefintions(final boolean NORTH, final boolean EAST, 
+            final boolean SOUTH, final boolean WEST) {
+        super(NORTH, EAST, SOUTH, WEST);
     }
-    
-    public ZoneBuildException(final String message) {
-        super(message);
-    }
-    
+
 }

@@ -1,6 +1,6 @@
 /**
  * *****************************************************************************
- * Copyright (c) 2014, Thomas.H Warner. All rights reserved.
+ * Copyright (c) 2014 - 2015, Thomas.H Warner. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
@@ -26,22 +26,18 @@
  * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
  * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE. 
- ******************************************************************************
+ * POSSIBILITY OF SUCH DAMAGE.
+ * *****************************************************************************
  */
-package fr.com.jellyfish.jfgformicarius.formicarius.exceptions;
+package fr.com.jellyfish.jfgformicarius.formicarius.constants;
 
 /**
  *
  * @author thw
  */
-public class ZoneBuildException extends FormicariusException {
+public class ExceptionMsgConst {
     
-    public ZoneBuildException() {
-    }
-    
-    public ZoneBuildException(final String message) {
-        super(message);
-    }
+    public static final String wallDefinitionNull = "Wall definitions are null. To build using this "
+            + "method it is necessary to build with ZoneBuilder(wall definitions instance) constructor."; 
     
 }

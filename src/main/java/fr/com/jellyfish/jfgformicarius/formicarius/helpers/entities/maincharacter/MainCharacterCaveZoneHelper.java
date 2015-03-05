@@ -31,14 +31,19 @@
  */
 package fr.com.jellyfish.jfgformicarius.formicarius.helpers.entities.maincharacter;
 
+import fr.com.jellyfish.jfgformicarius.formicarius.constants.MvtConst;
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.characters.MainCharacter;
 import fr.com.jellyfish.jfgformicarius.formicarius.exceptions.ZoneBuildException;
 import fr.com.jellyfish.jfgformicarius.formicarius.game.Game;
 import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.TransitionAction;
 import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.ZoneBuilder;
-import fr.com.jellyfish.jfgformicarius.formicarius.staticvars.StaticSpriteVars;
+import fr.com.jellyfish.jfgformicarius.formicarius.utils.ZoneGenerationUtils;
+import fr.com.jellyfish.jfgformicarius.formicarius.world.zone.ZonePosition;
 import fr.com.jellyfish.jfgformicarius.formicarius.world.zone.cave.CaveZone;
 import fr.com.jellyfish.jfgformicarius.formicarius.world.zone.cave.CaveZoneWallCardinalityDefintions;
+import java.util.AbstractMap;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -62,19 +67,28 @@ public class MainCharacterCaveZoneHelper implements TransitionAction {
      * ZoneBuilder instance.
      */
     private ZoneBuilder zoneBuilder;
+    
+    /**
+     * 
+     */
+    final Map<ZonePosition, ZoneBuilder> zones;
 
     /**
      * 
      * @param mainCharacter
      * @param game 
+     * @param zones 
      */
-    public MainCharacterCaveZoneHelper(final MainCharacter mainCharacter, final Game game) {
+    public MainCharacterCaveZoneHelper(final MainCharacter mainCharacter, final Game game, 
+            final HashMap<ZonePosition, ZoneBuilder> zones) {
         this.mainCharacter = mainCharacter;
         this.game = game;
+        this.zones = zones;
+        mainCharacter.setCurrentZonePosition(new ZonePosition(0, 0));
     }
     
     @Override
-    public void triggerTransition() {
+    public void triggerTransition(final int direction) {
         
          // Clear Spawnable :
         if (mainCharacter.getSpawnable() != null && mainCharacter.getSpawnable().isSpawned()) {
@@ -90,13 +104,7 @@ public class MainCharacterCaveZoneHelper implements TransitionAction {
         game.clearEntityCollectionsForTransition();
         
         try {
-            /**
-             * TODO :
-             * Below, cave zone must be randomly pre-genrated and zone builder
-             * affectation must come from a zone matrix built from a maze 
-             * algorythm or other (langton's ant or other systme).
-             */
-            zoneBuilder = new CaveZone(new CaveZoneWallCardinalityDefintions(true, true, true, true));
+            zoneBuilder = zones.get(mainCharacter.getCurrentZonePosition());
             zoneBuilder.buildZone(null);
             game.getEntityHelper().getObjectEntities().putAll(zoneBuilder.getGlobals());
         } catch (final ZoneBuildException ex) {

@@ -316,7 +316,8 @@ public class MainCharacter extends AbstractEntity implements XYObservable {
             // remove, append to EntityHelper's tile entities.
             game.getEntityHelper().getFader().fade();
             x = FrameConst.FRM_WIDTH - MainCharacter.SPRT_W;
-            this.transitionAction.triggerTransition();
+            this.currentZonePosition.decrementX();
+            this.transitionAction.triggerTransition(this.getMvt());
             return;
         }
 
@@ -324,7 +325,8 @@ public class MainCharacter extends AbstractEntity implements XYObservable {
         if (dx > 0 && x > FrameConst.FRM_WIDTH - MainCharacter.SPRT_W) {
             game.getEntityHelper().getFader().fade();
             x = 0;
-            this.transitionAction.triggerTransition();
+            this.currentZonePosition.incrementX();
+            this.transitionAction.triggerTransition(this.getMvt());
             return;
         }
 
@@ -332,7 +334,8 @@ public class MainCharacter extends AbstractEntity implements XYObservable {
         if (dy < 0 && y < 0) {
             game.getEntityHelper().getFader().fade();
             y = FrameConst.FRM_HEIGHT - MainCharacter.SPRT_H;
-            this.transitionAction.triggerTransition();
+            this.currentZonePosition.incrementY();
+            this.transitionAction.triggerTransition(this.getMvt());
             return;
         }
 
@@ -340,7 +343,8 @@ public class MainCharacter extends AbstractEntity implements XYObservable {
         if (dy > 0 && y > FrameConst.FRM_HEIGHT - SPRT_H) {
             game.getEntityHelper().getFader().fade();
             y = 0;
-            this.transitionAction.triggerTransition();
+            this.currentZonePosition.decrementY();
+            this.transitionAction.triggerTransition(this.getMvt());
             return;
         }
         
@@ -418,6 +422,14 @@ public class MainCharacter extends AbstractEntity implements XYObservable {
     //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="getters & setters"> 
+    public ZonePosition getCurrentZonePosition() {
+        return currentZonePosition;
+    }
+
+    public void setCurrentZonePosition(ZonePosition currentZonePosition) {
+        this.currentZonePosition = currentZonePosition;
+    }
+    
     public TransitionAction getTransitionAction() {
         return this.transitionAction;
     }

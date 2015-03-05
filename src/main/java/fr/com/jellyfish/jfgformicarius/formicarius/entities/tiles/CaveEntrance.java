@@ -40,6 +40,7 @@ import fr.com.jellyfish.jfgformicarius.formicarius.helpers.entities.maincharacte
 import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.CollidableObject;
 import fr.com.jellyfish.jfgformicarius.formicarius.staticvars.StaticSpriteVars;
 import fr.com.jellyfish.jfgformicarius.formicarius.texture.Sprite;
+import fr.com.jellyfish.jfgformicarius.formicarius.utils.ZoneGenerationUtils;
 import java.awt.Rectangle;
 
 /**
@@ -74,19 +75,29 @@ public class CaveEntrance extends AbstractEntity implements CollidableObject {
     public void collideWith(final AbstractEntity other) {        
         if (other instanceof MainCharacter && 
                 ((MainCharacter) other).getRectangle().intersects(this.getRectangle())) {
+            
             /**
              * Then change environment for cave scenarios. Affect new
              * TransitionAction class to MainCharacter.
              *
              * @see TransitionAction
              * @see MainCharacterZoneHelper
+             * 
+             */
+            
+            /**
+             * TODO :
+             * Below, call to ZoneGenerationUtils method is not dynamic,
+             * buildCaveZones1() will always be called. Make zone Maps sent to
+             * helper randomly selected or defined in a scenario.
              */
             ((MainCharacter) other).setTransitionAction(
-                    new MainCharacterCaveZoneHelper((MainCharacter) other, game));
+                    new MainCharacterCaveZoneHelper((MainCharacter) other, game,
+                            ZoneGenerationUtils.buildCaveZones1()));
             game.getEntityHelper().getTileEntities().clear();
             game.getEntityHelper().initTilingEntities(StaticSpriteVars.cave_ground1_400);
             game.getEntityHelper().getFader().fade();
-            ((MainCharacter) other).getTransitionAction().triggerTransition();
+            ((MainCharacter) other).getTransitionAction().triggerTransition(MvtConst.STILL);
         }
     }
     

@@ -38,17 +38,39 @@ import fr.com.jellyfish.jfgformicarius.formicarius.game.Game;
 import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.ZoneBuilder;
 import fr.com.jellyfish.jfgformicarius.formicarius.staticvars.StaticSpriteVars;
 import fr.com.jellyfish.jfgformicarius.formicarius.texture.Sprite;
+import fr.com.jellyfish.jfgformicarius.formicarius.world.zone.ZonePosition;
+import fr.com.jellyfish.jfgformicarius.formicarius.world.zone.cave.CaveZone;
+import fr.com.jellyfish.jfgformicarius.formicarius.world.zone.cave.CaveZoneWallCardinalityDefintions;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 /**
  *
  * @author thw
  */
 public class ZoneGenerationUtils {
+    
+    public static HashMap<ZonePosition, ZoneBuilder> buildCaveZones1() {
+        
+        final HashMap<ZonePosition, ZoneBuilder> zones = new HashMap<>();
+        
+        zones.put(new ZonePosition(0, 0), 
+            new CaveZone(new CaveZoneWallCardinalityDefintions(true, true, true, true)));
+        zones.put(new ZonePosition(0, -1), 
+            new CaveZone(new CaveZoneWallCardinalityDefintions(true, false, false, false)));
+        zones.put(new ZonePosition(1, 0), 
+            new CaveZone(new CaveZoneWallCardinalityDefintions(false, false, false, true)));
+        zones.put(new ZonePosition(0, 1), 
+            new CaveZone(new CaveZoneWallCardinalityDefintions(false, false, true, false)));
+        zones.put(new ZonePosition(-1, 0), 
+            new CaveZone(new CaveZoneWallCardinalityDefintions(false, true, false, false)));
+                
+        return zones;        
+    }
     
     /**
      * Speudo CODE :
@@ -69,7 +91,8 @@ public class ZoneGenerationUtils {
      *          add 1 to VisitedCells 
      *        else 
      *          pop the most recent cell entry off the CellStack 
-     *          make it CurrentCell endIf
+     *          make it CurrentCell 
+     *        endIf
      * endWhile
      * return CellStack matrix
      **************************************************************************
@@ -88,7 +111,7 @@ public class ZoneGenerationUtils {
         int x = RandomUtils.randInt(0, width);
         int y = RandomUtils.randInt(0, height);
         Map<Integer[], ZoneBuilder> neighboors = new HashMap<>();
-        ZoneBuilder currentZone = null;
+        //ZoneBuilder currentZone = new CaveZone();
         
         while (stack.size() < width * height) {
             
@@ -101,10 +124,17 @@ public class ZoneGenerationUtils {
             neighboors.put(new Integer[] { x - 1, y + 1 }, matrix[x - 1][y + 1]);
             neighboors.put(new Integer[] { x - 1, y + 1 }, matrix[x - 1][y + 1]);
             
-            for (ZoneBuilder z : neighboors.values()) {
-                if (z == null) {
-                    
+            for (Entry<Integer[], ZoneBuilder> z : neighboors.entrySet()) {
+                if (z != null) {
+                    neighboors.remove(z.getKey());
                 }
+            }
+            
+            if (neighboors.size() > 0) {
+                ZoneBuilder tmp = 
+                    (ZoneBuilder) neighboors.values().toArray()[RandomUtils.randInt(0, neighboors.size() - 1)];
+            } else {
+                
             }
             
         }

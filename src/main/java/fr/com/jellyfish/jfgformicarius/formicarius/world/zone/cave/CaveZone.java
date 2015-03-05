@@ -64,7 +64,7 @@ public class CaveZone implements ZoneBuilder {
     private final CaveZoneWallCardinalityDefintions wallDefinitions;
     //</editor-fold>
 
-    //<editor-fold defaultstate="collapsed" desc="constructor">
+    //<editor-fold defaultstate="collapsed" desc="constructors">
     /**
      * Constructor.
      *

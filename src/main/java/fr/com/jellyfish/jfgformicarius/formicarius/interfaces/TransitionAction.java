@@ -39,7 +39,8 @@ public interface TransitionAction {
     
     /**
      * Trigger game transition.
+     * @param direction
      */
-    public void triggerTransition();
+    public void triggerTransition(final int direction);
     
 }

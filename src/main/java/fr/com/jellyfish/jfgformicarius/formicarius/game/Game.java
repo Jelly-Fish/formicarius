@@ -47,6 +47,7 @@ import static org.lwjgl.opengl.GL11.*;
 import org.newdawn.slick.opengl.ImageIOImageData;
 import fr.com.jellyfish.jfgformicarius.formicarius.constants.FrameConst;
 import fr.com.jellyfish.jfgformicarius.formicarius.constants.IconConst;
+import fr.com.jellyfish.jfgformicarius.formicarius.constants.MvtConst;
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.characters.MainCharacter;
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.tiles.CaveEntrance;
 import fr.com.jellyfish.jfgformicarius.formicarius.exceptions.InitializationException;
@@ -473,7 +474,7 @@ public class Game {
             instance = new Game();
             // Below, call to triggerTransition() method in MagicalHumanoid Class
             // will build a new Zone instance in the same way a as when transiting :
-            instance.getEntityHelper().getMainCharacter().getTransitionAction().triggerTransition();
+            instance.getEntityHelper().getMainCharacter().getTransitionAction().triggerTransition(MvtConst.STILL);
             return instance;
         }
     }

@@ -79,7 +79,7 @@ public class MainCharacterZoneHelper implements TransitionAction {
      * Clear maps for new Zone or new Zone transition.
      */
     @Override
-    public void triggerTransition() {
+    public void triggerTransition(final int direction) {
 
         // Clear Spawnable :
         if (mainCharacter.getSpawnable() != null && mainCharacter.getSpawnable().isSpawned()) {

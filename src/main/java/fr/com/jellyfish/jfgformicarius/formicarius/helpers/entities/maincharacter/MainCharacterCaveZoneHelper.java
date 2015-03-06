@@ -31,17 +31,14 @@
  */
 package fr.com.jellyfish.jfgformicarius.formicarius.helpers.entities.maincharacter;
 
-import fr.com.jellyfish.jfgformicarius.formicarius.constants.MvtConst;
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.characters.MainCharacter;
+import fr.com.jellyfish.jfgformicarius.formicarius.entities.pools.CaveZoneInteractableEntityPool;
+import fr.com.jellyfish.jfgformicarius.formicarius.entities.pools.InteractableEntityPool;
 import fr.com.jellyfish.jfgformicarius.formicarius.exceptions.ZoneBuildException;
 import fr.com.jellyfish.jfgformicarius.formicarius.game.Game;
 import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.TransitionAction;
 import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.ZoneBuilder;
-import fr.com.jellyfish.jfgformicarius.formicarius.utils.ZoneGenerationUtils;
 import fr.com.jellyfish.jfgformicarius.formicarius.world.zone.ZonePosition;
-import fr.com.jellyfish.jfgformicarius.formicarius.world.zone.cave.CaveZone;
-import fr.com.jellyfish.jfgformicarius.formicarius.world.zone.cave.CaveZoneWallCardinalityDefintions;
-import java.util.AbstractMap;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
@@ -110,6 +107,12 @@ public class MainCharacterCaveZoneHelper implements TransitionAction {
         } catch (final ZoneBuildException ex) {
             Logger.getLogger(MainCharacterCaveZoneHelper.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+                // Fill the following HashMap with randomly accessed pool of Interactable
+        // class instances. /!\ before trim entities for collisions :
+        // remove entities in collision.
+        game.getEntityHelper().getInteractableEntities().putAll(
+            CaveZoneInteractableEntityPool.getInstance().getRandomSubPool());
     }
     
 }

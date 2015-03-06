@@ -59,12 +59,12 @@ public class InteractableEntityPool extends RandomAccessible {
     /**
      * Pool of complexe objects that are best to re-instantiate.
      */
-    private final Map<String, AbstractEntity> randomEntityPool = new HashMap<>();
+    protected final Map<String, AbstractEntity> randomEntityPool = new HashMap<>();
     
     /**
      * private constructor.
      */
-    private InteractableEntityPool() { }
+    protected InteractableEntityPool() { }
     
     /**
      * Singleton accessor.
@@ -94,7 +94,7 @@ public class InteractableEntityPool extends RandomAccessible {
     /**
      * Re-instantiate all complexe objects. 
      */
-    private void initComplexeInteractablePool() {
+    protected void initComplexeInteractablePool() {
         
         final int result = RandomUtils.randInt(1, 3);
         
@@ -117,7 +117,7 @@ public class InteractableEntityPool extends RandomAccessible {
     /**
      * Re-instantiate all complexe interactable "less complexe" objects. 
      */
-    private void initInteractableEntityPool() {
+    protected void initInteractableEntityPool() {
         
         int frogMvt = MvtConst.LEFT;
         Frog frog = null;

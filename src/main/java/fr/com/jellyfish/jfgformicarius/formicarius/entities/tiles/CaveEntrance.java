@@ -31,6 +31,7 @@
  */
 package fr.com.jellyfish.jfgformicarius.formicarius.entities.tiles;
 
+import fr.com.jellyfish.jfgformicarius.formicarius.constants.FrameConst;
 import fr.com.jellyfish.jfgformicarius.formicarius.constants.MvtConst;
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.abstractentities.AbstractEntity;
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.characters.MainCharacter;
@@ -97,6 +98,8 @@ public class CaveEntrance extends AbstractEntity implements CollidableObject {
             game.getEntityHelper().getTileEntities().clear();
             game.getEntityHelper().initTilingEntities(StaticSpriteVars.cave_ground1_400);
             game.getEntityHelper().getFader().fade();
+            other.setX((FrameConst.FRM_WIDTH / 2) - MainCharacter.SPRT_W / 2);
+            other.setY((FrameConst.FRM_HEIGHT / 2) - MainCharacter.SPRT_H / 2);
             ((MainCharacter) other).getTransitionAction().triggerTransition(MvtConst.STILL);
         }
     }

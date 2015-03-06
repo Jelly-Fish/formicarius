@@ -31,6 +31,7 @@
  */
 package fr.com.jellyfish.jfgformicarius.formicarius.entities.tiles.faders;
 
+import fr.com.jellyfish.jfgformicarius.formicarius.entities.abstractentities.AbstractFader;
 import fr.com.jellyfish.jfgformicarius.formicarius.constants.AnimationConst;
 import fr.com.jellyfish.jfgformicarius.formicarius.constants.MvtConst;
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.abstractentities.AbstractEntity;

@@ -31,6 +31,7 @@
  */
 package fr.com.jellyfish.jfgformicarius.formicarius.entities.characters;
 
+import com.sun.org.apache.xerces.internal.impl.validation.EntityState;
 import fr.com.jellyfish.jfgformicarius.formicarius.constants.AnimationConst;
 import fr.com.jellyfish.jfgformicarius.formicarius.constants.FrameConst;
 import fr.com.jellyfish.jfgformicarius.formicarius.constants.MvtConst;
@@ -192,16 +193,39 @@ public class Knight extends AbstractEntity implements Interactable, CollidableOb
     @Override
     public void move(final long delta) {
 
-        if (this.isInCollision() || !isAnimeUpdateRequired() || this.spellbound) {
-            return;
-        }
+        neverMoved = false;
+        // Here deal with deblocking collisions by simulating random ai moves.
+        if (isAnimeUpdateRequired()) {
 
-        if (updateIfOutOfBounds()) {
-            return;
-        }
+            if (this.isInCollision() || neverMoved) {
+                this.deblockCollision();
+            }
 
-        super.move(delta);
-        this.neverMoved = false;
+            if (updateIfOutOfBounds()) {
+                return;
+            }
+
+            super.move(delta);
+        }
+    }
+    
+    /**
+     * Get out of collision situation depending on mouvement. Knight only moves
+     * on a horizontal line : 
+     * 
+     * IF collision LEFT 
+     *   move RIGHT 
+     * ELSE
+     *   move LEFT
+     * ENDIF
+     */
+    private void deblockCollision() {
+        this.mvtConstant = this.getMvt() == MvtConst.LEFT ? MvtConst.RIGHT : MvtConst.LEFT;
+        this.updateMvt(this.mvtConstant, true);
+        this.setHorizontalMovement(this.mvtConstant == MvtConst.LEFT ? -this.speed : this.speed);
+        this.setVerticalMovement(0);
+        setInCollision(false);
+        setAnimeUpdateRequired(false);
     }
 
     /**

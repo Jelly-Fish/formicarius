@@ -38,7 +38,6 @@ import fr.com.jellyfish.jfgformicarius.formicarius.entities.tiles.CaveEntrance;
 import fr.com.jellyfish.jfgformicarius.formicarius.exceptions.ZoneBuildException;
 import fr.com.jellyfish.jfgformicarius.formicarius.game.Game;
 import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.ZoneBuilder;
-import fr.com.jellyfish.jfgformicarius.formicarius.misc.RandomDefinition;
 import fr.com.jellyfish.jfgformicarius.formicarius.staticvars.StaticSpriteVars;
 import fr.com.jellyfish.jfgformicarius.formicarius.utils.CollisionUtils;
 import fr.com.jellyfish.jfgformicarius.formicarius.utils.RandomUtils;

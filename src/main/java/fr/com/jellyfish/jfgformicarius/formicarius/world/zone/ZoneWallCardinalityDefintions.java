@@ -47,14 +47,41 @@ public class ZoneWallCardinalityDefintions {
     public final boolean SOUTH;
     public final boolean WEST;
 
-    public ZoneWallCardinalityDefintions(final boolean NORTH, final boolean EAST, 
-            final boolean SOUTH, final boolean WEST) {
-        this.NORTH = NORTH;
-        this.EAST = EAST;
-        this.SOUTH = SOUTH;
-        this.WEST = WEST;
+    /**
+     * constructor.
+     * @param c CardinalityDefinition collection
+     */
+    public ZoneWallCardinalityDefintions(final CardinalityDefinition ... c) {
+        
+        boolean n = false; boolean nSet = false;
+        boolean e = false; boolean eSet = false;
+        boolean s = false; boolean sSet = false;
+        boolean w = false; boolean wSet = false;
+        
+        
+        for (CardinalityDefinition cc : c) {
+            
+            if (cc.equals(CardinalityDefinition.NORTH) && !n && !nSet) {
+                n = true; nSet = true;
+            }
+            
+            if (cc.equals(CardinalityDefinition.EAST) && !e && !eSet) {
+                e = true; eSet = true;
+            }
+            
+            if (cc.equals(CardinalityDefinition.SOUTH) && !s && !sSet) {
+                s = true; sSet = true;
+            }
+            
+            if (cc.equals(CardinalityDefinition.WEST) && !w && !wSet) {
+                w = true; wSet = true;
+            }
+        }
+        
+        this.NORTH = n;
+        this.EAST = e;
+        this.SOUTH = s;
+        this.WEST = w;
     }
-
-    
     
 }

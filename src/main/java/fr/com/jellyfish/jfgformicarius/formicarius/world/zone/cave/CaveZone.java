@@ -108,7 +108,7 @@ public class CaveZone implements ZoneBuilder {
             walls.put(wall.ABSTRACT_REF, wall);
         }
         applyWallCardinalityDefinition(14, StaticEntityReferences.TOP_REF,
-                this.wallDefinitions.NORTH, CaveZoneWallCardinalityDefintions.north);
+                this.wallDefinitions.NORTH, CaveZoneWallCardinalityDefintions.NORTH_STRVAL);
 
         /**
          * Walls bottom.
@@ -122,7 +122,7 @@ public class CaveZone implements ZoneBuilder {
             walls.put(wall.ABSTRACT_REF, wall);
         }
         applyWallCardinalityDefinition(14, StaticEntityReferences.BOTTOM_REF,
-                this.wallDefinitions.SOUTH, CaveZoneWallCardinalityDefintions.south);
+                this.wallDefinitions.SOUTH, CaveZoneWallCardinalityDefintions.SOUTH_STRVAL);
 
         /**
          * Walls left.
@@ -136,7 +136,7 @@ public class CaveZone implements ZoneBuilder {
 
         }
         applyWallCardinalityDefinition(10, StaticEntityReferences.LEFT_REF,
-                this.wallDefinitions.WEST, CaveZoneWallCardinalityDefintions.west);
+                this.wallDefinitions.WEST, CaveZoneWallCardinalityDefintions.WEST_STRVAL);
 
         /**
          * Walls right.
@@ -150,7 +150,7 @@ public class CaveZone implements ZoneBuilder {
             walls.put(wall.ABSTRACT_REF, wall);
         }
         applyWallCardinalityDefinition(10, StaticEntityReferences.RIGHT_REF,
-                this.wallDefinitions.EAST, CaveZoneWallCardinalityDefintions.east);
+                this.wallDefinitions.EAST, CaveZoneWallCardinalityDefintions.EAST_STRVAL);
     }
 
     /**
@@ -235,22 +235,22 @@ public class CaveZone implements ZoneBuilder {
              * 
              * TODO : re think all of this yet it works fine.
              */
-            if (action.equals(CaveZoneWallCardinalityDefintions.north)) {
+            if (action.equals(CaveZoneWallCardinalityDefintions.NORTH_STRVAL)) {
                 this.walls.get(ref + ((wallBlockCount / 2) + 1)).setX( 
                     this.walls.get(ref + ((wallBlockCount / 2) + 1)).getX() + 
                         CaveWallCorner.SPRT_WH - 
                         this.walls.get(ref + ((wallBlockCount / 2) + 1)).sprite.getWidth());
-            } else if (action.equals(CaveZoneWallCardinalityDefintions.east)) {
+            } else if (action.equals(CaveZoneWallCardinalityDefintions.EAST_STRVAL)) {
                 this.walls.get(ref + ((wallBlockCount / 2) + 1)).setY( 
                     this.walls.get(ref + ((wallBlockCount / 2) + 1)).getY() + 
                         CaveWallCorner.SPRT_WH - 
                         this.walls.get(ref + ((wallBlockCount / 2) + 1)).sprite.getHeight());
-            } else if (action.equals(CaveZoneWallCardinalityDefintions.south)) {
+            } else if (action.equals(CaveZoneWallCardinalityDefintions.SOUTH_STRVAL)) {
                 this.walls.get(ref + ((wallBlockCount / 2) + 1)).setX( 
                     this.walls.get(ref + ((wallBlockCount / 2) + 1)).getX() + 
                         CaveWallCorner.SPRT_WH - 
                         this.walls.get(ref + ((wallBlockCount / 2) + 1)).sprite.getWidth());
-            } else if (action.equals(CaveZoneWallCardinalityDefintions.west)) {
+            } else if (action.equals(CaveZoneWallCardinalityDefintions.WEST_STRVAL)) {
                 this.walls.get(ref + ((wallBlockCount / 2) + 1)).setY( 
                     this.walls.get(ref + ((wallBlockCount / 2) + 1)).getY() + 
                         CaveWallCorner.SPRT_WH - 

@@ -33,7 +33,6 @@ package fr.com.jellyfish.jfgformicarius.formicarius.helpers.entities.maincharact
 
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.characters.MainCharacter;
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.pools.CaveZoneInteractableEntityPool;
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.pools.InteractableEntityPool;
 import fr.com.jellyfish.jfgformicarius.formicarius.exceptions.ZoneBuildException;
 import fr.com.jellyfish.jfgformicarius.formicarius.game.Game;
 import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.TransitionAction;
@@ -108,7 +107,7 @@ public class MainCharacterCaveZoneHelper implements TransitionAction {
             Logger.getLogger(MainCharacterCaveZoneHelper.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-                // Fill the following HashMap with randomly accessed pool of Interactable
+        // Fill the following HashMap with randomly accessed pool of Interactable
         // class instances. /!\ before trim entities for collisions :
         // remove entities in collision.
         game.getEntityHelper().getInteractableEntities().putAll(

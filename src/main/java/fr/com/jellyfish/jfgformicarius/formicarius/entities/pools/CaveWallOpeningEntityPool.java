@@ -86,16 +86,16 @@ public class CaveWallOpeningEntityPool {
             final String action) 
         throws ZoneBuildException {
         
-        if (wallDefinitions.NORTH && action.equals(CaveZoneWallCardinalityDefintions.north)) {
+        if (wallDefinitions.NORTH && action.equals(CaveZoneWallCardinalityDefintions.NORTH_STRVAL)) {
             return CaveWallOpeningEntityPool.openWaveWallBlockSprites.get(
                     StaticSpriteVars.cave_border_opening_top1);
-        } else if (wallDefinitions.EAST && action.equals(CaveZoneWallCardinalityDefintions.east)) {
+        } else if (wallDefinitions.EAST && action.equals(CaveZoneWallCardinalityDefintions.EAST_STRVAL)) {
             return CaveWallOpeningEntityPool.openWaveWallBlockSprites.get(
                     StaticSpriteVars.cave_border_opening_right1);
-        } else if (wallDefinitions.SOUTH && action.equals(CaveZoneWallCardinalityDefintions.south)) {
+        } else if (wallDefinitions.SOUTH && action.equals(CaveZoneWallCardinalityDefintions.SOUTH_STRVAL)) {
             return CaveWallOpeningEntityPool.openWaveWallBlockSprites.get(
                     StaticSpriteVars.cave_border_opening_bottom1);
-        } else if (wallDefinitions.WEST && action.equals(CaveZoneWallCardinalityDefintions.west)) {
+        } else if (wallDefinitions.WEST && action.equals(CaveZoneWallCardinalityDefintions.WEST_STRVAL)) {
             return CaveWallOpeningEntityPool.openWaveWallBlockSprites.get(
                     StaticSpriteVars.cave_border_opening_left1);
         } else {
@@ -114,16 +114,16 @@ public class CaveWallOpeningEntityPool {
             final String action)
         throws ZoneBuildException {
     
-        if (wallDefinitions.NORTH && action.equals(CaveZoneWallCardinalityDefintions.north)) {
+        if (wallDefinitions.NORTH && action.equals(CaveZoneWallCardinalityDefintions.NORTH_STRVAL)) {
             return CaveWallOpeningEntityPool.openWaveWallBlockSprites.get(
                     StaticSpriteVars.cave_border_opening_top2);
-        } else if (wallDefinitions.EAST && action.equals(CaveZoneWallCardinalityDefintions.east)) {
+        } else if (wallDefinitions.EAST && action.equals(CaveZoneWallCardinalityDefintions.EAST_STRVAL)) {
             return CaveWallOpeningEntityPool.openWaveWallBlockSprites.get(
                     StaticSpriteVars.cave_border_opening_right2);
-        } else if (wallDefinitions.SOUTH && action.equals(CaveZoneWallCardinalityDefintions.south)) {
+        } else if (wallDefinitions.SOUTH && action.equals(CaveZoneWallCardinalityDefintions.SOUTH_STRVAL)) {
             return CaveWallOpeningEntityPool.openWaveWallBlockSprites.get(
                     StaticSpriteVars.cave_border_opening_bottom2);
-        } else if (wallDefinitions.WEST && action.equals(CaveZoneWallCardinalityDefintions.west)) {
+        } else if (wallDefinitions.WEST && action.equals(CaveZoneWallCardinalityDefintions.WEST_STRVAL)) {
             return CaveWallOpeningEntityPool.openWaveWallBlockSprites.get(
                     StaticSpriteVars.cave_border_opening_left2);
         } else {

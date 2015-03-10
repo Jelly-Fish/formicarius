@@ -38,6 +38,7 @@ import fr.com.jellyfish.jfgformicarius.formicarius.game.Game;
 import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.ZoneBuilder;
 import fr.com.jellyfish.jfgformicarius.formicarius.staticvars.StaticSpriteVars;
 import fr.com.jellyfish.jfgformicarius.formicarius.texture.Sprite;
+import fr.com.jellyfish.jfgformicarius.formicarius.world.zone.CardinalityDefinition;
 import fr.com.jellyfish.jfgformicarius.formicarius.world.zone.ZonePosition;
 import fr.com.jellyfish.jfgformicarius.formicarius.world.zone.cave.CaveZone;
 import fr.com.jellyfish.jfgformicarius.formicarius.world.zone.cave.CaveZoneWallCardinalityDefintions;
@@ -54,20 +55,33 @@ import java.util.Map.Entry;
  */
 public class ZoneGenerationUtils {
     
+    /**
+     * 
+     * @return 
+     */
     public static HashMap<ZonePosition, ZoneBuilder> buildCaveZones1() {
         
         final HashMap<ZonePosition, ZoneBuilder> zones = new HashMap<>();
         
+        // MEMO : N E S W
         zones.put(new ZonePosition(0, 0), 
-            new CaveZone(new CaveZoneWallCardinalityDefintions(true, true, true, true)));
+            new CaveZone(new CaveZoneWallCardinalityDefintions()));
         zones.put(new ZonePosition(0, -1), 
-            new CaveZone(new CaveZoneWallCardinalityDefintions(true, false, false, false)));
+            new CaveZone(new CaveZoneWallCardinalityDefintions(CardinalityDefinition.NORTH)));
         zones.put(new ZonePosition(1, 0), 
-            new CaveZone(new CaveZoneWallCardinalityDefintions(false, false, false, true)));
+            new CaveZone(new CaveZoneWallCardinalityDefintions(CardinalityDefinition.WEST)));
         zones.put(new ZonePosition(0, 1), 
-            new CaveZone(new CaveZoneWallCardinalityDefintions(false, false, true, false)));
+            new CaveZone(new CaveZoneWallCardinalityDefintions(CardinalityDefinition.SOUTH)));
         zones.put(new ZonePosition(-1, 0), 
-            new CaveZone(new CaveZoneWallCardinalityDefintions(false, true, false, false)));
+            new CaveZone(new CaveZoneWallCardinalityDefintions(CardinalityDefinition.EAST, CardinalityDefinition.WEST)));
+        zones.put(new ZonePosition(-2, 0), 
+            new CaveZone(new CaveZoneWallCardinalityDefintions(CardinalityDefinition.EAST, CardinalityDefinition.SOUTH)));
+        zones.put(new ZonePosition(-2, -1), 
+            new CaveZone(new CaveZoneWallCardinalityDefintions(CardinalityDefinition.NORTH, CardinalityDefinition.SOUTH)));
+        zones.put(new ZonePosition(-2, -2), 
+            new CaveZone(new CaveZoneWallCardinalityDefintions(CardinalityDefinition.SOUTH, CardinalityDefinition.NORTH)));
+        zones.put(new ZonePosition(-2, -3), 
+            new CaveZone(new CaveZoneWallCardinalityDefintions(CardinalityDefinition.NORTH)));
                 
         return zones;        
     }

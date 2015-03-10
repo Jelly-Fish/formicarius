@@ -31,7 +31,6 @@
  */
 package fr.com.jellyfish.jfgformicarius.formicarius.entities.characters;
 
-import com.sun.org.apache.xerces.internal.impl.validation.EntityState;
 import fr.com.jellyfish.jfgformicarius.formicarius.constants.AnimationConst;
 import fr.com.jellyfish.jfgformicarius.formicarius.constants.FrameConst;
 import fr.com.jellyfish.jfgformicarius.formicarius.constants.MvtConst;
@@ -261,6 +260,7 @@ public class Knight extends AbstractEntity implements Interactable, CollidableOb
         // Set texture/sprite effects. getMvt() will return left or right.
         // 1 for left and/or 3 for right.
         sprite = this.frames[this.frames.length - 5 + this.getMvt()];
+        this.setAnimeUpdateRequired(false);
         return this;
     }
     

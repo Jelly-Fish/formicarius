@@ -29,47 +29,19 @@
  * POSSIBILITY OF SUCH DAMAGE.
  * *****************************************************************************
  */
-package fr.com.jellyfish.jfgformicarius.formicarius.world.zone.cave;
-
-import fr.com.jellyfish.jfgformicarius.formicarius.world.zone.CardinalityDefinition;
-import fr.com.jellyfish.jfgformicarius.formicarius.world.zone.ZoneWallCardinalityDefintions;
+package fr.com.jellyfish.jfgformicarius.formicarius.exceptions;
 
 /**
  *
  * @author thw
  */
-public class CaveZoneWallCardinalityDefintions extends ZoneWallCardinalityDefintions {
-
-    /**
-     * String value of cardinalities.
-     */
-    public static final String NORTH_STRVAL = "north";
-    public static final String EAST_STRVAL = "east";
-    public static final String SOUTH_STRVAL = "south";
-    public static final String WEST_STRVAL = "west";
+public class ZoneGenerationException extends FormicariusException {
     
-    /**
-     * 
-     */
-    public CaveZoneWallCardinalityDefintions() {
-        super(CardinalityDefinition.NORTH, CardinalityDefinition.EAST,
-            CardinalityDefinition.SOUTH, CardinalityDefinition.WEST);
+    public ZoneGenerationException() {
     }
     
-    /**
-     * Define only wall to be dropped by adding extra CardinalityDefinition.
-     * @param c CardinalityDefinition collection.
-     */
-    public CaveZoneWallCardinalityDefintions(final CardinalityDefinition ... c) {
-        super(c);
+    public ZoneGenerationException(final String message) {
+        super(message);
     }
     
-    /**
-     * 
-     * @param o
-     */
-    public CaveZoneWallCardinalityDefintions(final Object o) {
-        super();
-    }
-
 }

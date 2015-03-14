@@ -31,57 +31,94 @@
  */
 package fr.com.jellyfish.jfgformicarius.formicarius.world.zone;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author thw
  */
 public class ZoneWallCardinalityDefintions {
-    
+
     /**
-     * False wall is down, true wall is up.
-     * For example NORTH = true meaning that north wall has an auto generated 
-     * entrance door/opening to a zone at it's north.
+     * False wall is down, true wall is up. For example NORTH = true meaning
+     * that north wall has an auto generated entrance door/opening to a zone at
+     * it's north.
      */
-    public final boolean NORTH;
-    public final boolean EAST;
-    public final boolean SOUTH;
-    public final boolean WEST;
+    public boolean north;
+    public boolean east;
+    public boolean south;
+    public boolean west;
 
     /**
      * constructor.
+     *
      * @param c CardinalityDefinition collection
      */
     public ZoneWallCardinalityDefintions(final CardinalityDefinition ... c) {
-        
-        boolean n = false; boolean nSet = false;
-        boolean e = false; boolean eSet = false;
-        boolean s = false; boolean sSet = false;
-        boolean w = false; boolean wSet = false;
-        
-        
+
+        boolean n = false;
+        boolean nSet = false;
+        boolean e = false;
+        boolean eSet = false;
+        boolean s = false;
+        boolean sSet = false;
+        boolean w = false;
+        boolean wSet = false;
+
         for (CardinalityDefinition cc : c) {
-            
+
             if (cc.equals(CardinalityDefinition.NORTH) && !n && !nSet) {
-                n = true; nSet = true;
+                n = true;
+                nSet = true;
             }
-            
+
             if (cc.equals(CardinalityDefinition.EAST) && !e && !eSet) {
-                e = true; eSet = true;
+                e = true;
+                eSet = true;
             }
-            
+
             if (cc.equals(CardinalityDefinition.SOUTH) && !s && !sSet) {
-                s = true; sSet = true;
+                s = true;
+                sSet = true;
             }
-            
+
             if (cc.equals(CardinalityDefinition.WEST) && !w && !wSet) {
-                w = true; wSet = true;
+                w = true;
+                wSet = true;
             }
         }
-        
-        this.NORTH = n;
-        this.EAST = e;
-        this.SOUTH = s;
-        this.WEST = w;
+
+        this.north = n;
+        this.east = e;
+        this.south = s;
+        this.west = w;
+    }
+
+    /**
+     * Constructor.
+     */
+    public ZoneWallCardinalityDefintions() {
+        this.north = false;
+        this.east = false;
+        this.south = false;
+        this.west = false;
     }
     
+    /**
+     * 
+     * @return 
+     */
+    public List<CardinalityDefinition> getCardinalityDefinitions() {
+        
+        final List<CardinalityDefinition> c = new ArrayList<>();
+        
+        if (this.north) c.add(CardinalityDefinition.NORTH);
+        if (this.east) c.add(CardinalityDefinition.EAST);
+        if (this.south) c.add(CardinalityDefinition.SOUTH);
+        if (this.west) c.add(CardinalityDefinition.WEST);
+        
+        return c;
+    }
+
 }

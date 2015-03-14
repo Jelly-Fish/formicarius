@@ -42,8 +42,10 @@ import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.ZoneBuilder;
 import fr.com.jellyfish.jfgformicarius.formicarius.staticvars.StaticEntityReferences;
 import fr.com.jellyfish.jfgformicarius.formicarius.staticvars.StaticSpriteVars;
 import fr.com.jellyfish.jfgformicarius.formicarius.utils.SpriteUtils;
+import fr.com.jellyfish.jfgformicarius.formicarius.world.zone.CardinalityDefinition;
 import java.awt.Rectangle;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -108,7 +110,7 @@ public class CaveZone implements ZoneBuilder {
             walls.put(wall.ABSTRACT_REF, wall);
         }
         applyWallCardinalityDefinition(14, StaticEntityReferences.TOP_REF,
-                this.wallDefinitions.NORTH, CaveZoneWallCardinalityDefintions.NORTH_STRVAL);
+                this.wallDefinitions.north, CaveZoneWallCardinalityDefintions.NORTH_STRVAL);
 
         /**
          * Walls bottom.
@@ -122,7 +124,7 @@ public class CaveZone implements ZoneBuilder {
             walls.put(wall.ABSTRACT_REF, wall);
         }
         applyWallCardinalityDefinition(14, StaticEntityReferences.BOTTOM_REF,
-                this.wallDefinitions.SOUTH, CaveZoneWallCardinalityDefintions.SOUTH_STRVAL);
+                this.wallDefinitions.south, CaveZoneWallCardinalityDefintions.SOUTH_STRVAL);
 
         /**
          * Walls left.
@@ -136,7 +138,7 @@ public class CaveZone implements ZoneBuilder {
 
         }
         applyWallCardinalityDefinition(10, StaticEntityReferences.LEFT_REF,
-                this.wallDefinitions.WEST, CaveZoneWallCardinalityDefintions.WEST_STRVAL);
+                this.wallDefinitions.west, CaveZoneWallCardinalityDefintions.WEST_STRVAL);
 
         /**
          * Walls right.
@@ -150,7 +152,7 @@ public class CaveZone implements ZoneBuilder {
             walls.put(wall.ABSTRACT_REF, wall);
         }
         applyWallCardinalityDefinition(10, StaticEntityReferences.RIGHT_REF,
-                this.wallDefinitions.EAST, CaveZoneWallCardinalityDefintions.EAST_STRVAL);
+                this.wallDefinitions.east, CaveZoneWallCardinalityDefintions.EAST_STRVAL);
     }
 
     /**
@@ -270,6 +272,11 @@ public class CaveZone implements ZoneBuilder {
     @Override
     public Map<String, AbstractEntity> getStatics() throws ZoneBuildException {
         return null;
+    }
+    
+    @Override
+    public List<CardinalityDefinition> getCardinalityDefinitions() {
+        return this.wallDefinitions.getCardinalityDefinitions();
     }
     //</editor-fold>
 

@@ -35,6 +35,7 @@ import fr.com.jellyfish.jfgformicarius.formicarius.constants.FrameConst;
 import fr.com.jellyfish.jfgformicarius.formicarius.constants.MvtConst;
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.abstractentities.AbstractEntity;
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.characters.MainCharacter;
+import fr.com.jellyfish.jfgformicarius.formicarius.exceptions.ZoneGenerationException;
 import fr.com.jellyfish.jfgformicarius.formicarius.game.Game;
 import fr.com.jellyfish.jfgformicarius.formicarius.helpers.DrawingHelper;
 import fr.com.jellyfish.jfgformicarius.formicarius.helpers.entities.maincharacter.MainCharacterCaveZoneHelper;
@@ -43,6 +44,8 @@ import fr.com.jellyfish.jfgformicarius.formicarius.staticvars.StaticSpriteVars;
 import fr.com.jellyfish.jfgformicarius.formicarius.texture.Sprite;
 import fr.com.jellyfish.jfgformicarius.formicarius.utils.ZoneGenerationUtils;
 import java.awt.Rectangle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -50,6 +53,7 @@ import java.awt.Rectangle;
  */
 public class CaveEntrance extends AbstractEntity implements CollidableObject {
 
+    //<editor-fold defaultstate="collapsed" desc="variables">
     /**
      * Sprite size.
      */
@@ -59,7 +63,9 @@ public class CaveEntrance extends AbstractEntity implements CollidableObject {
      *
      */
     public static final String REF = "cave_entrance";
+    //</editor-fold>
 
+    //<editor-fold defaultstate="collapsed" desc="constructor">
     /**
      * constructor.
      *
@@ -71,30 +77,40 @@ public class CaveEntrance extends AbstractEntity implements CollidableObject {
     public CaveEntrance(final Game game, final Sprite sprite, final int x, final int y) {
         super(game, sprite, x, y, MvtConst.STILL, CaveEntrance.class.getSimpleName());
     }
-    
+    //</editor-fold>
+
+    //<editor-fold defaultstate="collapsed" desc="methods">
     @Override
-    public void collideWith(final AbstractEntity other) {        
-        if (other instanceof MainCharacter && 
-                ((MainCharacter) other).getRectangle().intersects(this.getRectangle())) {
-            
+    public void collideWith(final AbstractEntity other) {
+        if (other instanceof MainCharacter
+                && ((MainCharacter) other).getRectangle().intersects(this.getRectangle())) {
+
             /**
              * Then change environment for cave scenarios. Affect new
              * TransitionAction class to MainCharacter.
              *
              * @see TransitionAction
              * @see MainCharacterZoneHelper
-             * 
+             *
              */
             
             /**
-             * TODO :
-             * Below, call to ZoneGenerationUtils method is not dynamic,
-             * buildCaveZones1() will always be called. Make zone Maps sent to
-             * helper randomly selected or defined in a scenario.
+             * TODO : Make value sent to buildRandomCaveZones(int) dynamic.
              */
-            ((MainCharacter) other).setTransitionAction(
-                    new MainCharacterCaveZoneHelper((MainCharacter) other, game,
-                            ZoneGenerationUtils.buildCaveZones1()));
+            try {
+                ((MainCharacter) other).setTransitionAction(
+                        new MainCharacterCaveZoneHelper((MainCharacter) other, game,
+                                ZoneGenerationUtils.buildRandomCaveZones(20)));
+            } catch (final ZoneGenerationException zge) {
+                Logger.getLogger(CaveEntrance.class.getName()).log(Level.SEVERE, null, zge);
+                
+                /**************************************************************/
+                /* FOR DEBUG * TODO : Remove after tests **********************/
+                ((MainCharacter) other).setTransitionAction(
+                        new MainCharacterCaveZoneHelper((MainCharacter) other, game,
+                                ZoneGenerationUtils.buildCaveZones1()));
+                /**************************************************************/
+            }
             game.getEntityHelper().getTileEntities().clear();
             game.getEntityHelper().initTilingEntities(StaticSpriteVars.cave_ground1_400);
             game.getEntityHelper().getFader().fade();
@@ -103,29 +119,30 @@ public class CaveEntrance extends AbstractEntity implements CollidableObject {
             ((MainCharacter) other).getTransitionAction().triggerTransition(MvtConst.STILL);
         }
     }
-    
+
     @Override
     public void doLogic() {
     }
-    
+
     @Override
     public void beforeRender(final boolean force) {
     }
-    
+
     @Override
-    public void afterRender(final boolean force) {        
+    public void afterRender(final boolean force) {
         DrawingHelper.getInstance().getDrawableQueue().add(0, this);
     }
-    
+
     @Override
     public Rectangle getRectangle() {
         return new Rectangle(this.getX() + (CaveEntrance.SPRT_WH / 4),
                 this.getY() + (CaveEntrance.SPRT_WH / 4), SPRT_WH / 2, SPRT_WH / 2);
     }
-    
+
     @Override
     public Rectangle getRectangle(final AbstractEntity entity) {
         return null;
     }
-    
+    //</editor-fold>
+
 }

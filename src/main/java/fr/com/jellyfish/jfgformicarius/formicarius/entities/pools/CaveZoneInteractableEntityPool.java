@@ -31,13 +31,7 @@
  */
 package fr.com.jellyfish.jfgformicarius.formicarius.entities.pools;
 
-import fr.com.jellyfish.jfgformicarius.formicarius.constants.FrameConst;
-import fr.com.jellyfish.jfgformicarius.formicarius.constants.MvtConst;
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.abstractentities.AbstractEntity;
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.characters.Knight;
-import fr.com.jellyfish.jfgformicarius.formicarius.game.Game;
-import fr.com.jellyfish.jfgformicarius.formicarius.staticvars.StaticSpriteVars;
-import fr.com.jellyfish.jfgformicarius.formicarius.utils.RandomUtils;
 import java.util.Map;
 
 /**
@@ -82,11 +76,11 @@ public class CaveZoneInteractableEntityPool extends InteractableEntityPool {
     @Override
     protected void initComplexeInteractablePool() {
         
-        final Knight knight = new Knight(Game.getInstance(), StaticSpriteVars.golbez,
+        /*final Knight knight = new Knight(Game.getInstance(), StaticSpriteVars.golbez,
                 20, RandomUtils.randInt(100, FrameConst.FRM_WIDTH - 100), 
                 RandomUtils.randInt(100, FrameConst.FRM_HEIGHT - 100), MvtConst.LEFT, 
                 Knight.class.getSimpleName());
-            randomEntityPool.put(knight.ABSTRACT_REF, knight);
+            randomEntityPool.put(knight.ABSTRACT_REF, knight);*/
     }
     
 }

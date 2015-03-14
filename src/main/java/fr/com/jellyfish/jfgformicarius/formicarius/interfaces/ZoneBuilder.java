@@ -33,6 +33,8 @@ package fr.com.jellyfish.jfgformicarius.formicarius.interfaces;
 
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.abstractentities.AbstractEntity;
 import fr.com.jellyfish.jfgformicarius.formicarius.exceptions.ZoneBuildException;
+import fr.com.jellyfish.jfgformicarius.formicarius.world.zone.CardinalityDefinition;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -47,6 +49,12 @@ public interface ZoneBuilder {
      * @throws ZoneBuildException 
      */
     public void buildZone(final AbstractEntity[] entities) throws ZoneBuildException;
+    
+    /**
+     * Get cardinality definitions.
+     * @return 
+     */
+    public List<CardinalityDefinition> getCardinalityDefinitions();
     
     /**
      * Get AbstractEntity's added to "global" List or HashMap.

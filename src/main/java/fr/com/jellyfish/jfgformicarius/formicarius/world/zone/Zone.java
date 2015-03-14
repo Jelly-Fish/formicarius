@@ -194,6 +194,11 @@ public class Zone implements ZoneBuilder {
         }
         return statics;
     }
+    
+    @Override
+    public List<CardinalityDefinition> getCardinalityDefinitions() {
+        return null;
+    }
     //</editor-fold>
     
 }

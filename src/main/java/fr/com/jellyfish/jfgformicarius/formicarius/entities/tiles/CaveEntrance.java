@@ -40,8 +40,10 @@ import fr.com.jellyfish.jfgformicarius.formicarius.game.Game;
 import fr.com.jellyfish.jfgformicarius.formicarius.helpers.DrawingHelper;
 import fr.com.jellyfish.jfgformicarius.formicarius.helpers.entities.maincharacter.MainCharacterCaveZoneHelper;
 import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.CollidableObject;
+import fr.com.jellyfish.jfgformicarius.formicarius.staticvars.StaticSoundVars;
 import fr.com.jellyfish.jfgformicarius.formicarius.staticvars.StaticSpriteVars;
 import fr.com.jellyfish.jfgformicarius.formicarius.texture.Sprite;
+import fr.com.jellyfish.jfgformicarius.formicarius.utils.CollisionUtils;
 import fr.com.jellyfish.jfgformicarius.formicarius.utils.ZoneGenerationUtils;
 import java.awt.Rectangle;
 import java.util.logging.Level;
@@ -59,6 +61,11 @@ public class CaveEntrance extends AbstractEntity implements CollidableObject {
      */
     public static final int SPRT_WH = 60;
 
+    /**
+     *  Collision rectangle width & height.
+     */
+    private static final int COLLISION_RECTANGLE_WH = 4;
+    
     /**
      *
      */
@@ -82,8 +89,10 @@ public class CaveEntrance extends AbstractEntity implements CollidableObject {
     //<editor-fold defaultstate="collapsed" desc="methods">
     @Override
     public void collideWith(final AbstractEntity other) {
+        
         if (other instanceof MainCharacter
-                && ((MainCharacter) other).getRectangle().intersects(this.getRectangle())) {
+                && CollisionUtils.inCollision(((MainCharacter) other).getMinimumLowerRectangle(), 
+                    this.getRectangle())) {
 
             /**
              * Then change environment for cave scenarios. Affect new
@@ -103,17 +112,11 @@ public class CaveEntrance extends AbstractEntity implements CollidableObject {
                                 ZoneGenerationUtils.buildRandomCaveZones(20)));
             } catch (final ZoneGenerationException zge) {
                 Logger.getLogger(CaveEntrance.class.getName()).log(Level.SEVERE, null, zge);
-                
-                /**************************************************************/
-                /* FOR DEBUG * TODO : Remove after tests **********************/
-                ((MainCharacter) other).setTransitionAction(
-                        new MainCharacterCaveZoneHelper((MainCharacter) other, game,
-                                ZoneGenerationUtils.buildCaveZones1()));
-                /**************************************************************/
             }
             game.getEntityHelper().getTileEntities().clear();
             game.getEntityHelper().initTilingEntities(StaticSpriteVars.cave_ground1_400);
             game.getEntityHelper().getFader().fade();
+            game.getSoundManager().playEffect(StaticSoundVars.spell6);
             other.setX((FrameConst.FRM_WIDTH / 2) - MainCharacter.SPRT_W / 2);
             other.setY((FrameConst.FRM_HEIGHT / 2) - MainCharacter.SPRT_H / 2);
             ((MainCharacter) other).getTransitionAction().triggerTransition(MvtConst.STILL);
@@ -135,8 +138,9 @@ public class CaveEntrance extends AbstractEntity implements CollidableObject {
 
     @Override
     public Rectangle getRectangle() {
-        return new Rectangle(this.getX() + (CaveEntrance.SPRT_WH / 4),
-                this.getY() + (CaveEntrance.SPRT_WH / 4), SPRT_WH / 2, SPRT_WH / 2);
+        return new Rectangle(this.getX() + (CaveEntrance.SPRT_WH / 2) - (CaveEntrance.COLLISION_RECTANGLE_WH / 2),
+                this.getY() + (CaveEntrance.SPRT_WH / 2) - (CaveEntrance.COLLISION_RECTANGLE_WH / 2), 
+                CaveEntrance.COLLISION_RECTANGLE_WH, CaveEntrance.COLLISION_RECTANGLE_WH);
     }
 
     @Override

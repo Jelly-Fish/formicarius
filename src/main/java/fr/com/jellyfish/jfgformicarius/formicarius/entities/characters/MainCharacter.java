@@ -63,13 +63,49 @@ import java.awt.Rectangle;
 public class MainCharacter extends AbstractEntity implements XYObservable {
 
     //<editor-fold defaultstate="collapsed" desc="variables">
+    /**
+     * 
+     */
     public static final float SPEED = 160;
+    
+    /**
+     * Sprite width.
+     */
     public static final int SPRT_W = 32;
+    
+    /**
+     * Sprite height.
+     */
     public static final int SPRT_H = 48;
+    
+    /**
+     *
+     */
     public static final int MAX_HEALTH_VALUE = 100;
+    
+     /**
+     * Collision minimum rectangle width & height.
+     */
+    private static final int MIN_COLLISION_RECTANGLE_WH = 6;
+    
+    /**
+     * Sprite collection frame number.
+     */
     private int frameVal = 0;
+    
+    /**
+     * Mouvement at spawn.
+     */
     private int spawnMvt;
+    
+    /**
+     * Has moved once = true else = false.
+     */
     private boolean moved = false;
+    
+    /**
+     * 
+     */
     private float collisionEffectValue = 0.0f;
 
     /**
@@ -418,6 +454,16 @@ public class MainCharacter extends AbstractEntity implements XYObservable {
      */
     public Rectangle getRectangle() {
         return new Rectangle((int) x, (int) y, MainCharacter.SPRT_W, MainCharacter.SPRT_H);
+    }
+    
+    /**
+     * 
+     * @return minimum rectangle definition on MainCharacter.
+     */
+    public Rectangle getMinimumLowerRectangle() {
+        return new Rectangle((int) x + (MainCharacter.SPRT_W / 2) - (MainCharacter.MIN_COLLISION_RECTANGLE_WH / 2), 
+            (int) y + MainCharacter.SPRT_H - (MainCharacter.MIN_COLLISION_RECTANGLE_WH * 2), 
+            MainCharacter.MIN_COLLISION_RECTANGLE_WH, MainCharacter.MIN_COLLISION_RECTANGLE_WH);
     }
     //</editor-fold>
 

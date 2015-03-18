@@ -29,6 +29,7 @@
  * POSSIBILITY OF SUCH DAMAGE.
  * *****************************************************************************
  */
+
 package fr.com.jellyfish.jfgformicarius.formicarius.helpers.entities.maincharacter;
 
 import fr.com.jellyfish.jfgformicarius.formicarius.entities.characters.MainCharacter;
@@ -100,11 +101,6 @@ public class MainCharacterCaveZoneHelper implements TransitionAction {
         game.clearEntityCollectionsForTransition();
         
         try {
-            /******************************************************************/
-            /* DEBUG DISPLAY * TODO : Remove after tests **********************/
-            System.out.println("mc-x : " + mainCharacter.getCurrentZonePosition().getX() + 
-                    " / mc-y : " + mainCharacter.getCurrentZonePosition().getY());
-            /******************************************************************/
             zoneBuilder = zones.get(mainCharacter.getCurrentZonePosition());
             zoneBuilder.buildZone(null);
             game.getEntityHelper().getObjectEntities().putAll(zoneBuilder.getGlobals());

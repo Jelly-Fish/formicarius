@@ -124,11 +124,16 @@ public class ZoneGenerationUtils {
             }
 
             try {
-                c = ZoneGenerationUtils.getRandomCardinalityDefintion();
-                cList.add(c);
+                
+                if (loops != maxLoops) {
+                    c = ZoneGenerationUtils.getRandomCardinalityDefintion();
+                    cList.add(c);
+                }
+                
                 if (tmpC != null) {
                     cList.add(tmpC);
                 }
+                
             } catch (final ZoneGenerationException zge) {
                 Logger.getLogger(ZoneGenerationUtils.class.getName()).log(Level.SEVERE, null, zge);
                 throw zge;
@@ -156,13 +161,6 @@ public class ZoneGenerationUtils {
             
             ++loops;
         }  while (loops <= maxLoops);
-
-        /**********************************************************************/
-        /* DEBUG DISPLAY * TODO : Remove after tests **************************/
-        for (ZonePosition zp : zones.keySet()) {
-            System.out.println("x: " + zp.getX() + " / y: " + zp.getY());
-        }
-        /**********************************************************************/
         
         return zones;
     }

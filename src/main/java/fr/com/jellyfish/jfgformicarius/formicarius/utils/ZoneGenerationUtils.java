@@ -100,7 +100,8 @@ public class ZoneGenerationUtils {
      *
      * @param maxLoops
      * @return
-     * @throws fr.com.jellyfish.jfgformicarius.formicarius.exceptions.ZoneGenerationException
+     * @throws
+     * fr.com.jellyfish.jfgformicarius.formicarius.exceptions.ZoneGenerationException
      */
     public static HashMap<ZonePosition, ZoneBuilder> buildRandomCaveZones(final int maxLoops)
             throws ZoneGenerationException {
@@ -112,56 +113,69 @@ public class ZoneGenerationUtils {
         List<CardinalityDefinition> cList = new ArrayList<>();
         CardinalityDefinition[] cArray = null;
         CardinalityDefinition tmpC = null;
-        
+
         // MEMO : N E S W
         do {
-            
+
             z = new ZonePosition(x, y);
-            
-            if (zones.containsKey(z)) { 
+
+            if (zones.containsKey(z)) {
                 cList.addAll(((CaveZone) zones.get(z)).getCardinalityDefinitions());
                 zones.remove(z);
             }
 
             try {
-                
+
                 if (loops != maxLoops) {
                     c = ZoneGenerationUtils.getRandomCardinalityDefintion();
                     cList.add(c);
                 }
-                
+
                 if (tmpC != null) {
                     cList.add(tmpC);
                 }
-                
+
             } catch (final ZoneGenerationException zge) {
                 Logger.getLogger(ZoneGenerationUtils.class.getName()).log(Level.SEVERE, null, zge);
                 throw zge;
             }
 
             /**
-             * Depending on random direction :
-             * 1_increment or decrement x-y coordinates.
-             * 2_affect temp cardinality var tmpC with value to impact on next 
-             * iteration : if we move north, the new zone at north must have a
-             * south cardinality = true - otherwise navigation between these 2
-             * zones will be impossible.
+             * Depending on random direction : 1_increment or decrement x-y
+             * coordinates. 2_affect temp cardinality var tmpC with value to
+             * impact on next iteration : if we move north, the new zone at
+             * north must have a south cardinality = true - otherwise navigation
+             * between these 2 zones will be impossible.
              */
-            switch (c) {
-                case NORTH: ++y; tmpC = CardinalityDefinition.SOUTH; break;
-                case EAST: ++x; tmpC = CardinalityDefinition.WEST; break;
-                case SOUTH: --y; tmpC = CardinalityDefinition.NORTH; break;
-                case WEST: --x; tmpC = CardinalityDefinition.EAST; break;
+            if (c != null) {
+                switch (c) {
+                    case NORTH:
+                        ++y;
+                        tmpC = CardinalityDefinition.SOUTH;
+                        break;
+                    case EAST:
+                        ++x;
+                        tmpC = CardinalityDefinition.WEST;
+                        break;
+                    case SOUTH:
+                        --y;
+                        tmpC = CardinalityDefinition.NORTH;
+                        break;
+                    case WEST:
+                        --x;
+                        tmpC = CardinalityDefinition.EAST;
+                        break;
+                }
             }
-            
+
             // Send Array to CaveZoneWallCardinalityDefintions(varargs) :
             cArray = new CardinalityDefinition[cList.size()];
             zones.put(z, new CaveZone(new CaveZoneWallCardinalityDefintions(cList.toArray(cArray))));
             cList.clear();
-            
+
             ++loops;
-        }  while (loops <= maxLoops);
-        
+        } while (loops <= maxLoops);
+
         return zones;
     }
 

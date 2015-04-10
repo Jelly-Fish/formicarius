@@ -109,7 +109,7 @@ public class CaveEntrance extends AbstractEntity implements CollidableObject {
             try {
                 ((MainCharacter) other).setTransitionAction(
                         new MainCharacterCaveZoneHelper((MainCharacter) other, game,
-                                ZoneGenerationUtils.buildRandomCaveZones(20)));
+                                ZoneGenerationUtils.buildRandomCaveZones(33)));
             } catch (final ZoneGenerationException zge) {
                 Logger.getLogger(CaveEntrance.class.getName()).log(Level.SEVERE, null, zge);
             }

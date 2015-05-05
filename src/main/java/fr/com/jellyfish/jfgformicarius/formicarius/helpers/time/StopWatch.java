@@ -88,7 +88,7 @@ public class StopWatch {
     /**
      * return time in seconds since this object was created.
      * @return elapsed time double.
-     * @throws formicarius.exceptions.StopWatchNotStartedException
+     * @throws fr.com.jellyfish.jfgformicarius.formicarius.exceptions.StopWatchNotStartedException
      */
     public double elapsedTime() throws StopWatchNotStartedException {
         if (!started) {

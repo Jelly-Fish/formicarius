@@ -218,6 +218,7 @@ public class Game {
             tempEnts.addAll(this.entityHelper.getGlobalEntities().values());
             tempEnts.addAll(this.entityHelper.getInteractableEntities().values());
             tempEnts.addAll(this.entityHelper.getMainEntities().values());
+            
             if (this.entityHelper.getStaticEntities().containsKey(CaveEntrance.REF)) {
                 tempEnts.add(this.entityHelper.getStaticEntities().get(CaveEntrance.REF));
             }

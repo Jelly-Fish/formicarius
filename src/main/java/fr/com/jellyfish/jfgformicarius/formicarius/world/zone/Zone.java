@@ -116,6 +116,7 @@ public class Zone implements ZoneBuilder {
                 this.statics.put(String.valueOf(++index), ent);
             }
         }
+        
         for (AbstractEntity ent : ZoneGenerationUtils.appendRandomTerrainNonCollibableElements(FrameConst.FRM_WIDTH, FrameConst.FRM_HEIGHT,
                 SpriteUtils.getSprite(Game.getInstance().getTextureLoader(),
                         StaticSpriteVars.mushrooms_red_25x25),
@@ -136,6 +137,7 @@ public class Zone implements ZoneBuilder {
                 RandomUtils.randInt(0, 
                     FrameConst.FRM_HEIGHT - CaveEntrance.SPRT_WH)
                 );
+        
         boolean caveEntraceAdded = true;
         for (AbstractEntity ent : this.globals.values()) {
             if (ent.collidesWith(caveEntrance)) {
@@ -143,6 +145,7 @@ public class Zone implements ZoneBuilder {
                 break;
             }
         }
+        
         if (caveEntraceAdded) {
             for (Map.Entry pair : this.statics.entrySet()) {
                 if (caveEntrance.collidesWith((AbstractEntity) pair.getValue())) {

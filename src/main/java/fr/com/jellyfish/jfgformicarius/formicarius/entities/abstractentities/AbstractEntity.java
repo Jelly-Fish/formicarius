@@ -33,7 +33,6 @@ package fr.com.jellyfish.jfgformicarius.formicarius.entities.abstractentities;
 import java.awt.Rectangle;
 import fr.com.jellyfish.jfgformicarius.formicarius.game.Game;
 import fr.com.jellyfish.jfgformicarius.formicarius.texture.Sprite;
-import fr.com.jellyfish.jfgformicarius.formicarius.world.zone.cave.CaveZoneWallCardinalityDefintions;
 
 /**
  * An entity represents any elethisEntitynt that appears in the gathisEntity. The entity is

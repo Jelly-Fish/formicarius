@@ -100,7 +100,6 @@ public class CaveEntrance extends AbstractEntity implements CollidableObject {
              *
              * @see TransitionAction
              * @see MainCharacterZoneHelper
-             *
              */
             
             /**
@@ -113,6 +112,7 @@ public class CaveEntrance extends AbstractEntity implements CollidableObject {
             } catch (final ZoneGenerationException zge) {
                 Logger.getLogger(CaveEntrance.class.getName()).log(Level.SEVERE, null, zge);
             }
+            
             game.getEntityHelper().getTileEntities().clear();
             game.getEntityHelper().initTilingEntities(StaticSpriteVars.cave_ground1_400);
             game.getEntityHelper().getFader().fade();

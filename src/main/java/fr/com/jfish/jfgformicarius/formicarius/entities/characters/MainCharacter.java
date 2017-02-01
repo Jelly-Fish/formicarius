@@ -288,7 +288,7 @@ public class MainCharacter extends AbstractEntity implements XYObservable {
     
     @Override
     public int[] observedWH() {
-        return new int[]{MainCharacter.SPRT_W, MainCharacter.SPRT_H};
+        return new int[] { MainCharacter.SPRT_W, MainCharacter.SPRT_H };
     }
     
     @Override
@@ -400,7 +400,9 @@ public class MainCharacter extends AbstractEntity implements XYObservable {
         }
         
         if (((gLoopCntr1 >= AnimationConst.FPS / 10) && isAnimeUpdateRequired()) || force) {
+            
             gLoopCntr1 = 0;
+            
             switch ((int) getMvt()) {
                 case MvtConst.LEFT:
                     frameVal = currentMvt != MvtConst.LEFT || frameVal == 7 ? 4 : frameVal;
@@ -423,6 +425,7 @@ public class MainCharacter extends AbstractEntity implements XYObservable {
                     currentMvt = MvtConst.DOWN;
                     break;
             }
+            
             frameVal++;
             sprite = frames[frameVal];
             moved = true;

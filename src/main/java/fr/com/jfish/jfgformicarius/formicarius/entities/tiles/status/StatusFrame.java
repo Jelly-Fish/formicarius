@@ -145,7 +145,7 @@ public class StatusFrame extends AbstractEntity {
     public float notifyStaminaLoss(final float lossValue) {
         final float val = this.staminaFrame.getDeffinedWidth();
         if (val > 0) {
-            this.staminaFrame.setDeffinedWidth(val - (lossValue * this.RATIO));
+            // this.staminaFrame.setDeffinedWidth(val - (lossValue * this.RATIO));
         }
         
         return this.staminaFrame.getDeffinedWidth();

@@ -132,9 +132,9 @@ public class Axe extends AbstractEntity implements Ignitable, CollidableObject {
     @Override
     public void collideWith(final AbstractEntity other) { 
 
-        if (other instanceof MainCharacter && !((MainCharacter)other).getIgnitable().equals(this)) {
+        if (other instanceof MainCharacter && !((MainCharacter) other).getIgnitable().equals(this)) {
             
-            if (this.getRectangle().intersects(((MainCharacter)other).getRectangle())) {
+            if (this.getRectangle().intersects(((MainCharacter) other).getRectangle())) {
                 // Spawn blood then clear Ignitable instance.
                 CollisionUtils.appendCollideEffect(new BloodImpact(
                     SpriteUtils.getSprite(game.getTextureLoader(), 

@@ -119,8 +119,7 @@ public class PlasmaBall extends AbstractEntity implements Ignitable, CollidableO
 
     //<editor-fold defaultstate="collapsed" desc="methods">
     @Override
-    public Rectangle getRectangle() {
-        
+    public Rectangle getRectangle() {        
         return new Rectangle(this.getX(), this.getY(), PlasmaBall.SPRT_WH - 4,
             PlasmaBall.SPRT_WH - 4);
     }

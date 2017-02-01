@@ -128,6 +128,7 @@ public class TextureLoader {
      * @throws IOException Indicates a failure to access the resource
      */
     public Texture getTexture(final String resourceName) throws IOException {
+        
         Texture tex = table.get(resourceName);
 
         if (tex != null) {
@@ -161,6 +162,7 @@ public class TextureLoader {
             int dstPixelFormat,
             int minFilter,
             int magFilter) throws IOException {
+        
         int srcPixelFormat;
 
         // create the texture ID for this texture

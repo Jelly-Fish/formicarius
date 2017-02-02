@@ -29,11 +29,11 @@
  * POSSIBILITY OF SUCH DAMAGE.
  * *****************************************************************************
  */
-package fr.com.jellyfish.jfgformicarius.formicarius.interfaces;
+package fr.com.jfish.jfgformicarius.formicarius.interfaces;
 
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.abstractentities.AbstractEntity;
-import fr.com.jellyfish.jfgformicarius.formicarius.exceptions.ZoneBuildException;
-import fr.com.jellyfish.jfgformicarius.formicarius.world.zone.CardinalityDefinition;
+import fr.com.jfish.jfgformicarius.formicarius.entities.abstractentities.AbstractEntity;
+import fr.com.jfish.jfgformicarius.formicarius.exceptions.ZoneBuildException;
+import fr.com.jfish.jfgformicarius.formicarius.world.zone.CardinalityDefinition;
 import java.util.List;
 import java.util.Map;
 

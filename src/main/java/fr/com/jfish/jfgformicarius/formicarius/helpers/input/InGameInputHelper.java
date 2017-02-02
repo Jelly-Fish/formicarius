@@ -28,14 +28,14 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
  *******************************************************************************/
 
-package fr.com.jellyfish.jfgformicarius.formicarius.helpers.input;
+package fr.com.jfish.jfgformicarius.formicarius.helpers.input;
 
-import fr.com.jellyfish.jfgformicarius.formicarius.constants.FrameConst;
-import fr.com.jellyfish.jfgformicarius.formicarius.constants.MvtConst;
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.characters.MainCharacter;
-import fr.com.jellyfish.jfgformicarius.formicarius.game.Game;
-import fr.com.jellyfish.jfgformicarius.formicarius.staticvars.StaticFrameVars;
-import fr.com.jellyfish.jfgformicarius.formicarius.utils.InputUtils;
+import fr.com.jfish.jfgformicarius.formicarius.constants.FrameConst;
+import fr.com.jfish.jfgformicarius.formicarius.constants.MvtConst;
+import fr.com.jfish.jfgformicarius.formicarius.entities.characters.MainCharacter;
+import fr.com.jfish.jfgformicarius.formicarius.game.Game;
+import fr.com.jfish.jfgformicarius.formicarius.staticvars.StaticFrameVars;
+import fr.com.jfish.jfgformicarius.formicarius.utils.InputUtils;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.Display;

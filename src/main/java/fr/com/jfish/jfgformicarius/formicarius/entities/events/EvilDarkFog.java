@@ -29,20 +29,20 @@
  * POSSIBILITY OF SUCH DAMAGE.
  * *****************************************************************************
  */
-package fr.com.jellyfish.jfgformicarius.formicarius.entities.events;
+package fr.com.jfish.jfgformicarius.formicarius.entities.events;
 
-import fr.com.jellyfish.jfgformicarius.formicarius.constants.AnimationConst;
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.abstractentities.AbstractEntity;
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.characters.MainCharacter;
-import fr.com.jellyfish.jfgformicarius.formicarius.game.Game;
-import fr.com.jellyfish.jfgformicarius.formicarius.helpers.DrawingHelper;
-import fr.com.jellyfish.jfgformicarius.formicarius.helpers.time.StopWatch;
-import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.Observer;
-import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.Spawnable;
-import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.XYObservable;
-import fr.com.jellyfish.jfgformicarius.formicarius.staticvars.StaticSpriteVars;
-import fr.com.jellyfish.jfgformicarius.formicarius.texture.Sprite;
-import fr.com.jellyfish.jfgformicarius.formicarius.utils.SpriteUtils;
+import fr.com.jfish.jfgformicarius.formicarius.constants.AnimationConst;
+import fr.com.jfish.jfgformicarius.formicarius.entities.abstractentities.AbstractEntity;
+import fr.com.jfish.jfgformicarius.formicarius.entities.characters.MainCharacter;
+import fr.com.jfish.jfgformicarius.formicarius.game.Game;
+import fr.com.jfish.jfgformicarius.formicarius.helpers.DrawingHelper;
+import fr.com.jfish.jfgformicarius.formicarius.helpers.time.StopWatch;
+import fr.com.jfish.jfgformicarius.formicarius.interfaces.Observer;
+import fr.com.jfish.jfgformicarius.formicarius.interfaces.Spawnable;
+import fr.com.jfish.jfgformicarius.formicarius.interfaces.XYObservable;
+import fr.com.jfish.jfgformicarius.formicarius.staticvars.StaticSpriteVars;
+import fr.com.jfish.jfgformicarius.formicarius.texture.Sprite;
+import fr.com.jfish.jfgformicarius.formicarius.utils.SpriteUtils;
 import java.awt.Rectangle;
 
 /**

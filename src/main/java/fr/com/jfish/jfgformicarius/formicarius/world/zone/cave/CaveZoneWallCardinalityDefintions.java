@@ -29,10 +29,10 @@
  * POSSIBILITY OF SUCH DAMAGE.
  * *****************************************************************************
  */
-package fr.com.jellyfish.jfgformicarius.formicarius.world.zone.cave;
+package fr.com.jfish.jfgformicarius.formicarius.world.zone.cave;
 
-import fr.com.jellyfish.jfgformicarius.formicarius.world.zone.CardinalityDefinition;
-import fr.com.jellyfish.jfgformicarius.formicarius.world.zone.ZoneWallCardinalityDefintions;
+import fr.com.jfish.jfgformicarius.formicarius.world.zone.CardinalityDefinition;
+import fr.com.jfish.jfgformicarius.formicarius.world.zone.ZoneWallCardinalityDefintions;
 
 /**
  *

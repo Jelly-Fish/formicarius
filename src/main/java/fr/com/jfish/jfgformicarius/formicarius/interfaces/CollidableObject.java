@@ -29,9 +29,9 @@
  * POSSIBILITY OF SUCH DAMAGE. 
  ******************************************************************************
  */
-package fr.com.jellyfish.jfgformicarius.formicarius.interfaces;
+package fr.com.jfish.jfgformicarius.formicarius.interfaces;
 
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.abstractentities.AbstractEntity;
+import fr.com.jfish.jfgformicarius.formicarius.entities.abstractentities.AbstractEntity;
 import java.awt.Rectangle;
 
 /**

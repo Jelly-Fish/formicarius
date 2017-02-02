@@ -29,15 +29,15 @@
  * POSSIBILITY OF SUCH DAMAGE.
  * *****************************************************************************
  */
-package fr.com.jellyfish.jfgformicarius.formicarius.entities.tiles.backgrounds.cave.walls;
+package fr.com.jfish.jfgformicarius.formicarius.entities.tiles.backgrounds.cave.walls;
 
-import fr.com.jellyfish.jfgformicarius.formicarius.constants.MvtConst;
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.abstractentities.AbstractEntity;
-import fr.com.jellyfish.jfgformicarius.formicarius.game.Game;
-import fr.com.jellyfish.jfgformicarius.formicarius.helpers.DrawingHelper;
-import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.CollidableObject;
-import fr.com.jellyfish.jfgformicarius.formicarius.texture.Sprite;
-import fr.com.jellyfish.jfgformicarius.formicarius.utils.CollisionUtils;
+import fr.com.jfish.jfgformicarius.formicarius.constants.MvtConst;
+import fr.com.jfish.jfgformicarius.formicarius.entities.abstractentities.AbstractEntity;
+import fr.com.jfish.jfgformicarius.formicarius.game.Game;
+import fr.com.jfish.jfgformicarius.formicarius.helpers.DrawingHelper;
+import fr.com.jfish.jfgformicarius.formicarius.interfaces.CollidableObject;
+import fr.com.jfish.jfgformicarius.formicarius.texture.Sprite;
+import fr.com.jfish.jfgformicarius.formicarius.utils.CollisionUtils;
 import java.awt.Rectangle;
 
 /**

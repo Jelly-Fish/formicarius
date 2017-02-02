@@ -28,10 +28,10 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
  *******************************************************************************/
 
-package fr.com.jellyfish.jfgformicarius.formicarius.utils;
+package fr.com.jfish.jfgformicarius.formicarius.utils;
 
-import fr.com.jellyfish.jfgformicarius.formicarius.constants.IconConst;
-import fr.com.jellyfish.jfgformicarius.formicarius.game.Game;
+import fr.com.jfish.jfgformicarius.formicarius.constants.IconConst;
+import fr.com.jfish.jfgformicarius.formicarius.game.Game;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;

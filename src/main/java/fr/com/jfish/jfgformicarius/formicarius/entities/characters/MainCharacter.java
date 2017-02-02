@@ -29,31 +29,31 @@
  * POSSIBILITY OF SUCH DAMAGE.
  * *****************************************************************************
  */
-package fr.com.jellyfish.jfgformicarius.formicarius.entities.characters;
+package fr.com.jfish.jfgformicarius.formicarius.entities.characters;
 
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.abstractentities.AbstractEntity;
-import fr.com.jellyfish.jfgformicarius.formicarius.constants.AnimationConst;
-import fr.com.jellyfish.jfgformicarius.formicarius.constants.FrameConst;
-import fr.com.jellyfish.jfgformicarius.formicarius.game.Game;
-import fr.com.jellyfish.jfgformicarius.formicarius.constants.MvtConst;
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.events.BloodyDagger;
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.events.SpellRing;
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.tiles.effects.blood.BloodImpact;
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.tiles.status.StatusFrame;
-import fr.com.jellyfish.jfgformicarius.formicarius.helpers.DrawingHelper;
-import fr.com.jellyfish.jfgformicarius.formicarius.helpers.entities.maincharacter.MainCharacterStatusHelper;
-import fr.com.jellyfish.jfgformicarius.formicarius.helpers.entities.maincharacter.MainCharacterZoneHelper;
-import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.Ignitable;
-import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.Observer;
-import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.Spawnable;
-import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.TransitionAction;
-import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.XYObservable;
-import fr.com.jellyfish.jfgformicarius.formicarius.texture.Sprite;
-import fr.com.jellyfish.jfgformicarius.formicarius.utils.SpriteUtils;
-import fr.com.jellyfish.jfgformicarius.formicarius.staticvars.StaticSoundVars;
-import fr.com.jellyfish.jfgformicarius.formicarius.staticvars.StaticSpriteVars;
-import fr.com.jellyfish.jfgformicarius.formicarius.utils.CollisionUtils;
-import fr.com.jellyfish.jfgformicarius.formicarius.world.zone.ZonePosition;
+import fr.com.jfish.jfgformicarius.formicarius.entities.abstractentities.AbstractEntity;
+import fr.com.jfish.jfgformicarius.formicarius.constants.AnimationConst;
+import fr.com.jfish.jfgformicarius.formicarius.constants.FrameConst;
+import fr.com.jfish.jfgformicarius.formicarius.game.Game;
+import fr.com.jfish.jfgformicarius.formicarius.constants.MvtConst;
+import fr.com.jfish.jfgformicarius.formicarius.entities.events.BloodyDagger;
+import fr.com.jfish.jfgformicarius.formicarius.entities.events.SpellRing;
+import fr.com.jfish.jfgformicarius.formicarius.entities.tiles.effects.blood.BloodImpact;
+import fr.com.jfish.jfgformicarius.formicarius.entities.tiles.status.StatusFrame;
+import fr.com.jfish.jfgformicarius.formicarius.helpers.DrawingHelper;
+import fr.com.jfish.jfgformicarius.formicarius.helpers.entities.maincharacter.MainCharacterStatusHelper;
+import fr.com.jfish.jfgformicarius.formicarius.helpers.entities.maincharacter.MainCharacterZoneHelper;
+import fr.com.jfish.jfgformicarius.formicarius.interfaces.Ignitable;
+import fr.com.jfish.jfgformicarius.formicarius.interfaces.Observer;
+import fr.com.jfish.jfgformicarius.formicarius.interfaces.Spawnable;
+import fr.com.jfish.jfgformicarius.formicarius.interfaces.TransitionAction;
+import fr.com.jfish.jfgformicarius.formicarius.interfaces.XYObservable;
+import fr.com.jfish.jfgformicarius.formicarius.texture.Sprite;
+import fr.com.jfish.jfgformicarius.formicarius.utils.SpriteUtils;
+import fr.com.jfish.jfgformicarius.formicarius.staticvars.StaticSoundVars;
+import fr.com.jfish.jfgformicarius.formicarius.staticvars.StaticSpriteVars;
+import fr.com.jfish.jfgformicarius.formicarius.utils.CollisionUtils;
+import fr.com.jfish.jfgformicarius.formicarius.world.zone.ZonePosition;
 import java.awt.Rectangle;
 
 /**

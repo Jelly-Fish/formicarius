@@ -28,7 +28,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
  *******************************************************************************/
 
-package fr.com.jellyfish.jfgformicarius.formicarius.texture;
+package fr.com.jfish.jfgformicarius.formicarius.texture;
 
 import static org.lwjgl.opengl.GL11.*;
 

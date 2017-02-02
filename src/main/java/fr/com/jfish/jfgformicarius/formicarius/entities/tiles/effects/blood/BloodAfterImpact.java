@@ -29,13 +29,13 @@
  * POSSIBILITY OF SUCH DAMAGE. 
  ******************************************************************************
  */
-package fr.com.jellyfish.jfgformicarius.formicarius.entities.tiles.effects.blood;
+package fr.com.jfish.jfgformicarius.formicarius.entities.tiles.effects.blood;
 
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.abstractentities.AbstractEntity;
-import fr.com.jellyfish.jfgformicarius.formicarius.game.Game;
-import fr.com.jellyfish.jfgformicarius.formicarius.helpers.DrawingHelper;
-import fr.com.jellyfish.jfgformicarius.formicarius.utils.RandomUtils;
-import fr.com.jellyfish.jfgformicarius.formicarius.utils.SpriteUtils;
+import fr.com.jfish.jfgformicarius.formicarius.entities.abstractentities.AbstractEntity;
+import fr.com.jfish.jfgformicarius.formicarius.game.Game;
+import fr.com.jfish.jfgformicarius.formicarius.helpers.DrawingHelper;
+import fr.com.jfish.jfgformicarius.formicarius.utils.RandomUtils;
+import fr.com.jfish.jfgformicarius.formicarius.utils.SpriteUtils;
 
 /**
  *

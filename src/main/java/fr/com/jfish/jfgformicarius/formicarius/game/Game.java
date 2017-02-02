@@ -28,14 +28,14 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
  *******************************************************************************/
 
-package fr.com.jellyfish.jfgformicarius.formicarius.game;
+package fr.com.jfish.jfgformicarius.formicarius.game;
 
-import fr.com.jellyfish.jfgformicarius.formicarius.library.Library;
-import fr.com.jellyfish.jfgformicarius.formicarius.helpers.input.InGameInputHelper;
+import fr.com.jfish.jfgformicarius.formicarius.library.Library;
+import fr.com.jfish.jfgformicarius.formicarius.helpers.input.InGameInputHelper;
 import java.io.File;
 import java.io.IOException;
 import java.nio.ByteBuffer;
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.abstractentities.AbstractEntity;
+import fr.com.jfish.jfgformicarius.formicarius.entities.abstractentities.AbstractEntity;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -45,25 +45,25 @@ import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 import static org.lwjgl.opengl.GL11.*;
 import org.newdawn.slick.opengl.ImageIOImageData;
-import fr.com.jellyfish.jfgformicarius.formicarius.constants.FrameConst;
-import fr.com.jellyfish.jfgformicarius.formicarius.constants.IconConst;
-import fr.com.jellyfish.jfgformicarius.formicarius.constants.MvtConst;
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.characters.MainCharacter;
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.tiles.CaveEntrance;
-import fr.com.jellyfish.jfgformicarius.formicarius.exceptions.InitializationException;
-import fr.com.jellyfish.jfgformicarius.formicarius.helpers.DrawingHelper;
-import fr.com.jellyfish.jfgformicarius.formicarius.helpers.GLLightHelper;
-import fr.com.jellyfish.jfgformicarius.formicarius.helpers.SoundManager;
-import fr.com.jellyfish.jfgformicarius.formicarius.helpers.TimeVariablesHelper;
-import fr.com.jellyfish.jfgformicarius.formicarius.helpers.entities.EntityHelper;
-import fr.com.jellyfish.jfgformicarius.formicarius.helpers.input.LibraryInputHelper;
-import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.CollidableObject;
-import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.Spawnable;
-import fr.com.jellyfish.jfgformicarius.formicarius.staticvars.StaticExceptionMsgs;
-import fr.com.jellyfish.jfgformicarius.formicarius.staticvars.StaticFrameVars;
-import fr.com.jellyfish.jfgformicarius.formicarius.staticvars.StaticSoundVars;
-import fr.com.jellyfish.jfgformicarius.formicarius.texture.TextureLoader;
-import fr.com.jellyfish.jfgformicarius.formicarius.utils.CursorUtils;
+import fr.com.jfish.jfgformicarius.formicarius.constants.FrameConst;
+import fr.com.jfish.jfgformicarius.formicarius.constants.IconConst;
+import fr.com.jfish.jfgformicarius.formicarius.constants.MvtConst;
+import fr.com.jfish.jfgformicarius.formicarius.entities.characters.MainCharacter;
+import fr.com.jfish.jfgformicarius.formicarius.entities.tiles.CaveEntrance;
+import fr.com.jfish.jfgformicarius.formicarius.exceptions.InitializationException;
+import fr.com.jfish.jfgformicarius.formicarius.helpers.DrawingHelper;
+import fr.com.jfish.jfgformicarius.formicarius.helpers.GLLightHelper;
+import fr.com.jfish.jfgformicarius.formicarius.helpers.SoundManager;
+import fr.com.jfish.jfgformicarius.formicarius.helpers.TimeVariablesHelper;
+import fr.com.jfish.jfgformicarius.formicarius.helpers.entities.EntityHelper;
+import fr.com.jfish.jfgformicarius.formicarius.helpers.input.LibraryInputHelper;
+import fr.com.jfish.jfgformicarius.formicarius.interfaces.CollidableObject;
+import fr.com.jfish.jfgformicarius.formicarius.interfaces.Spawnable;
+import fr.com.jfish.jfgformicarius.formicarius.staticvars.StaticExceptionMsgs;
+import fr.com.jfish.jfgformicarius.formicarius.staticvars.StaticFrameVars;
+import fr.com.jfish.jfgformicarius.formicarius.staticvars.StaticSoundVars;
+import fr.com.jfish.jfgformicarius.formicarius.texture.TextureLoader;
+import fr.com.jfish.jfgformicarius.formicarius.utils.CursorUtils;
 import java.util.ArrayList;
 import java.util.List;
 

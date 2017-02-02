@@ -28,7 +28,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
  *******************************************************************************/
 
-package fr.com.jellyfish.jfgformicarius.formicarius.staticvars;
+package fr.com.jfish.jfgformicarius.formicarius.staticvars;
 
 /**
  *

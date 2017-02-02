@@ -29,21 +29,21 @@
  * POSSIBILITY OF SUCH DAMAGE.
  * *****************************************************************************
  */
-package fr.com.jellyfish.jfgformicarius.formicarius.utils;
+package fr.com.jfish.jfgformicarius.formicarius.utils;
 
-import fr.com.jellyfish.jfgformicarius.formicarius.constants.MvtConst;
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.abstractentities.AbstractEntity;
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.tiles.StaticObject;
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.tiles.vegetation.Tree;
-import fr.com.jellyfish.jfgformicarius.formicarius.exceptions.ZoneGenerationException;
-import fr.com.jellyfish.jfgformicarius.formicarius.game.Game;
-import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.ZoneBuilder;
-import fr.com.jellyfish.jfgformicarius.formicarius.staticvars.StaticSpriteVars;
-import fr.com.jellyfish.jfgformicarius.formicarius.texture.Sprite;
-import fr.com.jellyfish.jfgformicarius.formicarius.world.zone.CardinalityDefinition;
-import fr.com.jellyfish.jfgformicarius.formicarius.world.zone.ZonePosition;
-import fr.com.jellyfish.jfgformicarius.formicarius.world.zone.cave.CaveZone;
-import fr.com.jellyfish.jfgformicarius.formicarius.world.zone.cave.CaveZoneWallCardinalityDefintions;
+import fr.com.jfish.jfgformicarius.formicarius.constants.MvtConst;
+import fr.com.jfish.jfgformicarius.formicarius.entities.abstractentities.AbstractEntity;
+import fr.com.jfish.jfgformicarius.formicarius.entities.tiles.StaticObject;
+import fr.com.jfish.jfgformicarius.formicarius.entities.tiles.vegetation.Tree;
+import fr.com.jfish.jfgformicarius.formicarius.exceptions.ZoneGenerationException;
+import fr.com.jfish.jfgformicarius.formicarius.game.Game;
+import fr.com.jfish.jfgformicarius.formicarius.interfaces.ZoneBuilder;
+import fr.com.jfish.jfgformicarius.formicarius.staticvars.StaticSpriteVars;
+import fr.com.jfish.jfgformicarius.formicarius.texture.Sprite;
+import fr.com.jfish.jfgformicarius.formicarius.world.zone.CardinalityDefinition;
+import fr.com.jfish.jfgformicarius.formicarius.world.zone.ZonePosition;
+import fr.com.jfish.jfgformicarius.formicarius.world.zone.cave.CaveZone;
+import fr.com.jfish.jfgformicarius.formicarius.world.zone.cave.CaveZoneWallCardinalityDefintions;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -101,7 +101,7 @@ public class ZoneGenerationUtils {
      * @param maxLoops
      * @return
      * @throws
-     * fr.com.jellyfish.jfgformicarius.formicarius.exceptions.ZoneGenerationException
+     * fr.com.jfish.jfgformicarius.formicarius.exceptions.ZoneGenerationException
      */
     public static HashMap<ZonePosition, ZoneBuilder> buildRandomCaveZones(final int maxLoops)
             throws ZoneGenerationException {

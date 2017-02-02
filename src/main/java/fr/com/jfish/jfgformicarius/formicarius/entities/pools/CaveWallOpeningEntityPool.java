@@ -29,14 +29,14 @@
  * POSSIBILITY OF SUCH DAMAGE.
  * *****************************************************************************
  */
-package fr.com.jellyfish.jfgformicarius.formicarius.entities.pools;
+package fr.com.jfish.jfgformicarius.formicarius.entities.pools;
 
-import fr.com.jellyfish.jfgformicarius.formicarius.exceptions.ZoneBuildException;
-import fr.com.jellyfish.jfgformicarius.formicarius.game.Game;
-import fr.com.jellyfish.jfgformicarius.formicarius.staticvars.StaticSpriteVars;
-import fr.com.jellyfish.jfgformicarius.formicarius.texture.Sprite;
-import fr.com.jellyfish.jfgformicarius.formicarius.utils.SpriteUtils;
-import fr.com.jellyfish.jfgformicarius.formicarius.world.zone.cave.CaveZoneWallCardinalityDefintions;
+import fr.com.jfish.jfgformicarius.formicarius.exceptions.ZoneBuildException;
+import fr.com.jfish.jfgformicarius.formicarius.game.Game;
+import fr.com.jfish.jfgformicarius.formicarius.staticvars.StaticSpriteVars;
+import fr.com.jfish.jfgformicarius.formicarius.texture.Sprite;
+import fr.com.jfish.jfgformicarius.formicarius.utils.SpriteUtils;
+import fr.com.jfish.jfgformicarius.formicarius.world.zone.cave.CaveZoneWallCardinalityDefintions;
 import java.util.HashMap;
 import java.util.Map;
 

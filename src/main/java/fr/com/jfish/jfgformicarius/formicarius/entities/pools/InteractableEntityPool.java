@@ -29,19 +29,19 @@
  * POSSIBILITY OF SUCH DAMAGE. 
  ******************************************************************************
  */
-package fr.com.jellyfish.jfgformicarius.formicarius.entities.pools;
+package fr.com.jfish.jfgformicarius.formicarius.entities.pools;
 
-import fr.com.jellyfish.jfgformicarius.formicarius.constants.FrameConst;
-import fr.com.jellyfish.jfgformicarius.formicarius.constants.MvtConst;
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.abstractentities.AbstractEntity;
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.characters.Frog;
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.characters.Knight;
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.characters.Mage;
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.characters.Spider;
-import fr.com.jellyfish.jfgformicarius.formicarius.game.Game;
-import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.RandomAccessible;
-import fr.com.jellyfish.jfgformicarius.formicarius.staticvars.StaticSpriteVars;
-import fr.com.jellyfish.jfgformicarius.formicarius.utils.RandomUtils;
+import fr.com.jfish.jfgformicarius.formicarius.constants.FrameConst;
+import fr.com.jfish.jfgformicarius.formicarius.constants.MvtConst;
+import fr.com.jfish.jfgformicarius.formicarius.entities.abstractentities.AbstractEntity;
+import fr.com.jfish.jfgformicarius.formicarius.entities.characters.Frog;
+import fr.com.jfish.jfgformicarius.formicarius.entities.characters.Knight;
+import fr.com.jfish.jfgformicarius.formicarius.entities.characters.Mage;
+import fr.com.jfish.jfgformicarius.formicarius.entities.characters.Spider;
+import fr.com.jfish.jfgformicarius.formicarius.game.Game;
+import fr.com.jfish.jfgformicarius.formicarius.interfaces.RandomAccessible;
+import fr.com.jfish.jfgformicarius.formicarius.staticvars.StaticSpriteVars;
+import fr.com.jfish.jfgformicarius.formicarius.utils.RandomUtils;
 import java.util.HashMap;
 import java.util.Map;
 

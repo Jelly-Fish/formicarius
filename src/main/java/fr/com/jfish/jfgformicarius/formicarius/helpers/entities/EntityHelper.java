@@ -29,18 +29,18 @@
  * POSSIBILITY OF SUCH DAMAGE. 
  ******************************************************************************
  */
-package fr.com.jellyfish.jfgformicarius.formicarius.helpers.entities;
+package fr.com.jfish.jfgformicarius.formicarius.helpers.entities;
 
-import fr.com.jellyfish.jfgformicarius.formicarius.constants.FrameConst;
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.abstractentities.AbstractEntity;
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.characters.MainCharacter;
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.tiles.backgrounds.Background;
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.abstractentities.AbstractFader;
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.tiles.faders.InFader;
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.tiles.faders.OutFader;
-import fr.com.jellyfish.jfgformicarius.formicarius.game.Game;
-import fr.com.jellyfish.jfgformicarius.formicarius.staticvars.StaticSpriteVars;
-import fr.com.jellyfish.jfgformicarius.formicarius.world.zone.ZonePosition;
+import fr.com.jfish.jfgformicarius.formicarius.constants.FrameConst;
+import fr.com.jfish.jfgformicarius.formicarius.entities.abstractentities.AbstractEntity;
+import fr.com.jfish.jfgformicarius.formicarius.entities.characters.MainCharacter;
+import fr.com.jfish.jfgformicarius.formicarius.entities.tiles.backgrounds.Background;
+import fr.com.jfish.jfgformicarius.formicarius.entities.abstractentities.AbstractFader;
+import fr.com.jfish.jfgformicarius.formicarius.entities.tiles.faders.InFader;
+import fr.com.jfish.jfgformicarius.formicarius.entities.tiles.faders.OutFader;
+import fr.com.jfish.jfgformicarius.formicarius.game.Game;
+import fr.com.jfish.jfgformicarius.formicarius.staticvars.StaticSpriteVars;
+import fr.com.jfish.jfgformicarius.formicarius.world.zone.ZonePosition;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;

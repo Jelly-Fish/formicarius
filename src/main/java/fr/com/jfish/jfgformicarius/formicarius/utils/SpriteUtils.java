@@ -1,8 +1,8 @@
-package fr.com.jellyfish.jfgformicarius.formicarius.utils;
+package fr.com.jfish.jfgformicarius.formicarius.utils;
 
-import fr.com.jellyfish.jfgformicarius.formicarius.texture.ResizableSprite;
-import fr.com.jellyfish.jfgformicarius.formicarius.texture.Sprite;
-import fr.com.jellyfish.jfgformicarius.formicarius.texture.TextureLoader;
+import fr.com.jfish.jfgformicarius.formicarius.texture.ResizableSprite;
+import fr.com.jfish.jfgformicarius.formicarius.texture.Sprite;
+import fr.com.jfish.jfgformicarius.formicarius.texture.TextureLoader;
 
 /**
  *

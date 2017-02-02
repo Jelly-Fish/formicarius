@@ -29,9 +29,9 @@
  * POSSIBILITY OF SUCH DAMAGE. 
  ******************************************************************************
  */
-package fr.com.jellyfish.jfgformicarius.formicarius.helpers.time;
+package fr.com.jfish.jfgformicarius.formicarius.helpers.time;
 
-import fr.com.jellyfish.jfgformicarius.formicarius.exceptions.StopWatchNotStartedException;
+import fr.com.jfish.jfgformicarius.formicarius.exceptions.StopWatchNotStartedException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -88,7 +88,7 @@ public class StopWatch {
     /**
      * return time in seconds since this object was created.
      * @return elapsed time double.
-     * @throws fr.com.jellyfish.jfgformicarius.formicarius.exceptions.StopWatchNotStartedException
+     * @throws fr.com.jfish.jfgformicarius.formicarius.exceptions.StopWatchNotStartedException
      */
     public double elapsedTime() throws StopWatchNotStartedException {
         if (!started) {

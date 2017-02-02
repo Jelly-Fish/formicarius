@@ -29,20 +29,20 @@
  * POSSIBILITY OF SUCH DAMAGE.
  * *****************************************************************************
  */
-package fr.com.jellyfish.jfgformicarius.formicarius.world.zone;
+package fr.com.jfish.jfgformicarius.formicarius.world.zone;
 
-import fr.com.jellyfish.jfgformicarius.formicarius.constants.FrameConst;
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.abstractentities.AbstractEntity;
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.tiles.backgrounds.Background;
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.tiles.CaveEntrance;
-import fr.com.jellyfish.jfgformicarius.formicarius.exceptions.ZoneBuildException;
-import fr.com.jellyfish.jfgformicarius.formicarius.game.Game;
-import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.ZoneBuilder;
-import fr.com.jellyfish.jfgformicarius.formicarius.staticvars.StaticSpriteVars;
-import fr.com.jellyfish.jfgformicarius.formicarius.utils.CollisionUtils;
-import fr.com.jellyfish.jfgformicarius.formicarius.utils.RandomUtils;
-import fr.com.jellyfish.jfgformicarius.formicarius.utils.SpriteUtils;
-import fr.com.jellyfish.jfgformicarius.formicarius.utils.ZoneGenerationUtils;
+import fr.com.jfish.jfgformicarius.formicarius.constants.FrameConst;
+import fr.com.jfish.jfgformicarius.formicarius.entities.abstractentities.AbstractEntity;
+import fr.com.jfish.jfgformicarius.formicarius.entities.tiles.backgrounds.Background;
+import fr.com.jfish.jfgformicarius.formicarius.entities.tiles.CaveEntrance;
+import fr.com.jfish.jfgformicarius.formicarius.exceptions.ZoneBuildException;
+import fr.com.jfish.jfgformicarius.formicarius.game.Game;
+import fr.com.jfish.jfgformicarius.formicarius.interfaces.ZoneBuilder;
+import fr.com.jfish.jfgformicarius.formicarius.staticvars.StaticSpriteVars;
+import fr.com.jfish.jfgformicarius.formicarius.utils.CollisionUtils;
+import fr.com.jfish.jfgformicarius.formicarius.utils.RandomUtils;
+import fr.com.jfish.jfgformicarius.formicarius.utils.SpriteUtils;
+import fr.com.jfish.jfgformicarius.formicarius.utils.ZoneGenerationUtils;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -75,7 +75,7 @@ public class Zone implements ZoneBuilder {
      * with value int[1] expected integer. Hash map key may be Class name for
      * reflection use.
      * @throws
-     * fr.com.jellyfish.jfgformicarius.formicarius.exceptions.ZoneBuildException
+     * fr.com.jfish.jfgformicarius.formicarius.exceptions.ZoneBuildException
      */
     public Zone(final RandomDefinition randomDefinitions)
             throws ZoneBuildException {
@@ -175,7 +175,7 @@ public class Zone implements ZoneBuilder {
      *
      * @return Map<String, AbstractEntity>
      * @throws
-     * fr.com.jellyfish.jfgformicarius.formicarius.exceptions.ZoneBuildException
+     * fr.com.jfish.jfgformicarius.formicarius.exceptions.ZoneBuildException
      */
     @Override
     public Map<String, AbstractEntity> getGlobals() throws ZoneBuildException {
@@ -188,7 +188,7 @@ public class Zone implements ZoneBuilder {
     /**
      *
      * @return @throws
-     * fr.com.jellyfish.jfgformicarius.formicarius.exceptions.ZoneBuildException
+     * fr.com.jfish.jfgformicarius.formicarius.exceptions.ZoneBuildException
      */
     @Override
     public Map<String, AbstractEntity> getStatics() throws ZoneBuildException {

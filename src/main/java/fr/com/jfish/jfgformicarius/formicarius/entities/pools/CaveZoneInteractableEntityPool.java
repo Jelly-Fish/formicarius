@@ -29,9 +29,9 @@
  * POSSIBILITY OF SUCH DAMAGE.
  * *****************************************************************************
  */
-package fr.com.jellyfish.jfgformicarius.formicarius.entities.pools;
+package fr.com.jfish.jfgformicarius.formicarius.entities.pools;
 
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.abstractentities.AbstractEntity;
+import fr.com.jfish.jfgformicarius.formicarius.entities.abstractentities.AbstractEntity;
 import java.util.Map;
 
 /**

@@ -28,7 +28,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
  *******************************************************************************/
 
-package fr.com.jellyfish.jfgformicarius.formicarius.utils;
+package fr.com.jfish.jfgformicarius.formicarius.utils;
 
 import org.lwjgl.input.Keyboard;
 

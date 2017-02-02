@@ -30,7 +30,7 @@
  * *****************************************************************************
  */
 
-package fr.com.jellyfish.jfgformicarius.formicarius.entities.lights;
+package fr.com.jfish.jfgformicarius.formicarius.entities.lights;
 
 import javax.vecmath.Vector2f;
 

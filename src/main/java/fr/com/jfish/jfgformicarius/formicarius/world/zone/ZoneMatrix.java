@@ -29,9 +29,9 @@
  * POSSIBILITY OF SUCH DAMAGE. 
  ******************************************************************************
  */
-package fr.com.jellyfish.jfgformicarius.formicarius.world.zone;
+package fr.com.jfish.jfgformicarius.formicarius.world.zone;
 
-import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.ZoneBuilder;
+import fr.com.jfish.jfgformicarius.formicarius.interfaces.ZoneBuilder;
 import java.util.LinkedHashMap;
 import java.util.Map;
 

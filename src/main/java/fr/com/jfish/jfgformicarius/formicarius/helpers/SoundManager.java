@@ -28,7 +28,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
  *******************************************************************************/
 
-package fr.com.jellyfish.jfgformicarius.formicarius.helpers;
+package fr.com.jfish.jfgformicarius.formicarius.helpers;
 
 import java.nio.IntBuffer;
 import java.util.logging.Level;

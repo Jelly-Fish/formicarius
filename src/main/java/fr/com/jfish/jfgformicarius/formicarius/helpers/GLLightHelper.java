@@ -29,13 +29,13 @@
  * POSSIBILITY OF SUCH DAMAGE.
  * *****************************************************************************
  */
-package fr.com.jellyfish.jfgformicarius.formicarius.helpers;
+package fr.com.jfish.jfgformicarius.formicarius.helpers;
 
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.lights.GLLight;
-import fr.com.jellyfish.jfgformicarius.formicarius.exceptions.GLLightHelperException;
-import fr.com.jellyfish.jfgformicarius.formicarius.game.Game;
-import fr.com.jellyfish.jfgformicarius.formicarius.staticvars.StaticExceptionMsgs;
-import fr.com.jellyfish.jfgformicarius.formicarius.utils.BufferUtils;
+import fr.com.jfish.jfgformicarius.formicarius.entities.lights.GLLight;
+import fr.com.jfish.jfgformicarius.formicarius.exceptions.GLLightHelperException;
+import fr.com.jfish.jfgformicarius.formicarius.game.Game;
+import fr.com.jfish.jfgformicarius.formicarius.staticvars.StaticExceptionMsgs;
+import fr.com.jfish.jfgformicarius.formicarius.utils.BufferUtils;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;

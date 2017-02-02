@@ -29,20 +29,20 @@
  * POSSIBILITY OF SUCH DAMAGE.
  * *****************************************************************************
  */
-package fr.com.jellyfish.jfgformicarius.formicarius.world.zone.cave;
+package fr.com.jfish.jfgformicarius.formicarius.world.zone.cave;
 
-import fr.com.jellyfish.jfgformicarius.formicarius.constants.FrameConst;
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.abstractentities.AbstractEntity;
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.pools.CaveWallOpeningEntityPool;
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.tiles.backgrounds.cave.walls.CaveWall;
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.tiles.backgrounds.cave.walls.CaveWallCorner;
-import fr.com.jellyfish.jfgformicarius.formicarius.exceptions.ZoneBuildException;
-import fr.com.jellyfish.jfgformicarius.formicarius.game.Game;
-import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.ZoneBuilder;
-import fr.com.jellyfish.jfgformicarius.formicarius.staticvars.StaticEntityReferences;
-import fr.com.jellyfish.jfgformicarius.formicarius.staticvars.StaticSpriteVars;
-import fr.com.jellyfish.jfgformicarius.formicarius.utils.SpriteUtils;
-import fr.com.jellyfish.jfgformicarius.formicarius.world.zone.CardinalityDefinition;
+import fr.com.jfish.jfgformicarius.formicarius.constants.FrameConst;
+import fr.com.jfish.jfgformicarius.formicarius.entities.abstractentities.AbstractEntity;
+import fr.com.jfish.jfgformicarius.formicarius.entities.pools.CaveWallOpeningEntityPool;
+import fr.com.jfish.jfgformicarius.formicarius.entities.tiles.backgrounds.cave.walls.CaveWall;
+import fr.com.jfish.jfgformicarius.formicarius.entities.tiles.backgrounds.cave.walls.CaveWallCorner;
+import fr.com.jfish.jfgformicarius.formicarius.exceptions.ZoneBuildException;
+import fr.com.jfish.jfgformicarius.formicarius.game.Game;
+import fr.com.jfish.jfgformicarius.formicarius.interfaces.ZoneBuilder;
+import fr.com.jfish.jfgformicarius.formicarius.staticvars.StaticEntityReferences;
+import fr.com.jfish.jfgformicarius.formicarius.staticvars.StaticSpriteVars;
+import fr.com.jfish.jfgformicarius.formicarius.utils.SpriteUtils;
+import fr.com.jfish.jfgformicarius.formicarius.world.zone.CardinalityDefinition;
 import java.awt.Rectangle;
 import java.util.HashMap;
 import java.util.List;

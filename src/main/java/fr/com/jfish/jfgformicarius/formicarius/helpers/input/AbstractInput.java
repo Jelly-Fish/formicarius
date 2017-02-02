@@ -29,9 +29,9 @@
  * POSSIBILITY OF SUCH DAMAGE. 
  ******************************************************************************
  */
-package fr.com.jellyfish.jfgformicarius.formicarius.helpers.input;
+package fr.com.jfish.jfgformicarius.formicarius.helpers.input;
 
-import fr.com.jellyfish.jfgformicarius.formicarius.game.Game;
+import fr.com.jfish.jfgformicarius.formicarius.game.Game;
 
 /**
  *

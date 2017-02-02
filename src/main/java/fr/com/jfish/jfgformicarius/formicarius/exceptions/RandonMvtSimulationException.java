@@ -29,7 +29,7 @@
  * POSSIBILITY OF SUCH DAMAGE. 
  ******************************************************************************
  */
-package fr.com.jellyfish.jfgformicarius.formicarius.exceptions;
+package fr.com.jfish.jfgformicarius.formicarius.exceptions;
 
 /**
  * Exception in random simulation of mouvement.

@@ -29,28 +29,28 @@
  * POSSIBILITY OF SUCH DAMAGE.
  * *****************************************************************************
  */
-package fr.com.jellyfish.jfgformicarius.formicarius.library;
+package fr.com.jfish.jfgformicarius.formicarius.library;
 
-import fr.com.jellyfish.jfgformicarius.formicarius.constants.IconConst;
-import fr.com.jellyfish.jfgformicarius.formicarius.constants.MvtConst;
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.abstractentities.AbstractEntity;
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.characters.MainCharacter;
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.events.Axe;
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.events.BloodyDagger;
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.events.EvilDarkFog;
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.events.EvilFog;
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.events.IceDagger;
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.events.PlasmaBall;
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.events.SpellRing;
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.events.TransportationFog;
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.tiles.LibBackground;
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.tiles.LibItemContainer;
-import fr.com.jellyfish.jfgformicarius.formicarius.game.Game;
-import fr.com.jellyfish.jfgformicarius.formicarius.helpers.DrawingHelper;
-import fr.com.jellyfish.jfgformicarius.formicarius.helpers.entities.LibraryEntityHelper;
-import fr.com.jellyfish.jfgformicarius.formicarius.staticvars.StaticSoundVars;
-import fr.com.jellyfish.jfgformicarius.formicarius.staticvars.StaticSpriteVars;
-import fr.com.jellyfish.jfgformicarius.formicarius.utils.CursorUtils;
+import fr.com.jfish.jfgformicarius.formicarius.constants.IconConst;
+import fr.com.jfish.jfgformicarius.formicarius.constants.MvtConst;
+import fr.com.jfish.jfgformicarius.formicarius.entities.abstractentities.AbstractEntity;
+import fr.com.jfish.jfgformicarius.formicarius.entities.characters.MainCharacter;
+import fr.com.jfish.jfgformicarius.formicarius.entities.events.Axe;
+import fr.com.jfish.jfgformicarius.formicarius.entities.events.BloodyDagger;
+import fr.com.jfish.jfgformicarius.formicarius.entities.events.EvilDarkFog;
+import fr.com.jfish.jfgformicarius.formicarius.entities.events.EvilFog;
+import fr.com.jfish.jfgformicarius.formicarius.entities.events.IceDagger;
+import fr.com.jfish.jfgformicarius.formicarius.entities.events.PlasmaBall;
+import fr.com.jfish.jfgformicarius.formicarius.entities.events.SpellRing;
+import fr.com.jfish.jfgformicarius.formicarius.entities.events.TransportationFog;
+import fr.com.jfish.jfgformicarius.formicarius.entities.tiles.LibBackground;
+import fr.com.jfish.jfgformicarius.formicarius.entities.tiles.LibItemContainer;
+import fr.com.jfish.jfgformicarius.formicarius.game.Game;
+import fr.com.jfish.jfgformicarius.formicarius.helpers.DrawingHelper;
+import fr.com.jfish.jfgformicarius.formicarius.helpers.entities.LibraryEntityHelper;
+import fr.com.jfish.jfgformicarius.formicarius.staticvars.StaticSoundVars;
+import fr.com.jfish.jfgformicarius.formicarius.staticvars.StaticSpriteVars;
+import fr.com.jfish.jfgformicarius.formicarius.utils.CursorUtils;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 

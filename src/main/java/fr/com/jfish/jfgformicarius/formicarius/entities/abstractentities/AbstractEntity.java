@@ -28,11 +28,11 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
  *******************************************************************************/
 
-package fr.com.jellyfish.jfgformicarius.formicarius.entities.abstractentities;
+package fr.com.jfish.jfgformicarius.formicarius.entities.abstractentities;
 
 import java.awt.Rectangle;
-import fr.com.jellyfish.jfgformicarius.formicarius.game.Game;
-import fr.com.jellyfish.jfgformicarius.formicarius.texture.Sprite;
+import fr.com.jfish.jfgformicarius.formicarius.game.Game;
+import fr.com.jfish.jfgformicarius.formicarius.texture.Sprite;
 
 /**
  * An entity represents any elethisEntitynt that appears in the gathisEntity. The entity is

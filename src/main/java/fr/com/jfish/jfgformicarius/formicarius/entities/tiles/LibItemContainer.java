@@ -29,15 +29,15 @@
  * POSSIBILITY OF SUCH DAMAGE. 
  ******************************************************************************
  */
-package fr.com.jellyfish.jfgformicarius.formicarius.entities.tiles;
+package fr.com.jfish.jfgformicarius.formicarius.entities.tiles;
 
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.abstractentities.AbstractEntity;
-import fr.com.jellyfish.jfgformicarius.formicarius.game.Game;
-import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.Ignitable;
-import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.LibraryItemMouseObserver;
-import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.Spawnable;
-import fr.com.jellyfish.jfgformicarius.formicarius.texture.Sprite;
-import fr.com.jellyfish.jfgformicarius.formicarius.utils.SpriteUtils;
+import fr.com.jfish.jfgformicarius.formicarius.entities.abstractentities.AbstractEntity;
+import fr.com.jfish.jfgformicarius.formicarius.game.Game;
+import fr.com.jfish.jfgformicarius.formicarius.interfaces.Ignitable;
+import fr.com.jfish.jfgformicarius.formicarius.interfaces.LibraryItemMouseObserver;
+import fr.com.jfish.jfgformicarius.formicarius.interfaces.Spawnable;
+import fr.com.jfish.jfgformicarius.formicarius.texture.Sprite;
+import fr.com.jfish.jfgformicarius.formicarius.utils.SpriteUtils;
 
 /**
  *

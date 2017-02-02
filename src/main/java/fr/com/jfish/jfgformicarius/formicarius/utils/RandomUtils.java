@@ -29,7 +29,7 @@
  * POSSIBILITY OF SUCH DAMAGE.
  * *****************************************************************************
  */
-package fr.com.jellyfish.jfgformicarius.formicarius.utils;
+package fr.com.jfish.jfgformicarius.formicarius.utils;
 
 import java.util.Random;
 

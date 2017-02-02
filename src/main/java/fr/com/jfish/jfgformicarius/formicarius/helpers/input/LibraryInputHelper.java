@@ -29,20 +29,20 @@
  * POSSIBILITY OF SUCH DAMAGE. 
  ******************************************************************************
  */
-package fr.com.jellyfish.jfgformicarius.formicarius.helpers.input;
+package fr.com.jfish.jfgformicarius.formicarius.helpers.input;
 
-import fr.com.jellyfish.jfgformicarius.formicarius.constants.FrameConst;
-import fr.com.jellyfish.jfgformicarius.formicarius.constants.IconConst;
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.characters.MainCharacter;
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.tiles.LibItemContainer;
-import fr.com.jellyfish.jfgformicarius.formicarius.game.Game;
-import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.Ignitable;
-import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.LibraryItemMouseObserver;
-import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.Spawnable;
-import fr.com.jellyfish.jfgformicarius.formicarius.library.Library;
-import fr.com.jellyfish.jfgformicarius.formicarius.staticvars.StaticFrameVars;
-import fr.com.jellyfish.jfgformicarius.formicarius.utils.CursorUtils;
-import fr.com.jellyfish.jfgformicarius.formicarius.utils.InputUtils;
+import fr.com.jfish.jfgformicarius.formicarius.constants.FrameConst;
+import fr.com.jfish.jfgformicarius.formicarius.constants.IconConst;
+import fr.com.jfish.jfgformicarius.formicarius.entities.characters.MainCharacter;
+import fr.com.jfish.jfgformicarius.formicarius.entities.tiles.LibItemContainer;
+import fr.com.jfish.jfgformicarius.formicarius.game.Game;
+import fr.com.jfish.jfgformicarius.formicarius.interfaces.Ignitable;
+import fr.com.jfish.jfgformicarius.formicarius.interfaces.LibraryItemMouseObserver;
+import fr.com.jfish.jfgformicarius.formicarius.interfaces.Spawnable;
+import fr.com.jfish.jfgformicarius.formicarius.library.Library;
+import fr.com.jfish.jfgformicarius.formicarius.staticvars.StaticFrameVars;
+import fr.com.jfish.jfgformicarius.formicarius.utils.CursorUtils;
+import fr.com.jfish.jfgformicarius.formicarius.utils.InputUtils;
 import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.List;

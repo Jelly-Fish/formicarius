@@ -29,7 +29,7 @@
  * POSSIBILITY OF SUCH DAMAGE. 
  ******************************************************************************
  */
-package fr.com.jellyfish.jfgformicarius.formicarius.interfaces.abstractinterfaces;
+package fr.com.jfish.jfgformicarius.formicarius.interfaces.abstractinterfaces;
 
 /**
  *

@@ -29,11 +29,11 @@
  * POSSIBILITY OF SUCH DAMAGE. 
  ******************************************************************************
  */
-package fr.com.jellyfish.jfgformicarius.formicarius.helpers.entities.maincharacter;
+package fr.com.jfish.jfgformicarius.formicarius.helpers.entities.maincharacter;
 
-import fr.com.jellyfish.jfgformicarius.formicarius.game.Game;
-import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.Ignitable;
-import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.Spawnable;
+import fr.com.jfish.jfgformicarius.formicarius.game.Game;
+import fr.com.jfish.jfgformicarius.formicarius.interfaces.Ignitable;
+import fr.com.jfish.jfgformicarius.formicarius.interfaces.Spawnable;
 import java.io.Serializable;
 
 /**

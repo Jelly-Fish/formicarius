@@ -29,18 +29,18 @@
  * POSSIBILITY OF SUCH DAMAGE.
  * *****************************************************************************
  */
-package fr.com.jellyfish.jfgformicarius.formicarius.helpers.entities.maincharacter;
+package fr.com.jfish.jfgformicarius.formicarius.helpers.entities.maincharacter;
 
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.characters.MainCharacter;
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.pools.InteractableEntityPool;
-import fr.com.jellyfish.jfgformicarius.formicarius.entities.tiles.vegetation.Tree;
-import fr.com.jellyfish.jfgformicarius.formicarius.exceptions.ZoneBuildException;
-import fr.com.jellyfish.jfgformicarius.formicarius.game.Game;
-import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.TransitionAction;
-import fr.com.jellyfish.jfgformicarius.formicarius.interfaces.ZoneBuilder;
-import fr.com.jellyfish.jfgformicarius.formicarius.world.zone.RandomDefinition;
-import fr.com.jellyfish.jfgformicarius.formicarius.staticvars.StaticRandomValues;
-import fr.com.jellyfish.jfgformicarius.formicarius.world.zone.Zone;
+import fr.com.jfish.jfgformicarius.formicarius.entities.characters.MainCharacter;
+import fr.com.jfish.jfgformicarius.formicarius.entities.pools.InteractableEntityPool;
+import fr.com.jfish.jfgformicarius.formicarius.entities.tiles.vegetation.Tree;
+import fr.com.jfish.jfgformicarius.formicarius.exceptions.ZoneBuildException;
+import fr.com.jfish.jfgformicarius.formicarius.game.Game;
+import fr.com.jfish.jfgformicarius.formicarius.interfaces.TransitionAction;
+import fr.com.jfish.jfgformicarius.formicarius.interfaces.ZoneBuilder;
+import fr.com.jfish.jfgformicarius.formicarius.world.zone.RandomDefinition;
+import fr.com.jfish.jfgformicarius.formicarius.staticvars.StaticRandomValues;
+import fr.com.jfish.jfgformicarius.formicarius.world.zone.Zone;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
